@@ -17,7 +17,8 @@ New-Item -ItemType File -Force -Path "$tempDir\.nojekyll" | Out-Null
 
 Write-Host "3/4 Pushing to GitHub Pages..." -ForegroundColor Cyan
 Set-Location $tempDir
-git init -b main | Out-Null
+git init | Out-Null
+git checkout -b main | Out-Null
 git add .
 git commit -m "Deploy $(Get-Date -Format 'yyyy-MM-dd HH:mm')" | Out-Null
 git remote add origin "https://github.com/marcindev1504-cmyk/shol.git"
