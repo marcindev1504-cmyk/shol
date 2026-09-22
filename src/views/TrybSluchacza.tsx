@@ -68,6 +68,9 @@ export function TrybSluchacza({ pakietParam }: { pakietParam: string }) {
   const [progress, setProgress] = useState<Record<number, number>>({})
   const [installPrompt, setInstallPrompt] = useState<InstallPromptEvent | null>(null)
   const [sharePack, setSharePack] = useState<Pack | null>(null)
+  const [menuPackId, setMenuPackId] = useState<number | null>(null)
+  const longPressTimer = useRef<number | null>(null)
+  const longPressed = useRef(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const [cardIndex, setCardIndex] = useState(0)
@@ -275,22 +278,36 @@ export function TrybSluchacza({ pakietParam }: { pakietParam: string }) {
             const done = progress[item.id] !== undefined && total > 0 ? Math.min(progress[item.id]! + 1, total) : 0
             const pct = total > 0 ? Math.round((done / total) * 100) : 0
             return (
-              <div className="learner-pack" key={item.id} data-pack-color={item.color}>
-                <button className="learner-pack-open" onClick={() => openPack(item)}>
+              <div
+                className="learner-pack pack-menu-wrap" key={item.id} data-pack-color={item.color}
+                onContextMenu={(event) => { event.preventDefault(); setMenuPackId(item.id) }}
+                onTouchStart={() => { longPressed.current = false; longPressTimer.current = window.setTimeout(() => { longPressed.current = true; setMenuPackId(item.id) }, 550) }}
+                onTouchEnd={() => { if (longPressTimer.current) clearTimeout(longPressTimer.current) }}
+                onTouchMove={() => { if (longPressTimer.current) clearTimeout(longPressTimer.current) }}
+              >
+                <button className="learner-pack-open" onClick={() => { if (longPressed.current) { longPressed.current = false; return } openPack(item) }}>
                   <span className="pack-color-dot" style={{ background: `var(--pack-${item.color})` }} />
                   <strong>{item.title}</strong>
                   <span className="pack-progress-bar"><i style={{ width: `${pct}%` }} /></span>
                   <span className="pack-progress-text">{done}/{total} fiszek{pct === 100 ? ' ✓' : ''}</span>
                 </button>
-                <button className="icon-button" aria-label="Udostępnij paczkę" onClick={() => setSharePack(item)}><Icon name="share" /></button>
-                <button className="icon-button" aria-label="Usuń paczkę" onClick={() => void deleteFromLibrary(item.id)}>×</button>
+                <button className="icon-button" aria-label="Opcje paczki" onClick={() => setMenuPackId(menuPackId === item.id ? null : item.id)}>•••</button>
+                {menuPackId === item.id && (
+                  <>
+                    <div className="menu-backdrop" onClick={() => setMenuPackId(null)} />
+                    <div className="pack-menu">
+                      <button onClick={() => { setMenuPackId(null); setSharePack(item) }}>Udostępnij</button>
+                      <button className="danger" onClick={() => { setMenuPackId(null); void deleteFromLibrary(item.id) }}>Usuń paczkę</button>
+                    </div>
+                  </>
+                )}
               </div>
             )
           })}
         </div>
         <button className="learner-secondary" onClick={() => fileInputRef.current?.click()}>Wczytaj paczkę z pliku (JSON)</button>
         <input ref={fileInputRef} type="file" accept=".json,application/json" style={{ display: 'none' }} onChange={(event) => { const file = event.target.files?.[0]; if (file) void importPackFile(file); event.currentTarget.value = '' }} />
-        <p className="learner-footer">Paczki są zapisywane lokalnie — po instalacji aplikacja działa offline. <a href="/">Panel instruktora</a></p>
+        <p className="learner-footer">Paczki są zapisywane lokalnie — po instalacji aplikacja działa offline. Przytrzymaj paczkę, aby udostępnić lub usunąć. <a href="/">Panel instruktora</a></p>
       </main>
     )
   } else if (pack && cards.length === 0) {
