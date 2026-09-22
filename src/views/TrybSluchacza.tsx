@@ -314,7 +314,7 @@ export function TrybSluchacza({ pakietParam }: { pakietParam: string }) {
   }
 
   return (
-    <div className="learner-shell">
+    <div className={`learner-shell ${pack ? `pack-color-${pack.color}` : 'pack-color-mint'}`}>
       <header className="learner-top">
         <div className="brand"><div className="brand-mark">K</div><div><strong>kompas</strong><span>wiedzy</span></div></div>
         <div className="learner-top-actions">
