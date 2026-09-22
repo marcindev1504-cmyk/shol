@@ -1,0 +1,251 @@
+{
+  "id": 1790077940534,
+  "title": "Pierwsza pomoc przedmedyczna",
+  "subject": "Szkolenie ogólne",
+  "status": "Zatwierdzone",
+  "updated": "22 wrz 2026",
+  "color": "rose",
+  "version": "2026-09-22",
+  "flashcards": [
+    {
+      "id": "pp-01",
+      "question": "Jaka jest pierwsza czynność przed przystąpieniem do udzielania pomocy?",
+      "answer": "Ocena bezpieczeństwa miejsca zdarzenia — dla ratownika, poszkodowanego i osób postronnych. Ratownik, który sam stanie się poszkodowanym, nie pomoże nikomu.",
+      "source": "Wytyczne ERC 2025, pierwsza pomoc",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-02",
+      "question": "Kiedy wolno przemieszczać poszkodowanego?",
+      "answer": "Wyłącznie gdy pozostawienie go w miejscu zdarzenia wiąże się z bezpośrednim zagrożeniem życia — np. pożar, ryzyko wybuchu. W pozostałych sytuacjach poszkodowanego nie przenosimy.",
+      "source": "Wytyczne ERC 2025, pierwsza pomoc",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-03",
+      "question": "Kiedy należy wezwać pomoc po znalezieniu nieprzytomnej osoby?",
+      "answer": "Natychmiast — bez oczekiwania na pełną ocenę oddechu. Telefon ustawiamy w trybie głośnomówiącym; dyspozytor (112/999) pomoże ocenić oddech i poprowadzi przez resuscytację.",
+      "source": "Wytyczne ERC 2025, BLS",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-04",
+      "question": "Jak traktować oddech agonalny (rzadki, urywany, przypominający łkanie)?",
+      "answer": "Jako objaw zatrzymania krążenia — to podstawa do natychmiastowego rozpoczęcia resuscytacji krążeniowo-oddechowej.",
+      "source": "Wytyczne ERC 2025, BLS",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-05",
+      "question": "Jakie jest schemat RKO u osoby dorosłej?",
+      "answer": "Naprzemiennie 30 uciśnięć klatki piersiowej i 2 oddechy ratownicze. Uciśnięcia na środku klatki, 100–120/min, głębokość 5–6 cm (nie więcej niż 6 cm), z pełnym odbiciem klatki między uciskami.",
+      "source": "Wytyczne ERC 2025, BLS",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-06",
+      "question": "Czy osoba bez przeszkolenia w oddechach ratowniczych może prowadzić resuscytację?",
+      "answer": "Tak — może wykonywać same uciśnięcia klatki piersiowej (hands-only CPR) do przybycia zespołu ratownictwa. Ciągłe uciski są lepsze niż brak resuscytacji.",
+      "source": "Wytyczne ERC 2025, BLS",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-07",
+      "question": "Co ile czasu powinni zmieniać się ratownicy przy uciśnięciach klatki i dlaczego?",
+      "answer": "Co około 2 minuty — zmęczenie obniża jakość i głębokość ucisków, często niezauważalnie dla samego ratownika.",
+      "source": "Wytyczne ERC 2025, BLS",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-08",
+      "question": "Jak stosować automatyczny defibrylator zewnętrzny (AED)?",
+      "answer": "Włączyć jak najszybciej i postępować zgodnie z poleceniami głosowymi. Elektrody przyklejamy na nagą, osuszoną klatkę piersiową; podczas analizy rytmu i wyładowania nikt nie może dotykać poszkodowanego.",
+      "source": "Wytyczne ERC 2025, BLS",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-09",
+      "question": "Kogo układamy w pozycji bocznej (bezpiecznej)?",
+      "answer": "Wyłącznie osoby nieprzytomne, które oddychają prawidłowo. Oddech monitorujemy ciągle — jeśli stanie się nieprawidłowy lub ustanie, obracamy poszkodowanego na plecy i rozpoczynamy RKO.",
+      "source": "Wytyczne ERC 2025, pierwsza pomoc",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+        "id": "pp-10",
+      "question": "Co wolno podać doustnie osobie nieprzytomnej?",
+      "answer": "Nic. Osobie nieprzytomnej nie podaje się płynów, leków ani pokarmów — grozi to zadławieniem.",
+      "source": "Wytyczne ERC 2025, pierwsza pomoc",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-11",
+      "question": "Do kiedy prowadzi się resuscytację?",
+      "answer": "Do przybycia zespołu ratownictwa medycznego, przywrócenia funkcji życiowych lub wyczerpania sił ratownika.",
+      "source": "Wytyczne ERC 2025, BLS",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-12",
+      "question": "Jak tamować masywne krwawienie zewnętrzne?",
+      "answer": "Natychmiastowym, silnym uciskiem bezpośrednio na ranę — najlepiej przez jałowy materiał lub odzież. Jeśli krew przesiąka opatrunek, nie zdejmujemy go, tylko dokładamy kolejną warstwę i wzmacniamy ucisk.",
+      "source": "Wytyczne ERC 2025, pierwsza pomoc",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-13",
+      "question": "Kiedy i jak zakłada się opaskę taktyczną (zaciskową)?",
+      "answer": "Przy masywnym krwawieniu z kończyny, którego nie opanowuje ucisk — kilka centymetrów powyżej rany, z notatką godziny założenia. Opaski nie wolno poluzować, zdejmować ani zasłaniać odzieżą.",
+      "source": "Wytyczne ERC 2025, pierwsza pomoc",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-14",
+      "question": "Jak postąpić przy krwawieniu w okolicy pachwiny lub pachy, gdzie nie założy się opaski?",
+      "answer": "Zastosować tamponadę rany — ciasne wypełnienie jej gazą i silny ucisk.",
+      "source": "Wytyczne ERC 2025, pierwsza pomoc",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-15",
+      "question": "Czy wolno usuwać ciało obce wbite w ranę?",
+      "answer": "Nie — usunięcie nasili krwawienie i uszkodzi tkanki. Obiekt unieruchamiamy i bandażujemy wokół niego.",
+      "source": "Wytyczne ERC 2025, pierwsza pomoc",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-16",
+      "question": "Jak postępować przy otwartej ranie klatki piersiowej ze ssącym odgłosem powietrza?",
+      "answer": "Ranę przykryć szczelnym opatrunkiem okluzyjnym lub folią.",
+      "source": "Wytyczne ERC 2025, pierwsza pomoc",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-17",
+      "question": "Jak zabezpieczyć amputowaną część ciała do transportu?",
+      "answer": "Zawinąć w wilgotny jałowy gazik, umieścić w szczelnym worku i położyć worek na mieszaninie lodu z wodą — część nie może mieć bezpośredniego kontaktu z lodem.",
+      "source": "Wytyczne ERC 2025, pierwsza pomoc",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-18",
+      "question": "Jak postąpić z wybitym zębem?",
+      "answer": "Trzymać za koronę, krótko opłukać i próbować wszczepić do zębodołu albo przechować w mleku lub ślinie; jak najszybciej stomatolog.",
+      "source": "Wytyczne ERC 2025, pierwsza pomoc",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-19",
+      "question": "Jak tamować krwawienie z nosa?",
+      "answer": "Głowa pochylona do przodu, ucisk miękkiej części nosa przez 10–15 minut. Odchylanie głowy do tyłu jest błędem — krew spływa do gardła.",
+      "source": "Wytyczne ERC 2025, pierwsza pomoc",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-20",
+      "question": "Jak unieruchomić złamaną kończynę?",
+      "answer": "W pozycji zastanej, obejmując unieruchomieniem stawy powyżej i poniżej złamania; sprawdzamy ukrwienie za miejscem unieruchomienia. Poszkodowanemu nie podajemy jedzenia ani picia — może wymagać operacji.",
+      "source": "Wytyczne ERC 2025, pierwsza pomoc",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-21",
+      "question": "Jak postępować z poszkodowanym z podejrzeniem urazu kręgosłupa?",
+      "answer": "Nie przemieszczać ani nie sadzać; głowę stabilizować rękami w pozycji zastanej.",
+      "source": "Wytyczne ERC 2025, pierwsza pomoc",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-22",
+      "question": "Kiedy wolno zdjąć poszkodowanemu hełm motocyklowy?",
+      "answer": "Tylko wtedy, gdy jest to niezbędne do udrożnienia dróg oddechowych lub prowadzenia resuscytacji.",
+      "source": "Wytyczne ERC 2025, pierwsza pomoc",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-23",
+      "question": "Jak postępować przy oparzeniu termicznym?",
+      "answer": "Chłodzić czystą, letnią wodą przez ok. 20 minut; usunąć biżuterię, zegarki i nieprzylgniętą odzież; przykryć luźno folią lub jałowym opatrunkiem. Bez lodu, maści, pasty do zębów i masła. Pęcherzy nie przebijamy.",
+      "source": "Wytyczne ERC 2025, pierwsza pomoc",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-24",
+      "question": "Jak postępować przy zadławieniu u osoby przytomnej?",
+      "answer": "Najpierw zachęcać do kaszlu. Przy nieskutecznym kaszlu: na przemian 5 uderzeń między łopatki i 5 ucisków nadbrzusza. U osoby w ciąży lub z dużą otyłością — uciśnięcia klatki piersiowej. Utrata przytomności → RKO.",
+      "source": "Wytyczne ERC 2025, pierwsza pomoc",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-25",
+      "question": "Jak postępować przy wstrząsie anafilaktycznym?",
+      "answer": "Niezwłocznie podać adrenalinę z autowstrzykiwacza w zewnętrzną stronę uda (może być przez odzież), wezwać pomoc. Poszkodowany płasko z uniesionymi nogami lub półsiedząco przy duszności. Brak poprawy → druga dawka po min. 5 min.",
+      "source": "Wytyczne ERC 2025, pierwsza pomoc",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-26",
+      "question": "Jak rozpoznać udar niedokrwienny i co jest kluczowe?",
+      "answer": "Test FAST: asymetria twarzy, osłabienie jednej ręki, zaburzenia mowy, Time — pilne wezwanie pomocy. Odnotować dokładną godzinę wystąpienia objawów; nie podawać niczego doustnie.",
+      "source": "Wytyczne ERC 2025, pierwsza pomoc",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-27",
+      "question": "Jak postępować przy podejrzeniu zawału serca?",
+      "answer": "Pozycja półsiedząca, rozluźnienie uciskającej odzieży, wezwanie pomocy. Jeśli nie ma przeciwwskazań — 300 mg aspiryny do rozgryzienia.",
+      "source": "Wytyczne ERC 2025, pierwsza pomoc",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-28",
+      "question": "Jak postępować przy hipoglikemii?",
+      "answer": "Osoba przytomna → szybko przyswajalny cukier (słodzony napój, słodycze). Osoba nieprzytomna → nic doustnie, pozycja boczna, wezwanie pomocy.",
+      "source": "Wytyczne ERC 2025, pierwsza pomoc",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-29",
+      "question": "Jak postępować podczas napadu padaczki?",
+      "answer": "Osłonić głowę, odsunąć niebezpieczne przedmioty, nic nie wkładać do ust, nie przytrzymywać na siłę. Po napadzie — pozycja boczna. Pomoc: napad >5 min, powtarza się lub jest pierwszy w życiu.",
+      "source": "Wytyczne ERC 2025, pierwsza pomoc",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    },
+    {
+      "id": "pp-30",
+      "question": "Jak postępować przy podejrzeniu przedawkowania opioidów?",
+      "answer": "Rozpoznanie: szpilkowate źrenice, wolny oddech. Wezwać pomoc, ułożyć w pozycji bocznej i, jeśli dostępny, podać nalokson.",
+      "source": "Wytyczne ERC 2025, pierwsza pomoc",
+      "status": "Zatwierdzone",
+      "packId": 1790077940534
+    }
+  ]
+}

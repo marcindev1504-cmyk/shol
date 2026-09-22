@@ -1,21 +1,64 @@
-Pierwsza pomoc przedmedyczna to czynności podejmowane przed przybyciem wykwalifikowanego zespołu ratownictwa, zmierzające do ratowania życia poszkodowanego.
+Aktualne wytyczne postępowania przedmedycznego opracowuje Europejska Rada Resuscytacji (ERC), a oficjalne polskie tłumaczenie i adaptację publikuje Polska Rada Resuscytacji; obowiązujący standard stanowią Wytyczne ERC 2025.
+Pierwsza pomoc przedmedyczna to czynności podejmowane przez świadka zdarzenia przed przybyciem wykwalifikowanego zespołu ratownictwa, zmierzające do ratowania życia i zdrowia poszkodowanego.
 Policjant jest obowiązany udzielić pierwszej pomocy poszkodowanemu w ramach ustawowego obowiązku ochrony życia i zdrowia ludzkiego.
-Przed przystąpieniem do udzielania pomocy należy ocenić bezpieczeństwo miejsca zdarzenia dla ratownika, poszkodowanego i osób postronnych.
-Ocena poszkodowanego rozpoczyna się od sprawdzenia przytomności, a następnie drożności dróg oddechowych i obecności oddechu.
+Przed przystąpieniem do udzielania pomocy należy ocenić bezpieczeństwo miejsca zdarzenia dla ratownika, poszkodowanego i osób postronnych, ponieważ ratownik, który sam stanie się poszkodowanym, nie pomoże nikomu.
+Poszkodowanego należy przemieszczać wyłącznie wtedy, gdy pozostawienie go w miejscu zdarzenia wiąże się z bezpośrednim zagrożeniem życia, na przykład pożarem lub ryzykiem wybuchu.
+Ocena poszkodowanego rozpoczyna się od sprawdzenia przytomności przez głośne zawołanie i potrząśnięcie za ramiona, a następnie oceny oddechu.
+Wytyczne ERC 2025 zalecają natychmiastowe wezwanie pomocy pod numerem alarmowym 112 lub 999 po stwierdzeniu nieprzytomności poszkodowanego, bez oczekiwania na pełną ocenę oddechu.
+Telefon podczas rozmowy z dyspozytorem należy ustawić w trybie głośnomówiącym, ponieważ dyspozytor pomaga ocenić oddech i prowadzi ratownika przez resuscytację.
+Oddech agonalny, czyli rzadki, urywany oddech przypominający łkanie, należy traktować jako objaw zatrzymania krążenia i podstawę do rozpoczęcia resuscytacji.
 Poszkodowany nieprzytomny, który nie oddycha lub oddycha nieprawidłowo, wymaga natychmiastowego rozpoczęcia resuscytacji krążeniowo-oddechowej.
-Osobę udzielającą pierwszej pomocy obowiązuje wezwanie pomocy pod numerem alarmowym 112 lub 999 oraz przekazanie dyspozytorowi kluczowych informacji.
 Resuscytacja krążeniowo-oddechowa u osoby dorosłej polega na naprzemiennym wykonywaniu trzydziestu uciśnięć klatki piersiowej i dwóch oddechów ratowniczych.
-Uciśnięcia klatki piersiowej wykonuje się na środku klatki piersiowej z częstotliwością od stu do stu dwudziestu na minutę i głębokością około pięciu do sześciu centymetrów.
-Osoba bez przeszkolenia w oddechach ratowniczych może wykonywać same uciśnięcia klatki piersiowej do przybycia zespołu ratownictwa.
-Automatyczny defibrylator zewnętrzny należy zastosować tak szybko, jak to możliwe, postępując zgodnie z poleceniami głosowymi urządzenia.
-Poszkodowanego nieprzytomnego, który oddycha prawidłowo, należy ułożyć w pozycji bocznej ustalonej i kontrolować jego oddech.
+Uciśnięcia klatki piersiowej wykonuje się na środku klatki z częstotliwością od stu do stu dwudziestu na minutę i głębokością pięciu do sześciu centymetrów, bez przekraczania sześciu centymetrów.
+Podczas uciśnięć należy pozwalać na pełne odbicie klatki piersiowej między uciskami i minimalizować przerwy, a przy oddechach ratowniczych unikać wdmuchiwania nadmiernej ilości powietrza.
+Osoba bez przeszkolenia w oddechach ratowniczych lub niechętna do ich wykonywania może prowadzić resuscytację samymi uciśnięciami klatki piersiowej do przybycia zespołu ratownictwa.
+Ratownicy powinni zmieniać się przy uciśnięciach co około dwie minuty, ponieważ zmęczenie obniża jakość i głębokość ucisków.
+Automatyczny defibrylator zewnętrzny (AED) należy zastosować tak szybko, jak to możliwe, włączając urządzenie i postępując zgodnie z poleceniami głosowymi.
+Elektrody AED przykleja się na nagą, osuszoną klatkę piersiową, a podczas analizy rytmu i wyładowania nikt nie może dotykać poszkodowanego.
+Poszkodowanego nieprzytomnego, który oddycha prawidłowo, należy ułożyć w pozycji bocznej (bezpiecznej) i w sposób ciągły monitorować jego oddech.
+W pozycji bocznej układa się wyłącznie osoby nieprzytomne oddychające prawidłowo; jeśli oddech stanie się nieprawidłowy lub ustanie, poszkodowanego należy obrócić na plecy i rozpocząć resuscytację.
+Osobie nieprzytomnej nie wolno podawać doustnie płynów, leków ani pokarmów.
 Resuscytacji nie przerywa się do czasu przybycia zespołu ratownictwa medycznego, przywrócenia funkcji życiowych lub wyczerpania sił ratownika.
-Masywne krwawienie zewnętrzne należy tamować bezpośrednim uciskiem na ranę, a w razie potrzeby opatrunkiem uciskowym.
-Przy masywnym krwawieniu z kończyny, którego nie można opanować uciskiem, dopuszczalne jest założenie opaski zaciskowej powyżej miejsca krwawienia.
-Ciała obcego wbitego w ranę nie wolno usuwać, ponieważ może to nasilić krwawienie i uszkodzenie tkanek.
-Opatrunku uciskowego dokonuje się przez obciśnięcie rany materiałem opatrunkowym i zabezpieczenie go bandażem.
-Poparzoną powierzchnię ciała należy chłodzić czystą, letnią wodą przez około dwadzieścia minut, unikając zastosowania lodu i maści.
-Osobie w omdleniu lub stanie wstrząsu należy zapewnić bezpieczną pozycję, ciepło oraz monitoring oddechu do przybycia pomocy.
-Poszkodowanego z podejrzeniem urazu kręgosłupa nie należy przemieszczać, chyba że zagraża mu bezpośrednie niebezpieczeństwo.
+Masywne krwawienie zewnętrzne należy tamować natychmiastowym, silnym uciskiem bezpośrednio na ranę, najlepiej przez jałowy materiał lub odzież.
+Jeśli krew przesiąka przez opatrunek uciskowy, nie zdejmuje się go, lecz zakłada kolejną warstwę i wzmacnia ucisk.
+Przy masywnym krwawieniu z kończyny, którego nie można opanować uciskiem, należy założyć opaskę taktyczną (zaciskową) kilka centymetrów powyżej rany i zanotować godzinę założenia.
+Opaski taktycznej założonej przy masywnym krwawieniu nie wolno poluzować ani zdejmować samodzielnie, a jej obecności nie należy zasłaniać odzieżą.
+Przy krwawieniu w okolicy stawowej, na przykład pachwiny lub pachy, gdzie nie można założyć opaski, stosuje się tamponadę rany przez ciasne wypełnienie jej gazą i silny ucisk.
+Ciała obcego wbitego w ranę nie wolno usuwać, ponieważ może to nasilić krwawienie i uszkodzenie tkanek; obiekt należy unieruchomić i obandażować wokół niego.
+Przy ranie otwartej klatki piersiowej, przez którą słychać ssący odgłos powietrza, ranę należy przykryć szczelnym opatrunkiem okluzyjnym lub folią.
+Amputowaną część ciała należy zawinąć w wilgotny jałowy gazik, umieścić w szczelnym worku i położyć worek na mieszaninie lodu z wodą, unikając bezpośredniego kontaktu części z lodem.
+Wybity ząb należy trzymać za koronę, opłukać krótko i próbować wszczepić z powrotem do zębodołu albo przechować w mleku lub ślinie i jak najszybciej zgłosić się do stomatologa.
+Przy silnym krwawieniu z nosa należy pochylić głowę do przodu i uciskać miękką część nosa przez dziesięć do piętnastu minut, a odchylanie głowy do tyłu jest błędem.
+Złamanie kończyny należy unieruchomić w pozycji zastanej, obejmując unieruchomieniem stawy powyżej i poniżej złamania, oraz sprawdzić ukrwienie za miejscem unieruchomienia.
+Poszkodowanemu z urazem nie wolno podawać jedzenia ani picia, ponieważ może wymagać znieczulenia ogólnego do operacji.
+Poszkodowanego z podejrzeniem urazu kręgosłupa nie należy przemieszczać ani sadzać, a głowę stabilizuje się rękami w pozycji zastanej.
+Hełm motocyklowy lub sportowy zdejmuje się tylko wtedy, gdy jest to niezbędne do udrożnienia dróg oddechowych lub prowadzenia resuscytacji.
+Poparzoną powierzchnię ciała należy chłodzić czystą, letnią wodą przez około dwudziestu minut, przy czym nie stosuje się lodu, maści, pasty do zębów ani masła.
+Przed lub w trakcie chłodzenia oparzenia usuwa się biżuterię, zegarki i odzież, które nie przylgnęły do skóry, a poparzone miejsce przykrywa się luźno czystą folią lub jałowym opatrunkiem.
+Pęcherzy po oparzeniu nie wolno przebijać, ponieważ stanowią barierę ochronną przed zakażeniem.
+Zadławienie u osoby przytomnej leczy się najpierw zachęcaniem do kaszlu, a przy nieskutecznym kaszlu pięcioma uderzeniami między łopatki i pięcioma uciskami nadbrzusza na przemian.
+U osoby w ciąży lub z dużą otyłością zamiast ucisków nadbrzusza przy zadławieniu wykonuje się uciśnięcia klatki piersiowej.
+Osoba zadławiona, która straciła przytomność, wymaga natychmiastowego rozpoczęcia resuscytacji krążeniowo-oddechowej i wezwania pomocy.
+Przy wstrząsie anafilaktycznym należy niezwłocznie podać adrenalinę z automatycznego wstrzykiwacza w zewnętrzną stronę uda, także przez odzież, i wezwać pomoc.
+Poszkodowanego w anafilaksji układa się płasko z uniesionymi nogami, a przy duszności w pozycji siedzącej; przy braku poprawy podaje się drugą dawkę adrenaliny po upływie co najmniej pięciu minut.
+Udar niedokrwienny rozpoznaje się testem FAST: asymetria twarzy, osłabienie jednej ręki i zaburzenia mowy, a czas rozpoznania decyduje o pilności wezwania pomocy.
+Poszkodowanemu z podejrzeniem udaru należy odnotować dokładną godzinę wystąpienia objawów i nie podawać niczego doustnie.
+Przy podejrzeniu zawału serca poszkodowanego układa się w pozycji półsiedzącej, rozluźnia uciskającą odzież i wzywa pomoc, a jeśli nie ma przeciwwskazań, podaje się mu trzysta miligramów aspiryny do rozgryzienia.
+Przy hipoglikemii osobie przytomnej podaje się szybko przyswajalny cukier, na przykład słodzony napój, a osobie nieprzytomnej nie podaje się niczego doustnie i układa się ją w pozycji bocznej.
+Podczas napadu padaczki należy osłonić głowę poszkodowanego, odsunąć niebezpieczne przedmioty, nie wkładać niczego do ust i nie przytrzymywać poszkodowanego na siłę.
+Po zakończeniu napadu padaczki poszkodowanego układa się w pozycji bocznej, a pomoc wzywa się, gdy napad trwa dłużej niż pięć minut, powtarza się lub jest pierwszym w życiu poszkodowanego.
+Przy podejrzeniu przedawkowania opioidów, rozpoznawanym po szpilkowatych źrenicach i wolnym oddechu, należy wezwać pomoc, ułożyć poszkodowanego w pozycji bocznej i, jeśli dostępny, podać nalokson.
+Osobę porażoną prądem wolno dotykać dopiero po odłączeniu źródła napięcia, a do zerwanych linii wysokiego napięcia nie wolno się zbliżać.
+Przy ratowaniu tonącego należy najpierw użyć przedmiotu pozwalającego podać pomoc z brzegu, a nieprzeszkolony ratownik nie powinien wchodzić do wody.
+Przy resuscytacji osoby wyciągniętej z wody wytyczne zalecają rozpoczęcie od pięciu oddechów ratowniczych przed uciśnięciami, ponieważ zatrzymanie krążenia przy utonięciu ma pierwotnie przyczynę oddechową.
+Poszkodowanego w hipotermii należy przenieść w osłonięte miejsce, zdjąć mokrą odzież, odizolować od podłoża i obchodzić się z nim delikatnie, ponieważ gwałtowne ruchy mogą wywołać zaburzenia rytmu serca.
+Przy odmrożeniach stosuje się szybkie odgrzewanie w wodzie o temperaturze około trzydziestu siedmiu do trzydziestu dziewięciu stopni, ale tylko wtedy, gdy nie grozi ponowne zamarznięcie, i bez pocierania.
+Udar cieplny, rozpoznawany po gorącej skórze, splątaniu lub utracie przytomności, wymaga natychmiastowego intensywnego chłodzenia całego ciała i wezwania pomocy.
+Po ukąszeniu przez żmiję należy unieruchomić kończynę, zdjąć obrączki i obcisłą odzież oraz wezwać pomoc, a wysysanie jadu, nacinanie rany i zakładanie opaski uciskowej są zabronione.
+Osobę w omdleniu układa się płasko z uniesionymi nogami, sprawdza oddech i rozluźnia uciskającą odzież, a jeśli nie odzyskuje przytomności szybko, układa się ją w pozycji bocznej i wzywa pomoc.
+Przy podejrzeniu wstrząśnienia mózgu po urazie głowy poszkodowanego nie pozostawia się samego i obserwuje pod kątem narastającego bólu głowy, wymiotów, splątania lub utraty przytomności.
+Przy zatruciu należy rozpoznać substancję i zachować opakowanie lub resztki dla ratowników, a wywoływanie wymiotów u poszkodowanego jest zabronione.
+Przy podejrzeniu zatrucia tlenkiem węgla poszkodowanego wyprowadza się na świeże powietrze i wzywa pomoc, nawet gdy czuje się lepiej.
+Chemiczne oparzenie oka wymaga natychmiastowego, długotrwałego przepłukiwania oka czystą wodą w kierunku od kącika wewnętrznego na zewnątrz oraz usunięcia soczewek kontaktowych.
+Osobie w stanie wstrząsu zapewnia się pozycję leżącą, ciepło, powstrzymanie od jedzenia i picia oraz monitoring oddechu do przybycia pomocy.
 Po każdej interwencji z użyciem pierwszej pomocy policjant dokumentuje podjęte czynności w notatce służbowej.
-Wytyczne dotyczące resuscytacji i pierwszej pomocy opracowuje Europejska Rada Resuscytacji oraz Polska Rada Resuscytacji.

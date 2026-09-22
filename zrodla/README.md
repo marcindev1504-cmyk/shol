@@ -17,7 +17,7 @@ policjantów**.
 
 | Folder | Jednostka modułowa | Pliki |
 |---|---|---|
-| `jm01-miejsce-zdarzenia` | JM01 Ustalenie okoliczności zdarzeń i zabezpieczenie miejsca | miejsce-zdarzenia-i-ogledziny.txt, pierwsza-pomoc-przedmedyczna.txt, przesluchanie-przepisy.txt |
+| `jm01-miejsce-zdarzenia` | JM01 Ustalenie okoliczności zdarzeń i zabezpieczenie miejsca | miejsce-zdarzenia-i-ogledziny.txt, pierwsza-pomoc-przedmedyczna.txt (ERC 2025), paczka-pierwsza-pomoc.json (gotowa paczka 30 fiszek), przesluchanie-przepisy.txt |
 | `jm02-interwencje` | JM02 Bezpieczeństwo, porządek publiczny, interwencje | legitymowanie.txt, zatrzymanie-i-kontrola-osobista.txt, etyka-zawodowa.txt, legitymowanie-przepisy.txt, zatrzymanie-podejrzanego-przepisy.txt |
 | `jm03-poszukiwania` | JM03 Poszukiwanie osób i rzeczy, czynności operacyjno-rozpoznawcze | czynnosci-operacyjne.txt |
 | `jm04-konwoje-poz` | JM04 Służba w konwojach i pomieszczeniach dla zatrzymanych | osoba-zatrzymana-i-poz.txt |
