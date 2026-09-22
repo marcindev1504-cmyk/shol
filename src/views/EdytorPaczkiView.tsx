@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { createFlashcard, formatUpdatedLabel, packColorSymbols, type Flashcard, type Pack } from '../domain/packs'
+import { useEffect, useState } from 'react'
+import { createFlashcard, formatUpdatedLabel, packColors, packColorLabels, packColorSymbols, type Flashcard, type Pack } from '../domain/packs'
 
 type Props = {
   pack: Pack
@@ -16,9 +16,23 @@ type Draft = { question: string; answer: string; source: string; legalBasis: str
 export function EdytorPaczkiView({ pack, onBack, onUpdate, onGenerate, onPoster, onDownload, onDelete }: Props) {
   const [editingId, setEditingId] = useState<string | 'new' | null>(null)
   const [draft, setDraft] = useState<Draft>({ question: '', answer: '', source: '', legalBasis: '' })
+  const [savedAt, setSavedAt] = useState(0)
+  const [showSaved, setShowSaved] = useState(false)
+
+  useEffect(() => {
+    if (!savedAt) return
+    setShowSaved(true)
+    const t = setTimeout(() => setShowSaved(false), 2200)
+    return () => clearTimeout(t)
+  }, [savedAt])
+
+  function triggerUpdate(next: Pack) {
+    onUpdate(next)
+    setSavedAt(Date.now())
+  }
 
   function updatePack(flashcards: Flashcard[]) {
-    onUpdate({ ...pack, flashcards, updated: formatUpdatedLabel() })
+    triggerUpdate({ ...pack, flashcards, updated: formatUpdatedLabel() })
   }
 
   function startEdit(card: Flashcard) {
@@ -68,16 +82,21 @@ export function EdytorPaczkiView({ pack, onBack, onUpdate, onGenerate, onPoster,
       <section className="editor-head">
         <div className={`pack-art mini ${pack.color}`}><div className="art-symbol">{packColorSymbols[pack.color]}</div><span className="art-tag">{pack.subject}</span></div>
         <div className="editor-title">
-          <input className="editor-title-input" value={pack.title} onChange={(event) => onUpdate({ ...pack, title: event.target.value })} aria-label="Tytuł paczki" />
-          <input className="editor-subject-input" value={pack.subject} onChange={(event) => onUpdate({ ...pack, subject: event.target.value })} aria-label="Przedmiot" />
+          <input className="editor-title-input" value={pack.title} onChange={(event) => triggerUpdate({ ...pack, title: event.target.value })} aria-label="Tytuł paczki" />
+          <input className="editor-subject-input" value={pack.subject} onChange={(event) => triggerUpdate({ ...pack, subject: event.target.value })} aria-label="Przedmiot" />
+          <div className="editor-color-strip" role="group" aria-label="Kolor okładki">
+            {packColors.map((color) => (
+              <button key={color} type="button" className={`editor-color-dot ${color}${pack.color === color ? ' active' : ''}`} title={packColorLabels[color]} aria-label={packColorLabels[color]} aria-pressed={pack.color === color} onClick={() => triggerUpdate({ ...pack, color })} />
+            ))}
+          </div>
         </div>
         <div className="editor-publish">
           <span className={published ? 'status approved' : 'status review'}>{published ? '✓ Opublikowana' : '◷ Robocza'}</span>
-          <button className="primary-button" disabled={pack.flashcards.length === 0 || published} onClick={() => onUpdate({ ...pack, status: 'Zatwierdzone' })}>{published ? 'Opublikowano' : 'Opublikuj'}</button>
+          <button className="primary-button" disabled={pack.flashcards.length === 0 || published} onClick={() => triggerUpdate({ ...pack, status: 'Zatwierdzone' })}>{published ? 'Opublikowano' : 'Opublikuj'}</button>
         </div>
       </section>
 
-      <p className="editor-meta">{pack.flashcards.length} fiszek · aktualizacja {pack.updated}{published ? ' · gotowa do dystrybucji (plakat / eksport)' : ''}</p>
+      <p className="editor-meta">{pack.flashcards.length} fiszek · aktualizacja {pack.updated}{published ? ' · gotowa do dystrybucji (plakat / eksport)' : ''}{showSaved && <span className="save-indicator"> · Zapisano</span>}</p>
 
       <section className="card-editor-list">
         {pack.flashcards.length === 0 && <div className="card-empty">Brak fiszek. Dodaj ręcznie („＋ Dodaj fiszkę”) albo wygeneruj ze źródła.</div>}

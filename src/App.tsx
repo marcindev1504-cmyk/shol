@@ -171,6 +171,15 @@ function App() {
     setNotice(`Wyeksportowano „${pack.title}”. Wrzuć plik do katalogu paczki/ na zasobie NAS.`)
   }
 
+  function duplicatePack(pack: Pack) {
+    const id = packs.length ? Math.max(...packs.map((p) => p.id)) + 1 : 1
+    const now = Date.now()
+    const copy: Pack = { ...pack, id, title: `${pack.title} (kopia)`, status: 'Do weryfikacji', updated: formatUpdatedLabel(), flashcards: pack.flashcards.map((card, i) => ({ ...card, packId: id, id: `${now}-${i}` })) }
+    setPacks((current) => [...current, copy])
+    setMenuPackId(null)
+    setNotice(`Zduplikowano paczkę „${pack.title}".`)
+  }
+
   async function deletePack(pack: Pack) {
     if (!await askConfirm({ title: 'Usunąć paczkę?', message: `„${pack.title}” zostanie usunięta wraz z ${pack.flashcards.length} fiszkami i postępami nauki na tym urządzeniu.`, confirmLabel: 'Usuń paczkę', danger: true })) return
     setPacks(packs.filter((item) => item.id !== pack.id))
@@ -190,6 +199,12 @@ function App() {
     ))
     setNotice(`Dodano ${cards.length} fiszek do paczki „${packTitle}”.`)
   }, [generatorPack])
+
+  function downloadAllPacks() {
+    if (packs.length === 0) return
+    packs.forEach((pack, index) => { setTimeout(() => downloadPack(pack), index * 350) })
+    setNotice(`Eksportowanie ${packs.length} paczek — każda zostanie pobrana osobno.`)
+  }
 
   async function exportBackup() {
     const url = URL.createObjectURL(new Blob([await exportAllData()], { type: 'application/json' }))
@@ -226,7 +241,7 @@ function App() {
       <aside className="sidebar">
         <div className="brand"><div className="brand-mark">K</div><div><strong>kompas</strong><span>wiedzy</span></div></div>
         <nav className="nav-list">
-          <span className="nav-label">Paczki</span>
+          <span className="nav-label">MATERIAŁY</span>
           {['Paczki', 'Podgląd nauki'].map((item, index) => <button className={activeView === item && !editingPack ? 'nav-item active' : 'nav-item'} onClick={() => setActiveView(item)} key={item} title={item}><Icon name={['books', 'users'][index]} />{item}</button>)}
           <span className="nav-label lower">SYSTEM</span>
           {['Ustawienia', 'Instrukcja'].map((item, index) => <button className={activeView === item ? 'nav-item active' : 'nav-item'} onClick={() => setActiveView(item)} key={item} title={item}><Icon name={['settings', 'help'][index]} />{item}</button>)}
@@ -251,7 +266,7 @@ function App() {
             />
           ) : (
             <>
-              <section className="hero-row"><div><p className="kicker">{todayLabel}</p><h1>{greeting()}, {firstName(settings.instructorName)}.</h1><p className="hero-copy">Twoja biblioteka: <strong>{packs.length} paczek, {totalCards} fiszek</strong>.</p></div><div className="hero-actions"><button className="outline-button" onClick={() => packFileInputRef.current?.click()}>Importuj paczkę</button><button className="primary-button" onClick={openCreatePack}><Icon name="plus" />Nowa paczka</button></div><input ref={packFileInputRef} type="file" accept=".json,application/json" style={{ display: 'none' }} onChange={(event) => { const file = event.target.files?.[0]; if (file) void importPackFile(file); event.currentTarget.value = '' }} /></section>
+              <section className="hero-row"><div><p className="kicker">{todayLabel}</p><h1>{greeting()}, {firstName(settings.instructorName)}.</h1><p className="hero-copy">Twoja biblioteka: <strong>{packs.length} paczek, {totalCards} fiszek</strong>.</p></div><div className="hero-actions"><button className="outline-button" onClick={() => packFileInputRef.current?.click()}>Importuj paczkę</button>{packs.length > 1 && <button className="outline-button" onClick={downloadAllPacks}>↓ Eksportuj wszystkie</button>}<button className="primary-button" onClick={openCreatePack}><Icon name="plus" />Nowa paczka</button></div><input ref={packFileInputRef} type="file" accept=".json,application/json" style={{ display: 'none' }} onChange={(event) => { const file = event.target.files?.[0]; if (file) void importPackFile(file); event.currentTarget.value = '' }} /></section>
 
               {activeView !== 'Paczki' && <section className="workspace-panel">
                 <div className="workspace-panel-head"><div><p className="kicker">{activeView === 'Ustawienia' ? 'KONFIGURACJA' : activeView === 'Instrukcja' ? 'POMOC' : 'NA TYM URZĄDZENIU'}</p><h2>{activeView}</h2><p>{activeView === 'Ustawienia' ? 'Profil instruktora, adres zasobu i zarządzanie danymi.' : activeView === 'Instrukcja' ? 'Kompletny przewodnik po wszystkich funkcjach systemu.' : 'Postępy nauki zapisane na tym urządzeniu — sprawdź, jak paczka wygląda dla słuchacza.'}</p></div><span className="confidence">LOKALNIE · BEZ CHMURY</span></div>
@@ -265,7 +280,7 @@ function App() {
 
                 <section className="section-head"><div><p className="kicker">TWOJE MATERIAŁY</p><h2>Paczki</h2></div></section>
                 <div className="toolbar"><div className="search-box"><Icon name="search" /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Szukaj paczki lub przedmiotu..." /></div><div className="view-toggle"><button className={viewMode === 'grid' ? 'selected' : ''} onClick={() => setViewMode('grid')} aria-label="Widok siatki"><Icon name="grid" /></button><button className={viewMode === 'list' ? 'selected' : ''} onClick={() => setViewMode('list')} aria-label="Widok listy"><Icon name="list" /></button></div></div>
-                <section className={viewMode === 'grid' ? 'pack-grid' : 'pack-grid list'}>{filteredPacks.map((pack) => <article className="pack-card" key={pack.id} onClick={() => openEditor(pack.id)}><div className={`pack-art ${pack.color}`}><span>{pack.subject}</span><div className="art-symbol">{packColorSymbols[pack.color]}</div></div><div className="pack-body"><div className="pack-meta"><span className={pack.status === 'Zatwierdzone' ? 'status approved' : 'status review'}>{pack.status === 'Zatwierdzone' ? '✓ Opublikowana' : '◷ Robocza'}</span><span className="pack-menu-wrap"><button className="more-button" aria-label="Więcej opcji" onClick={(event) => { event.stopPropagation(); setMenuPackId((current) => current === pack.id ? null : pack.id) }}>•••</button>{menuPackId === pack.id && <><span className="menu-backdrop" onClick={(event) => { event.stopPropagation(); setMenuPackId(null) }} /><span className="pack-menu"><button onClick={(event) => { event.stopPropagation(); openEditor(pack.id) }}>Otwórz edytor</button><button onClick={(event) => { event.stopPropagation(); setPosterPack(pack); setMenuPackId(null) }}>Plakat z QR</button><button onClick={(event) => { event.stopPropagation(); downloadPack(pack); setMenuPackId(null) }}>Eksportuj JSON</button><button className="danger" onClick={(event) => { event.stopPropagation(); deletePack(pack) }}>Usuń paczkę</button></span></>}</span></div><h3>{pack.title}</h3><p>{pack.flashcards.length} fiszek <span>·</span> aktualizacja {pack.updated}</p><div className="pack-footer"><button className="mini-action" onClick={(event) => { event.stopPropagation(); setPosterPack(pack) }} aria-label="Plakat z QR"><Icon name="download" /></button></div></div></article>)}</section>
+                <section className={viewMode === 'grid' ? 'pack-grid' : 'pack-grid list'}>{filteredPacks.map((pack) => <article className="pack-card" key={pack.id} onClick={() => openEditor(pack.id)}><div className={`pack-art ${pack.color}`}><span>{pack.subject}</span><div className="art-symbol">{packColorSymbols[pack.color]}</div></div><div className="pack-body"><div className="pack-meta"><span className={pack.status === 'Zatwierdzone' ? 'status approved' : 'status review'}>{pack.status === 'Zatwierdzone' ? '✓ Opublikowana' : '◷ Robocza'}</span><span className="pack-menu-wrap"><button className="more-button" aria-label="Więcej opcji" onClick={(event) => { event.stopPropagation(); setMenuPackId((current) => current === pack.id ? null : pack.id) }}>•••</button>{menuPackId === pack.id && <><span className="menu-backdrop" onClick={(event) => { event.stopPropagation(); setMenuPackId(null) }} /><span className="pack-menu"><button onClick={(event) => { event.stopPropagation(); openEditor(pack.id) }}>Otwórz edytor</button><button onClick={(event) => { event.stopPropagation(); duplicatePack(pack) }}>Duplikuj</button><button onClick={(event) => { event.stopPropagation(); setPosterPack(pack); setMenuPackId(null) }}>Plakat z QR</button><button onClick={(event) => { event.stopPropagation(); downloadPack(pack); setMenuPackId(null) }}>Eksportuj JSON</button><button className="danger" onClick={(event) => { event.stopPropagation(); deletePack(pack) }}>Usuń paczkę</button></span></>}</span></div><h3>{pack.title}</h3><p>{pack.flashcards.length} fiszek <span>·</span> aktualizacja {pack.updated}</p><div className="pack-footer"><button className="mini-action" onClick={(event) => { event.stopPropagation(); setPosterPack(pack) }} aria-label="Plakat z QR"><Icon name="download" /></button></div></div></article>)}</section>
               </>}
             </>
           )}
