@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kompas-wiedzy-v3'
+const CACHE_NAME = 'kompas-wiedzy-v4'
 const BASE = self.registration.scope
 const APP_SHELL = [BASE, BASE + 'index.html', BASE + 'manifest.webmanifest']
 
@@ -27,10 +27,10 @@ self.addEventListener('fetch', (event) => {
     return
   }
 
-  // Statyczne zasoby: cache-first z uzupełnianiem cache w tle.
-  event.respondWith(caches.match(event.request).then((cached) => cached ?? fetch(event.request).then((response) => {
+  // Statyczne zasoby: network-first — zawsze próbuj najnowszej wersji.
+  event.respondWith(fetch(event.request).then((response) => {
     const copy = response.clone()
     caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy))
     return response
-  }).catch(() => caches.match(BASE))))
+  }).catch(() => caches.match(event.request)))
 })
