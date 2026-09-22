@@ -128,7 +128,7 @@ function localAi(): Plugin {
   }
 }
 
-export default defineConfig({
-  base: '/shol/',
+export default defineConfig(({ mode }) => ({
+  base: mode === 'learner' ? '/shol/' : '/',
   plugins: [react(), localAi()],
-})
+}))

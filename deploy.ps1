@@ -5,9 +5,9 @@ $ErrorActionPreference = "Stop"
 $projectDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $tempDir = Join-Path $env:TEMP "shol-deploy-$(Get-Date -Format 'yyyyMMdd-HHmmss')"
 
-Write-Host "1/4 Budowanie aplikacji..." -ForegroundColor Cyan
+Write-Host "1/4 Budowanie aplikacji (tryb słuchacza)..." -ForegroundColor Cyan
 Set-Location $projectDir
-npm run build
+npx vite build --mode learner
 if ($LASTEXITCODE -ne 0) { Write-Host "Build nie powiódł się." -ForegroundColor Red; exit 1 }
 
 Write-Host "2/4 Przygotowanie paczki do publikacji..." -ForegroundColor Cyan

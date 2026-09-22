@@ -213,6 +213,7 @@ function App() {
   }
 
   const pakietParam = urlParams.get('pakiet')
+  if (import.meta.env.MODE === 'learner') return <TrybSluchacza pakietParam={pakietParam ?? ''} />
   if (pakietParam !== null) return <TrybSluchacza pakietParam={pakietParam} />
   if (!storageReady) return <div className="app-loading"><div className="brand"><div className="brand-mark">K</div><div><strong>kompas</strong><span>wiedzy</span></div></div><p>Łączenie z lokalnym magazynem danych…</p></div>
 
