@@ -97,11 +97,9 @@ export const packColorLabels: Record<Pack['color'], string> = { mint: 'Miętowa'
 export const packColorSymbols: Record<Pack['color'], string> = { mint: '◈', orange: '◉', blue: '△', violet: '⬡', rose: '✳', amber: '▽' }
 
 export function nextPackId(packs: Pick<Pack, 'id'>[]): number {
+  let id = Date.now()
   const used = new Set(packs.map((pack) => pack.id))
-  let id = 0
-  do {
-    id = 10000 + Math.floor(Math.random() * 990000)
-  } while (used.has(id))
+  while (used.has(id)) id++
   return id
 }
 

@@ -80,9 +80,10 @@ describe('approveDraft', () => {
 })
 
 describe('createPack', () => {
-  it('assigns a unique random id and status Do weryfikacji', () => {
+  it('assigns a unique timestamp id and status Do weryfikacji', () => {
+    const before = Date.now()
     const pack = createPack(initialPacks, 'Nowa', 'Temat', 'dzisiaj, 12:00')
-    expect(pack.id).toBeGreaterThanOrEqual(10000)
+    expect(pack.id).toBeGreaterThanOrEqual(before)
     expect(initialPacks.map((p) => p.id)).not.toContain(pack.id)
     expect(pack.status).toBe('Do weryfikacji')
     expect(pack.flashcards).toEqual([])
