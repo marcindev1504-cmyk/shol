@@ -225,9 +225,8 @@ function App() {
     <div className="app-shell">
       <aside className="sidebar">
         <div className="brand"><div className="brand-mark">K</div><div><strong>kompas</strong><span>wiedzy</span></div></div>
-        <div className="workspace-switcher"><span className="eyebrow">WORKSPACE</span><strong>{settings.workspaceName}</strong><span className="chevron">⌄</span></div>
         <nav className="nav-list">
-          <span className="nav-label">PRZESTRZEŃ ROBOCZA</span>
+          <span className="nav-label">Paczki</span>
           {['Paczki', 'Podgląd nauki'].map((item, index) => <button className={activeView === item && !editingPack ? 'nav-item active' : 'nav-item'} onClick={() => setActiveView(item)} key={item} title={item}><Icon name={['books', 'users'][index]} />{item}</button>)}
           <span className="nav-label lower">SYSTEM</span>
           {['Ustawienia', 'Instrukcja'].map((item, index) => <button className={activeView === item ? 'nav-item active' : 'nav-item'} onClick={() => setActiveView(item)} key={item} title={item}><Icon name={['settings', 'help'][index]} />{item}</button>)}
