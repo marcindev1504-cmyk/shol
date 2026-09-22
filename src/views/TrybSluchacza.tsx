@@ -219,23 +219,51 @@ export function TrybSluchacza({ pakietParam }: { pakietParam: string }) {
   } else if (screen === 'error') {
     body = <main className="learner-main"><p className="kicker">BŁĄD</p><h1>Nie udało się pobrać paczki.</h1><p className="learner-footer">Sprawdź, czy masz dostęp do zasobu z paczkami i spróbuj ponownie.{library.length > 0 && <> <button className="learner-primary" style={{ marginTop: 20 }} onClick={() => void openLibrary()}>Moje paczki</button></>}</p></main>
   } else if (screen === 'library') {
+    const totalCards = library.reduce((sum, p) => sum + p.flashcards.length, 0)
+    const totalDone = library.reduce((sum, p) => sum + (progress[p.id] !== undefined && p.flashcards.length > 0 ? Math.min(progress[p.id]! + 1, p.flashcards.length) : 0), 0)
+    const lastPack = library.length > 0 ? library.reduce((a, b) => (progress[b.id] ?? 0) > (progress[a.id] ?? 0) ? b : a) : null
+    const lastDone = lastPack ? (progress[lastPack.id] ?? 0) : 0
+    const lastTotal = lastPack?.flashcards.length ?? 0
+    const overallPercent = totalCards > 0 ? Math.round((totalDone / totalCards) * 100) : 0
     body = (
       <main className="learner-main">
         <p className="kicker">MOJE PACZKI</p>
         <h1>Biblioteka</h1>
         {streak > 0 && <p className="library-streak"><span className="streak-chip">✦ {streak}</span> {daysLabel(streak)} nauki z rzędu — tak trzymaj!</p>}
+
+        {library.length > 0 && (
+          <div className="library-stats">
+            <div className="stat-item"><strong>{totalDone}</strong><span>opanowanych</span></div>
+            <div className="stat-item"><strong>{totalCards}</strong><span>fiszek</span></div>
+            <div className="stat-item"><strong>{overallPercent}%</strong><span>postęp</span></div>
+          </div>
+        )}
+
+        {lastPack && lastDone < lastTotal && (
+          <button className="continue-card" onClick={() => openPack(lastPack)}>
+            <span className="continue-label">Kontynuuj</span>
+            <strong>{lastPack.title}</strong>
+            <span className="continue-progress">{lastDone + 1}/{lastTotal} fiszek</span>
+            <span className="continue-arrow"><Icon name="arrow" /></span>
+          </button>
+        )}
+
         {installPrompt && <button className="learner-primary install-cta" onClick={() => { void installPrompt.prompt(); setInstallPrompt(null) }}>Zainstaluj aplikację na telefonie</button>}
         {isIOS && !isStandalone && <p className="learner-note">Na iPhonie: w Safari dotknij <strong>Udostępnij</strong> → <strong>„Dodaj do ekranu początkowego”</strong> — aplikacja otworzy się na pełnym ekranie, bez paska przeglądarki.</p>}
+
         <div className="learner-pack-list">
-          {library.length === 0 && <p className="learner-empty">Brak pobranych paczek. Zeskanuj kod QR z plakatu albo wczytaj plik paczki.</p>}
+          {library.length === 0 && <div className="learner-empty-state"><Icon name="books" /><p>Brak pobranych paczek.<br/>Zeskanuj kod QR z plakatu albo wczytaj plik paczki.</p></div>}
           {library.map((item) => {
             const total = item.flashcards.length
             const done = progress[item.id] !== undefined && total > 0 ? Math.min(progress[item.id]! + 1, total) : 0
+            const pct = total > 0 ? Math.round((done / total) * 100) : 0
             return (
-              <div className="learner-pack" key={item.id}>
+              <div className="learner-pack" key={item.id} data-pack-color={item.color}>
                 <button className="learner-pack-open" onClick={() => openPack(item)}>
+                  <span className="pack-color-dot" style={{ background: `var(--pack-${item.color})` }} />
                   <strong>{item.title}</strong>
-                  <span>{total} fiszek{done > 0 ? ` · postęp ${done}/${total}` : ''}</span>
+                  <span className="pack-progress-bar"><i style={{ width: `${pct}%` }} /></span>
+                  <span className="pack-progress-text">{done}/{total} fiszek{pct === 100 ? ' ✓' : ''}</span>
                 </button>
                 <button className="icon-button" aria-label="Usuń paczkę" onClick={() => void deleteFromLibrary(item.id)}>×</button>
               </div>
