@@ -8,12 +8,17 @@ $portableDir = Join-Path $root 'portable'
 $bundle = Join-Path $portableDir 'kompas-wiedzy'
 $zip = Join-Path $portableDir 'kompas-wiedzy-portable.zip'
 
+Write-Host '==> zabijanie procesów portable (Ollama/Node)'
+Get-Process -Name 'ollama','node' -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+Start-Sleep -Seconds 2
+
 Write-Host '==> npm run build'
 Push-Location $root
 try { & npm.cmd run build | Out-Null } finally { Pop-Location }
 
 Write-Host '==> skladanie folderu paczki'
-if (Test-Path $bundle) { Remove-Item $bundle -Recurse -Force }
+if (Test-Path $bundle) { Remove-Item $bundle -Recurse -Force -ErrorAction SilentlyContinue }
+if (Test-Path $bundle) { Start-Sleep -Seconds 3; Remove-Item $bundle -Recurse -Force }
 New-Item -ItemType Directory -Path "$bundle\dist", "$bundle\ollama\models" -Force | Out-Null
 
 Copy-Item "$root\dist\*" "$bundle\dist" -Recurse
