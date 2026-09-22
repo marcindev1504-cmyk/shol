@@ -289,8 +289,7 @@ export function TrybSluchacza({ pakietParam }: { pakietParam: string }) {
           <svg className="summary-ring" viewBox="0 0 120 120" role="img" aria-label={`Wynik ${percent}%`}>
             <circle className="ring-bg" cx="60" cy="60" r="52" />
             <circle className="ring-fg" cx="60" cy="60" r="52" strokeDasharray={ring} strokeDashoffset={ring * (1 - percent / 100)} />
-            <text x="60" y="55" textAnchor="middle" className="ring-value">{percent}%</text>
-            <text x="60" y="72" textAnchor="middle" className="ring-caption">zna paczkę</text>
+            <text x="60" y="60" textAnchor="middle" dominantBaseline="middle" className="ring-value">{percent}%</text>
           </svg>
           <h2>{message}</h2>
           <p className="summary-detail">Znasz {knownCount} z {cards.length} fiszek{streak > 0 ? ` · seria ${streak} ${daysLabel(streak)}` : ''}</p>
