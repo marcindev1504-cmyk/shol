@@ -1,0 +1,251 @@
+{
+    "id":  3,
+    "title":  "Cyberhigiena użytkownika — świadomość zagrożeń",
+    "subject":  "Cyberbezpieczeństwo",
+    "status":  "Zatwierdzone",
+    "updated":  "22 wrz 2026",
+    "color":  "blue",
+    "version":  "2026-09-22",
+    "flashcards":  [
+                       {
+                           "id":  "cyber-01",
+                           "question":  "Dlaczego większość skutecznych ataków na zwykłych użytkowników nie wykorzystuje luk technicznych?",
+                           "answer":  "Ponieważ przestępcy stosują socjotechnikę — manipulację człowiekiem opartą na emocjach (strach, pośpiech, ciekawość, chęć zysku), która skłania ofiarę do działania bez zastanowienia.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-02",
+                           "question":  "Na czym polega zasada „zatrzymaj się, pomyśl, zweryfikuj”?",
+                           "answer":  "Każdą nieoczekiwaną prośbę o pieniądze, dane lub kliknięcie należy sprawdzić innym kanałem niż ten, którym przyszła — np. oddzwaniając na oficjalny numer instytucji.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-03",
+                           "question":  "Jaka jest minimalna zalecana długość bezpiecznego hasła i co decyduje o jego sile?",
+                           "answer":  "Co najmniej 12 znaków. O sile hasła decyduje przede wszystkim długość i losowość, a nie liczba znaków specjalnych. Dobrą praktyką jest fraza z kilku niepowiązanych słów.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-04",
+                           "question":  "Dlaczego każde konto powinno mieć unikalne hasło?",
+                           "answer":  "Wyciek hasła z jednego serwisu umożliwia atak credential stuffing — automatyczne logowanie tymi samymi danymi do innych serwisów. Jedno hasło wszędzie to jeden wyciek i utrata wszystkich kont.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-05",
+                           "question":  "Jaką rolę pełni menedżer haseł i jak należy go zabezpieczyć?",
+                           "answer":  "Generuje i przechowuje unikalne silne hasła w zaszyfrowanym sejfie — użytkownik pamięta tylko jedno hasło główne. Hasło główne powinno być najdłuższe ze wszystkich, a menedżer dodatkowo chroniony MFA.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-06",
+                           "question":  "Czym jest passkey i dlaczego CERT Polska zaleca jego stosowanie?",
+                           "answer":  "Klucz dostępu (passkey) to metoda logowania bez hasła oparta na kryptografii. Jest odporny na phishing i nie może wyciec w postaci hasła, dlatego warto go włączyć wszędzie, gdzie serwis to oferuje.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-07",
+                           "question":  "Czy zalecana jest regularna, cykliczna zmiana haseł bez konkretnego powodu?",
+                           "answer":  "Nie. Wymuszona cykliczna zmiana prowadzi do tworzenia słabszych, przewidywalnych wariantów tego samego hasła. Hasło zmienia się niezwłocznie tylko przy podejrzeniu wycieku — i wtedy wszędzie, gdzie było użyte.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-08",
+                           "question":  "Czym jest uwierzytelnianie wieloskładnikowe (MFA) i przed czym chroni?",
+                           "answer":  "MFA wymaga potwierdzenia tożsamości dodatkowym składnikiem oprócz hasła (kod z aplikacji, klucz sprzętowy). Skutecznie blokuje przejęcie konta nawet wtedy, gdy hasło wyciekło.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-09",
+                           "question":  "Które składniki MFA są najbezpieczniejsze, a który najsłabszy?",
+                           "answer":  "Najbezpieczniejsze: sprzętowe klucze bezpieczeństwa i aplikacje generujące kody. Najsłabszy: kody SMS — podatne na duplikat karty SIM (SIM swap) i wyłudzenie w rozmowie telefonicznej.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-10",
+                           "question":  "Co oznaczają powtarzające się powiadomienia push z prośbą o zatwierdzenie logowania, którego nie inicjowałeś?",
+                           "answer":  "Ktoś zna Twoje hasło i próbuje „zmęczyć” Cię do przypadkowej akceptacji. Nie zatwierdzaj, natychmiast zmień hasło i sprawdź aktywne sesje.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-11",
+                           "question":  "Na których kontach należy włączyć MFA w pierwszej kolejności i dlaczego?",
+                           "answer":  "Na poczcie e-mail, w banku i mediach społecznościowych. Przejęcie poczty pozwala resetować hasła do wszystkich innych usług — to klucz do całej tożsamości cyfrowej.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-12",
+                           "question":  "Dlaczego automatyczne aktualizacje są istotne dla bezpieczeństwa?",
+                           "answer":  "Usuwają znane luki bezpieczeństwa, które przestępcy wykorzystują masowo już w ciągu dni od ich ujawnienia. Dotyczy to systemu, przeglądarki, aplikacji oraz routera.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-13",
+                           "question":  "Skąd wolno instalować oprogramowanie i czego unikać?",
+                           "answer":  "Wyłącznie z oficjalnych sklepów lub stron producenta. Programy z nieznanych źródeł, cracki i „darmowe” wersje płatnych aplikacji często zawierają złośliwy kod.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-14",
+                           "question":  "Jakie trzy działania zabezpieczają domowy router?",
+                           "answer":  "Zmiana domyślnego hasła administratora, wyłączenie zdalnego zarządzania z internetu oraz regularne aktualizacje firmware. Sieć Wi-Fi powinna używać WPA2/WPA3 z wyłączonym WPS.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-15",
+                           "question":  "Czym jest phishing i po czym rozpoznać podejrzaną wiadomość?",
+                           "answer":  "Podszywanie się pod zaufaną instytucję w celu wyłudzenia danych. Sygnały ostrzegawcze: poczucie pilności, groźba konsekwencji, prośba o kliknięcie lub otwarcie załącznika, nieprawidłowy adres nadawcy, nietypowe zwroty.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-16",
+                           "question":  "Czy zgodność nazwy nadawcy z nazwą instytucji dowodzi autentyczności e-maila?",
+                           "answer":  "Nie. Adres e-mail nadawcy można sfałszować. Zamiast klikać link w wiadomości, należy wejść na stronę instytucji ręcznie lub przez oficjalną aplikację.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-17",
+                           "question":  "Czy zamknięta kłódka przy adresie strony oznacza, że strona jest wiarygodna?",
+                           "answer":  "Nie. Kłódka oznacza tylko szyfrowane połączenie (HTTPS). Certyfikat może uzyskać także strona przestępców — fałszywe domeny różnią się często jedną literą lub końcówką (np. .com zamiast .pl).",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-18",
+                           "question":  "Czym różnią się smishing i vishing od klasycznego phishingu?",
+                           "answer":  "Smishing to phishing przez SMS (podszywanie się pod kurierów, banki, urzędy). Vishing to wyłudzanie przez telefon — oszuści udają pracowników banku, policjantów, prokuratorów lub członków rodziny.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-19",
+                           "question":  "O co prawdziwy pracownik banku nigdy nie poprosi w rozmowie telefonicznej?",
+                           "answer":  "O pełne hasło, kod BLIK, kod z SMS ani o zainstalowanie programu do zdalnego pulpitu. Każda taka prośba oznacza oszustwo — należy się rozłączyć i zadzwonić na oficjalny numer banku.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-20",
+                           "question":  "Czym jest spoofing numeru telefonu i co z tego wynika?",
+                           "answer":  "Oszust może wyświetlić na ekranie ofiary prawdziwy numer banku lub urzędu. Wyświetlany numer nie jest więc dowodem tożsamości rozmówcy — jedyną pewną weryfikacją jest samodzielne oddzwonienie.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-21",
+                           "question":  "Na czym polega oszustwo „na wnuka” lub „na policjanta” i jak je rozpoznać?",
+                           "answer":  "Nagły telefon o rzekomym wypadku bliskiej osoby lub „tajnej akcji policyjnej” z żądaniem natychmiastowego przekazania gotówki. Policja nigdy nie prosi telefonicznie o pieniądze ani o wypłatę środków z banku.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-22",
+                           "question":  "Jak postąpić, gdy znajomy pisze z komunikatora z prośbą o kod BLIK?",
+                           "answer":  "Zadzwonić do niego i potwierdzić głosowo. Oszustwo „na BLIK” polega na wysyłaniu takich próśb z przejętego konta znajomego pod pretekstem nagłej potrzeby.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-23",
+                           "question":  "Jakie cechy ma typowe oszustwo inwestycyjne?",
+                           "answer":  "Obietnica gwarantowanego wysokiego zysku, wykorzystanie wizerunku znanych osób, presja na szybką wpłatę oraz namowa do zainstalowania programu do zdalnego pulpitu.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-24",
+                           "question":  "Czym jest quishing i jak się przed nim chronić?",
+                           "answer":  "Oszustwo z użyciem fałszywych kodów QR prowadzących na strony wyłudzające dane. Przed skanowaniem kodu w miejscu publicznym (parkometr, plakat) należy sprawdzić, czy naklejka nie została podmieniona.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-25",
+                           "question":  "Czym jest deepfake i jak oszuści go wykorzystują?",
+                           "answer":  "Podrobiony materiał audio lub wideo generowany przez AI. Służy do podszywania się pod znajome osoby w nagraniach i rozmowach na żywo — głos czy twarz bliskiej osoby nie są już dowodem tożsamości.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-26",
+                           "question":  "Gdzie zgłosić podejrzany SMS lub stronę phishingową?",
+                           "answer":  "Podejrzany SMS należy przesłać bezpłatnie na numer 8080 (CERT Polska), a strony phishingowe i inne incydenty zgłosić przez formularz na incydent.cert.pl. Wiadomości nie przesyłamy dalej znajomym.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-27",
+                           "question":  "Jakie zasady obowiązują przy korzystaniu z publicznego Wi-Fi?",
+                           "answer":  "Unikać logowania do bankowości, używać VPN, potwierdzić dokładną nazwę sieci u obsługi (złośliwe punkty dostępu podszywają się pod legalne). Własny internet mobilny jest bezpieczniejszy niż nieznane Wi-Fi.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-28",
+                           "question":  "Co oznacza reguła kopii zapasowych 3-2-1 i dlaczego kopia powinna być odłączona?",
+                           "answer":  "Trzy kopie danych, na dwóch różnych nośnikach, jedna w osobnej lokalizacji. Kopia musi być odłączona od komputera, bo ransomware szyfruje także podłączone dyski i udziały sieciowe.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-29",
+                           "question":  "Czym jest ransomware i dlaczego CERT Polska odradza płacenie okupu?",
+                           "answer":  "Złośliwe oprogramowanie szyfrujące pliki i żądające okupu, często grożące publikacją danych. Zapłata nie gwarantuje odzyskania danych i finansuje dalszą działalność przestępczą.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       },
+                       {
+                           "id":  "cyber-30",
+                           "question":  "Jakie kroki podjąć przy podejrzeniu przejęcia konta lub po podaniu danych na fałszywej stronie?",
+                           "answer":  "Zmienić hasło (z innego urządzenia), wylogować wszystkie sesje, sprawdzić reguły przekierowań poczty, włączyć MFA. Przy danych karty — natychmiast zastrzec kartę w banku. Zgłosić incydent do CERT Polska lub na policję.",
+                           "source":  "CERT Polska — cyberhigiena użytkownika",
+                           "status":  "Zatwierdzone",
+                           "packId":  3
+                       }
+                   ]
+}
