@@ -8,24 +8,26 @@ Zawartosc paczki:
 
 URUCHOMIENIE
 1. Rozpakuj caly folder w dowolne miejsce (np. C:\kompas-wiedzy).
-2. Uruchom START.bat.
-3. Po kilku sekundach otworzy sie http://localhost:8080.
+2. Uruchom START.bat (dwuklik) — przy pierwszym razie utworzy
+   skrot "Kompas Wiedzy.lnk" z ikona w tym samym folderze.
+3. Aplikacja dziala w tle — bez widocznych okien terminala.
+   Po kilku sekundach otworzy sie http://localhost:8080.
 
 Przy pierwszym uruchomieniu Windows moze pokazac jedno ostrzezenie
 ("Wiecej informacji" -> "Uruchom mimo to").
 
 PRACA
-- Otwarte zostana dwa okna: to glowne i zminimalizowane "Kompas - Ollama".
-  Zamkniecie ich konczy prace aplikacji i uslugi AI.
+- Aplikacja dziala w tle. Do zatrzymania: stop.bat lub
+  przycisk "Zatrzymaj" w Ustawieniach aplikacji.
 - Aplikacje mozna "zainstalowac" jak natywna: w przegladarce
-  ikona instalacji w pasku adresu (PWA). Po instalacji dziala offline
-  nawet bez uruchomionego START.bat (bez generowania AI).
+  ikona instalacji w pasku adresu (PWA). Po instalacji dziala
+  offline nawet bez uruchomionego serwera (bez generowania AI).
 - Generowanie fiszek AI dziala w trybie "Model lokalny"
   (Ustawienia -> Tryb generowania). Modele w paczce: qwen3:4b, qwen3:8b.
 - Eksportowane paczki JSON wrzuca sie na zasob NAS do katalogu paczki/
   (adres w Ustawieniach -> Adres bazowy).
 
-WYMAGA NIA
+WYMAGANIA
 - Zadnych instalacji ani uprawnien administratora.
 - Sterownik GPU (jesli jest) przyspieszy AI automatycznie;
   bez GPU modele dzialaja na CPU - wolniej, ale dzialaja.

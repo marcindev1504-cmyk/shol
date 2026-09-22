@@ -49,6 +49,8 @@ foreach ($m in $models) {
 }
 
 Copy-Item "$PSScriptRoot\portable\START.bat" $bundle
+Copy-Item "$PSScriptRoot\portable\run.vbs" $bundle
+Copy-Item "$PSScriptRoot\portable\stop.bat" $bundle
 Copy-Item "$PSScriptRoot\portable\CZYTAJMNIE.txt" $bundle
 
 Write-Host '==> kompresja ZIP (tar - duze pliki >4GB)'

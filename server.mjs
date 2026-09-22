@@ -92,8 +92,34 @@ function readBody(req) {
   })
 }
 
+let appRunning = true
+
+const stoppedPage = `<!doctype html>
+<html lang="pl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kompas Wiedzy — zatrzymana</title>
+<style>body{font-family:system-ui,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#101515;color:#e0e0e0;text-align:center}
+.card{max-width:400px;padding:2rem}h1{font-size:1.5rem;margin-bottom:.5rem}p{opacity:.7;margin-bottom:1.5rem}
+button{background:#4ade80;color:#101515;border:none;padding:.75rem 2rem;border-radius:.5rem;font-size:1rem;cursor:pointer}
+button:hover{background:#22c55e}</style></head><body>
+<div class="card"><h1>Kompas Wiedzy</h1><p>Aplikacja jest zatrzymana.</p>
+<button onclick="fetch('/api/control?action=start').then(()=>location.reload())">Uruchom</button></div>
+</body></html>`
+
 const server = createServer(async (req, res) => {
   const url = new URL(req.url ?? '/', `http://${req.headers.host ?? 'localhost'}`)
+
+  if (url.pathname === '/api/control') {
+    const action = url.searchParams.get('action')
+    if (action === 'status') return sendJson(res, 200, { running: appRunning })
+    if (action === 'stop') { appRunning = false; return sendJson(res, 200, { running: false }) }
+    if (action === 'start') { appRunning = true; return sendJson(res, 200, { running: true }) }
+    return sendJson(res, 400, { error: 'Nieznana akcja.' })
+  }
+
+  if (!appRunning) {
+    res.writeHead(503, { 'Content-Type': 'text/html; charset=utf-8' })
+    res.end(stoppedPage)
+    return
+  }
 
   if (url.pathname === '/api/ai/models') {
     try {

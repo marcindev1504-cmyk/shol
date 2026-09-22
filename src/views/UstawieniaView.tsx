@@ -18,6 +18,11 @@ export function UstawieniaView({ settings, onSave, onExport, onReset }: Props) {
   const [ollamaHost, setOllamaHost] = useState(settings.ollamaHost)
   const [cardsPerSource, setCardsPerSource] = useState(settings.cardsPerSource)
   const [ollama, setOllama] = useState<OllamaStatus | null>(null)
+  const [serverRunning, setServerRunning] = useState<boolean | null>(null)
+
+  useEffect(() => {
+    fetch('/api/control?action=status').then(r => r.json()).then(d => setServerRunning(d.running)).catch(() => setServerRunning(null))
+  }, [])
 
   useEffect(() => {
     if (generatorMode !== 'model') return
@@ -64,6 +69,20 @@ export function UstawieniaView({ settings, onSave, onExport, onReset }: Props) {
         </div>
         <small className="settings-hint">Czyszczenie usuwa paczki, źródła, ustawienia i postępy słuchaczy. Po operacji aplikacja uruchomi się od nowa z danymi startowymi.</small>
       </section>
+
+      {serverRunning !== null && (
+      <section className="settings-card">
+        <p className="kicker">SERWER</p>
+        <h3>Sterowanie aplikacją</h3>
+        <p className="settings-copy">Zatrzymanie wyłącza dostęp do aplikacji dla słuchaczy. Serwer pozostaje uruchomiony.</p>
+        <div className="settings-actions">
+          <button className={serverRunning ? "danger-button" : "primary-button"} onClick={async () => { await fetch(`/api/control?action=${serverRunning ? 'stop' : 'start'}`); setServerRunning(!serverRunning) }}>
+            {serverRunning ? "Zatrzymaj" : "Uruchom"}
+          </button>
+          <span className={`model-status ${serverRunning ? 'ok' : 'error'}`}>{serverRunning ? '● Aplikacja działa' : '● Aplikacja zatrzymana'}</span>
+        </div>
+      </section>
+      )}
 
       <section className="settings-card">
         <p className="kicker">INFORMACJE</p>
