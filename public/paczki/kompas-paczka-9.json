@@ -1,0 +1,27 @@
+{
+  "id": 9,
+  "title": "Paczka z zasobu sieciowego",
+  "subject": "Dystrybucja NAS",
+  "status": "Zatwierdzone",
+  "updated": "dzisiaj, 12:00",
+  "color": "blue",
+  "version": "2026-09-20",
+  "flashcards": [
+    {
+      "id": "nas-1",
+      "question": "Skąd słuchacz pobiera paczki?",
+      "answer": "Z podkatalogu paczki/ obok aplikacji na zasobie sieciowym — po zeskanowaniu kodu QR.",
+      "source": "Instrukcja dystrybucji",
+      "status": "Zatwierdzone",
+      "packId": 9
+    },
+    {
+      "id": "nas-2",
+      "question": "Czy paczka działa offline?",
+      "answer": "Tak — po pobraniu paczka jest zapisywana w lokalnej biblioteki urządzenia.",
+      "source": "Instrukcja dystrybucji",
+      "status": "Zatwierdzone",
+      "packId": 9
+    }
+  ]
+}

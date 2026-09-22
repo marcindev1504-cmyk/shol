@@ -1,0 +1,19 @@
+{
+  "id": "./?pakiet=",
+  "name": "Kompas Wiedzy",
+  "short_name": "Kompas",
+  "description": "Lokalny trener wiedzy dla szkolnictwa policyjnego",
+  "start_url": "./?pakiet=",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#101515",
+  "theme_color": "#101515",
+  "lang": "pl",
+  "icons": [
+    { "src": "./icon.svg", "type": "image/svg+xml", "sizes": "any" },
+    { "src": "./icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "./icon-512.png", "type": "image/png", "sizes": "512x512" },
+    { "src": "./icon-512-maskable.png", "type": "image/png", "sizes": "512x512", "purpose": "maskable" }
+  ]
+}

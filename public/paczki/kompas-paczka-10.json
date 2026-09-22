@@ -1,0 +1,28 @@
+{
+  "id": 10,
+  "title": "Paczka podstaw prawnych",
+  "subject": "Test chipów podstawy",
+  "status": "Zatwierdzone",
+  "updated": "dzisiaj, 12:00",
+  "color": "blue",
+  "version": "2026-09-20",
+  "flashcards": [
+    {
+      "id": "lb-1",
+      "question": "Jaki przepis reguluje legitymowanie?",
+      "answer": "Legitymowanie reguluje art. 15 ustawy o Policji.",
+      "source": "legitymowanie.txt",
+      "legalBasis": "Art. 15 ustawy z dnia 6 kwietnia 1990 r. o Policji",
+      "status": "Zatwierdzone",
+      "packId": 10
+    },
+    {
+      "id": "lb-2",
+      "question": "Czy ta fiszka ma podstawę prawną?",
+      "answer": "Nie — ta fiszka celowo nie ma podstawy prawnej, więc chip nie powinien się wyświetlić.",
+      "source": "test.txt",
+      "status": "Zatwierdzone",
+      "packId": 10
+    }
+  ]
+}

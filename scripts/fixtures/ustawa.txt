@@ -1,0 +1,5 @@
+Policjant podaje osobie legitymowanej swój stopień, imię i nazwisko oraz przyczynę podjęcia czynności.
+Osoba legitymowana ma prawo zażądać okazania legitymacji służbowej w sposób umożliwiający odczytanie danych.
+Legitymowanie może nastąpić wyłącznie w przypadkach określonych w ustawie o Policji lub innych przepisach.
+Policjant jest obowiązany powstrzymać się od nadmiernych czynności podczas ustalania tożsamości osoby.
+Odmowa poddania się legitymowaniu może skutkować doprowadzeniem osoby do jednostki Policji.

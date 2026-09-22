@@ -1,0 +1,19 @@
+{
+  "id": 90,
+  "title": "Paczka importowana E2E",
+  "subject": "Testy importu",
+  "status": "Zatwierdzone",
+  "updated": "dzisiaj, 12:00",
+  "color": "mint",
+  "version": "2026-09-20",
+  "flashcards": [
+    {
+      "id": "imp-1",
+      "question": "Czy paczka importowana z pliku działa?",
+      "answer": "Tak — paczka wczytana z pliku JSON trafia do biblioteki słuchacza.",
+      "source": "Test E2E",
+      "status": "Zatwierdzone",
+      "packId": 90
+    }
+  ]
+}

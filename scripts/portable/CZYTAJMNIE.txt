@@ -1,0 +1,31 @@
+KOMPAS WIEDZY - WERSJA PORTABLE
+================================
+
+Zawartosc paczki:
+- aplikacja (dist/) + lokalny serwer (server.mjs)
+- node.exe (portable - nic nie trzeba instalowac)
+- ollama.exe + pobrane modele AI w katalogu ollama\models
+
+URUCHOMIENIE
+1. Rozpakuj caly folder w dowolne miejsce (np. C:\kompas-wiedzy).
+2. Uruchom START.bat.
+3. Po kilku sekundach otworzy sie http://localhost:8080.
+
+Przy pierwszym uruchomieniu Windows moze pokazac jedno ostrzezenie
+("Wiecej informacji" -> "Uruchom mimo to").
+
+PRACA
+- Otwarte zostana dwa okna: to glowne i zminimalizowane "Kompas - Ollama".
+  Zamkniecie ich konczy prace aplikacji i uslugi AI.
+- Aplikacje mozna "zainstalowac" jak natywna: w przegladarce
+  ikona instalacji w pasku adresu (PWA). Po instalacji dziala offline
+  nawet bez uruchomionego START.bat (bez generowania AI).
+- Generowanie fiszek AI dziala w trybie "Model lokalny"
+  (Ustawienia -> Tryb generowania). Modele w paczce: qwen3:4b, qwen3:8b.
+- Eksportowane paczki JSON wrzuca sie na zasob NAS do katalogu paczki/
+  (adres w Ustawieniach -> Adres bazowy).
+
+WYMAGA NIA
+- Zadnych instalacji ani uprawnien administratora.
+- Sterownik GPU (jesli jest) przyspieszy AI automatycznie;
+  bez GPU modele dzialaja na CPU - wolniej, ale dzialaja.

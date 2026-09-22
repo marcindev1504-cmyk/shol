@@ -1,0 +1,329 @@
+import { useEffect, useRef, useState, type ReactNode, type TouchEvent } from 'react'
+import { normalizePack, type Pack } from '../domain/packs'
+import { packFileUrl } from '../domain/settings'
+import { clearLearnerProgress, loadLearnerPacks, loadLearnerProgress, loadPack, removeLearnerPack, saveLearnerProgress, upsertLearnerPack } from '../adapters/storage'
+
+type InstallPromptEvent = Event & { prompt: () => Promise<void> }
+
+async function fetchPackFile(url: string): Promise<Pack | undefined> {
+  try {
+    const response = await fetch(url)
+    if (!response.ok) return undefined
+    const parsed: unknown = await response.json()
+    return normalizePack(parsed) ?? undefined
+  } catch {
+    return undefined
+  }
+}
+
+function packSignature(pack: Pack): string {
+  return JSON.stringify({ title: pack.title, subject: pack.subject, flashcards: pack.flashcards.map((card) => [card.question, card.answer]) })
+}
+
+function Icon({ name }: { name: string }) {
+  const icons: Record<string, ReactNode> = {
+    books: <><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" /></>,
+    arrow: <><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></>,
+  }
+  return <svg className="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{icons[name]}</svg>
+}
+
+const STREAK_KEY = 'kompas:streak'
+
+function loadStreak(): { days: number; last: string } {
+  try {
+    const raw = localStorage.getItem(STREAK_KEY)
+    if (!raw) return { days: 0, last: '' }
+    const parsed: unknown = JSON.parse(raw)
+    if (parsed && typeof parsed === 'object' && 'days' in parsed && typeof (parsed as { days: unknown }).days === 'number') return parsed as { days: number; last: string }
+    return { days: 0, last: '' }
+  } catch {
+    return { days: 0, last: '' }
+  }
+}
+
+function markStudyDay(): number {
+  const today = new Date().toISOString().slice(0, 10)
+  const streak = loadStreak()
+  if (streak.last === today) return streak.days
+  const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10)
+  const days = streak.last === yesterday ? streak.days + 1 : 1
+  try { localStorage.setItem(STREAK_KEY, JSON.stringify({ days, last: today })) } catch { /* brak miejsca */ }
+  return days
+}
+
+function daysLabel(days: number): string {
+  return days === 1 ? 'dzień' : 'dni'
+}
+
+export function TrybSluchacza({ pakietParam }: { pakietParam: string }) {
+  const previewMode = new URLSearchParams(window.location.search).has('podglad')
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && /mac/i.test(navigator.platform))
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || (navigator as { standalone?: boolean }).standalone === true
+  const [screen, setScreen] = useState<'loading' | 'library' | 'runner' | 'error'>('loading')
+  const [pack, setPack] = useState<Pack | null>(null)
+  const [library, setLibrary] = useState<Pack[]>([])
+  const [progress, setProgress] = useState<Record<number, number>>({})
+  const [installPrompt, setInstallPrompt] = useState<InstallPromptEvent | null>(null)
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
+  const [cardIndex, setCardIndex] = useState(0)
+  const [knownCount, setKnownCount] = useState(0)
+  const [finished, setFinished] = useState(false)
+  const [revealed, setRevealed] = useState(false)
+  const [progressReady, setProgressReady] = useState(false)
+  const [remoteUpdated, setRemoteUpdated] = useState(false)
+  const [streak, setStreak] = useState(() => loadStreak().days)
+  const [dragX, setDragX] = useState(0)
+  const dragStartX = useRef<number | null>(null)
+  const answering = useRef(false)
+  const suppressClick = useRef(0)
+
+  useEffect(() => {
+    const handler = (event: Event) => { event.preventDefault(); setInstallPrompt(event as InstallPromptEvent) }
+    window.addEventListener('beforeinstallprompt', handler)
+    return () => window.removeEventListener('beforeinstallprompt', handler)
+  }, [])
+
+  useEffect(() => {
+    let cancelled = false
+    async function resolve() {
+      const trimmed = pakietParam.trim()
+      if (trimmed === '') {
+        await openLibrary()
+        return
+      }
+      let resolved: Pack | undefined
+      const id = Number(trimmed)
+      if (Number.isFinite(id)) {
+        const remote = await fetchPackFile(packFileUrl(id))
+        const local = (await loadLearnerPacks()).find((item) => item.id === id) ?? await loadPack(id)
+        if (remote) {
+          resolved = remote
+          if (local && packSignature(local) !== packSignature(remote)) setRemoteUpdated(true)
+        } else {
+          resolved = local
+        }
+      } else {
+        resolved = await fetchPackFile(trimmed)
+      }
+      if (cancelled) return
+      if (resolved) {
+        await upsertLearnerPack(resolved)
+        setPack(resolved)
+        setScreen('runner')
+      } else {
+        setLibrary(await loadLearnerPacks())
+        setScreen('error')
+      }
+    }
+    void resolve()
+    return () => { cancelled = true }
+  }, [pakietParam])
+
+  useEffect(() => {
+    if (!pack || screen !== 'runner') return
+    let cancelled = false
+    void loadLearnerProgress(pack.id).then((savedIndex) => {
+      if (!cancelled) {
+        setCardIndex(Math.min(savedIndex, Math.max(pack.flashcards.length - 1, 0)))
+        setProgressReady(true)
+      }
+    })
+    return () => { cancelled = true }
+  }, [pack, screen])
+
+  useEffect(() => {
+    if (progressReady && !finished && pack) void saveLearnerProgress(pack.id, cardIndex)
+  }, [cardIndex, progressReady, finished, pack])
+
+  async function openLibrary() {
+    const packs = await loadLearnerPacks()
+    const entries = await Promise.all(packs.map(async (item) => [item.id, await loadLearnerProgress(item.id)] as const))
+    setLibrary(packs)
+    setProgress(Object.fromEntries(entries))
+    setScreen('library')
+  }
+
+  function openPack(item: Pack) {
+    setPack(item)
+    setCardIndex(0)
+    setKnownCount(0)
+    setFinished(false)
+    setRevealed(false)
+    setProgressReady(false)
+    setDragX(0)
+    setRemoteUpdated(false)
+    setScreen('runner')
+  }
+
+  async function importPackFile(file: File) {
+    const parsed: unknown = await file.text().then(JSON.parse).catch(() => null)
+    const imported = normalizePack(parsed)
+    if (!imported || imported.flashcards.length === 0) return
+    await upsertLearnerPack(imported)
+    await openLibrary()
+  }
+
+  async function deleteFromLibrary(id: number) {
+    await removeLearnerPack(id)
+    await clearLearnerProgress(id)
+    await openLibrary()
+  }
+
+  const cards = pack?.flashcards ?? []
+  const card = cards[cardIndex]
+
+  function nextCard(known: boolean) {
+    if (known) setKnownCount((current) => current + 1)
+    if (cardIndex + 1 >= cards.length) setFinished(true)
+    else setCardIndex((current) => current + 1)
+    setRevealed(false)
+  }
+
+  function answer(known: boolean) {
+    if (answering.current || !card) return
+    answering.current = true
+    setDragX(known ? 620 : -620)
+    setTimeout(() => {
+      setStreak(markStudyDay())
+      setDragX(0)
+      answering.current = false
+      nextCard(known)
+    }, 210)
+  }
+
+  function onCardTouchStart(event: TouchEvent) {
+    dragStartX.current = event.touches[0]?.clientX ?? null
+  }
+
+  function onCardTouchMove(event: TouchEvent) {
+    if (dragStartX.current === null) return
+    setDragX((event.touches[0]?.clientX ?? 0) - dragStartX.current)
+  }
+
+  function onCardTouchEnd() {
+    const dx = dragX
+    dragStartX.current = null
+    suppressClick.current = Date.now()
+    if (Math.abs(dx) > 90) answer(dx > 0)
+    else {
+      setDragX(0)
+      if (Math.abs(dx) <= 10) setRevealed((r) => !r)
+    }
+  }
+
+  let body
+  if (screen === 'loading') {
+    body = <main className="learner-main"><p className="kicker">WCZYTYWANIE</p><h1>Pobieranie paczki…</h1><p className="learner-footer">Paczka zostanie zapisana na tym urządzeniu.</p></main>
+  } else if (screen === 'error') {
+    body = <main className="learner-main"><p className="kicker">BŁĄD</p><h1>Nie udało się pobrać paczki.</h1><p className="learner-footer">Sprawdź, czy masz dostęp do zasobu z paczkami i spróbuj ponownie.{library.length > 0 && <> <button className="learner-primary" style={{ marginTop: 20 }} onClick={() => void openLibrary()}>Moje paczki</button></>}</p></main>
+  } else if (screen === 'library') {
+    body = (
+      <main className="learner-main">
+        <p className="kicker">MOJE PACZKI</p>
+        <h1>Biblioteka</h1>
+        {streak > 0 && <p className="library-streak"><span className="streak-chip">✦ {streak}</span> {daysLabel(streak)} nauki z rzędu — tak trzymaj!</p>}
+        {installPrompt && <button className="learner-primary install-cta" onClick={() => { void installPrompt.prompt(); setInstallPrompt(null) }}>Zainstaluj aplikację na telefonie</button>}
+        {isIOS && !isStandalone && <p className="learner-note">Na iPhonie: w Safari dotknij <strong>Udostępnij</strong> → <strong>„Dodaj do ekranu początkowego”</strong> — aplikacja otworzy się na pełnym ekranie, bez paska przeglądarki.</p>}
+        <div className="learner-pack-list">
+          {library.length === 0 && <p className="learner-empty">Brak pobranych paczek. Zeskanuj kod QR z plakatu albo wczytaj plik paczki.</p>}
+          {library.map((item) => {
+            const total = item.flashcards.length
+            const done = progress[item.id] !== undefined && total > 0 ? Math.min(progress[item.id]! + 1, total) : 0
+            return (
+              <div className="learner-pack" key={item.id}>
+                <button className="learner-pack-open" onClick={() => openPack(item)}>
+                  <strong>{item.title}</strong>
+                  <span>{total} fiszek{done > 0 ? ` · postęp ${done}/${total}` : ''}</span>
+                </button>
+                <button className="icon-button" aria-label="Usuń paczkę" onClick={() => void deleteFromLibrary(item.id)}>×</button>
+              </div>
+            )
+          })}
+        </div>
+        <button className="learner-secondary" onClick={() => fileInputRef.current?.click()}>Wczytaj paczkę z pliku (JSON)</button>
+        <input ref={fileInputRef} type="file" accept=".json,application/json" style={{ display: 'none' }} onChange={(event) => { const file = event.target.files?.[0]; if (file) void importPackFile(file); event.currentTarget.value = '' }} />
+        <p className="learner-footer">Paczki są zapisywane lokalnie — po instalacji aplikacja działa offline. <a href="/">Panel instruktora</a></p>
+      </main>
+    )
+  } else if (pack && cards.length === 0) {
+    body = <main className="learner-main"><p className="kicker">{pack.subject.toUpperCase()}</p><h1>{pack.title}</h1><p className="learner-footer">Ta paczka nie ma jeszcze fiszek.</p></main>
+  } else if (finished && pack) {
+    const percent = cards.length > 0 ? Math.round((knownCount / cards.length) * 100) : 0
+    const message = percent === 100 ? 'Perfekcyjnie!' : percent >= 80 ? 'Świetny wynik!' : percent >= 50 ? 'Dobrze Ci idzie' : 'Warto powtórzyć'
+    const ring = 2 * Math.PI * 52
+    body = (
+      <main className="learner-main">
+        <p className="kicker">{pack.subject.toUpperCase()}</p>
+        <h1>{pack.title}</h1>
+        <article className="flashcard summary-card">
+          <svg className="summary-ring" viewBox="0 0 120 120" role="img" aria-label={`Wynik ${percent}%`}>
+            <circle className="ring-bg" cx="60" cy="60" r="52" />
+            <circle className="ring-fg" cx="60" cy="60" r="52" strokeDasharray={ring} strokeDashoffset={ring * (1 - percent / 100)} />
+            <text x="60" y="55" textAnchor="middle" className="ring-value">{percent}%</text>
+            <text x="60" y="72" textAnchor="middle" className="ring-caption">zna paczkę</text>
+          </svg>
+          <h2>{message}</h2>
+          <p className="summary-detail">Znasz {knownCount} z {cards.length} fiszek{streak > 0 ? ` · seria ${streak} ${daysLabel(streak)}` : ''}</p>
+          <button className="flashcard-button" onClick={() => { setCardIndex(0); setKnownCount(0); setFinished(false); setRevealed(false) }}>Zacznij od nowa</button>
+        </article>
+        <button className="learner-secondary full-width" onClick={() => void openLibrary()}>Moje paczki</button>
+        <p className="learner-footer">Postęp zapisuje się lokalnie na tym urządzeniu.</p>
+      </main>
+    )
+  } else if (pack && card) {
+    body = (
+      <main className="learner-main">
+        {remoteUpdated && <p className="learner-update">✓ Paczka zaktualizowana z zasobu</p>}
+        <div className="learner-head-row">
+          <div><p className="kicker">{pack.subject.toUpperCase()}</p><h1>{pack.title}</h1></div>
+          {streak > 0 && <span className="streak-chip" title="Dni nauki z rzędu">✦ {streak}</span>}
+        </div>
+        <div className="learner-progress"><span>Fiszka {cardIndex + 1} z {cards.length}</span><div><i style={{ width: `${((cardIndex + 1) / cards.length) * 100}%` }} /></div></div>
+        <article
+          className={`flashcard ${revealed ? 'revealed' : ''}`}
+          style={{ transform: dragX !== 0 ? `translateX(${dragX}px) rotate(${dragX / 24}deg)` : undefined, transition: dragStartX.current !== null ? 'none' : 'transform .22s cubic-bezier(.2,.7,.3,1)' }}
+          onTouchStart={onCardTouchStart}
+          onTouchMove={onCardTouchMove}
+          onTouchEnd={onCardTouchEnd}
+          onClick={() => { if (Date.now() - suppressClick.current > 500) setRevealed((r) => !r) }}
+        >
+          <div className="flashcard-inner">
+            <div className="flashcard-face front">
+              <span className="flashcard-label">PYTANIE</span>
+              <h2>{card.question}</h2>
+              <button className="flashcard-button" onClick={(event) => { event.stopPropagation(); setRevealed(true) }}>Pokaż odpowiedź</button>
+            </div>
+            <div className="flashcard-face back">
+              <span className="flashcard-label">ODPOWIEDŹ</span>
+              <h2>{card.answer}</h2>
+              {card.legalBasis && <span className="legal-basis-chip">{card.legalBasis}</span>}
+              <small><Icon name="books" />{card.source}</small>
+              <button className="flashcard-button" onClick={(event) => { event.stopPropagation(); setRevealed(false) }}>Ukryj odpowiedź</button>
+            </div>
+          </div>
+          {dragX > 40 && <span className="swipe-hint right">PAMIĘTAM</span>}
+          {dragX < -40 && <span className="swipe-hint left">NIE PAMIĘTAM</span>}
+        </article>
+        <div className="learner-actions"><button className="learner-secondary" onClick={() => answer(false)}>Nie pamiętam</button><button className="learner-primary" onClick={() => answer(true)}>Pamiętam <Icon name="arrow" /></button></div>
+        <p className="swipe-tip">dotknij kartę, aby odwrócić · ← przesuń, aby ocenić →</p>
+        <p className="learner-footer">Postęp zapisuje się lokalnie na tym urządzeniu.</p>
+      </main>
+    )
+  }
+
+  return (
+    <div className="learner-shell">
+      <header className="learner-top">
+        <div className="brand"><div className="brand-mark">K</div><div><strong>kompas</strong><span>wiedzy</span></div></div>
+        <div className="learner-top-actions">
+          {previewMode && <button className="learner-nav" onClick={() => { window.location.href = '?view=sluchacze' }}>← Panel instruktora</button>}
+          {screen === 'runner' && <button className="learner-nav" onClick={() => void openLibrary()}>Moje paczki</button>}
+          {screen === 'library' && <span className="offline-label"><span className="sync-dot" /> tryb offline</span>}
+        </div>
+      </header>
+      {body}
+    </div>
+  )
+}

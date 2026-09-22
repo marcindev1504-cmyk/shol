@@ -1,0 +1,45 @@
+Ogólne wytyczne cyberhigieny dla przeciętnego użytkownika opracowuje i aktualizuje CERT Polska działający w strukturze NASK jako krajowy CSIRT.
+Bezpieczne hasło powinno mieć co najmniej 12 znaków i łączyć wielkie i małe litery, cyfry oraz znaki specjalne.
+Każde konto internetowe powinno być zabezpieczone unikalnym hasłem, ponieważ wyciek hasła z jednego serwisu umożliwia przejęcie pozostałych kont.
+Menedżer haseł pozwala generować i przechowywać silne hasła bez konieczności zapamiętywania ich przez użytkownika.
+CERT Polska rekomenduje stosowanie kluczy dostępu typu passkey w serwisach, które oferują tę formę logowania.
+Hasła nie wolno zapisywać w widocznym miejscu, przesyłać wiadomością e-mail ani udostępniać innym osobom.
+Użytkownik powinien zmienić hasło niezwłocznie, gdy istnieje podejrzenie, że dane logowania wyciekły lub zostały przejęte.
+Uwierzytelnianie wieloskładnikowe (MFA) wymaga potwierdzenia tożsamości dodatkowym składnikiem oprócz hasła i skutecznie blokuje przejęcie konta po wycieku hasła.
+Najbezpieczniejszym składnikiem MFA są klucze sprzętowe i aplikacje generujące kody, a najsłabszym kody przesyłane SMS-em.
+Użytkownik nie powinien nikomu podawać kodu jednorazowego ani zatwierdzać w aplikacji żądania logowania, którego sam nie zainicjował.
+MFA należy włączyć przede wszystkim na kontach pocztowych, bankowych i społecznościowych, bo ich przejęcie umożliwia resetowanie haseł innych usług.
+Automatyczne aktualizacje systemu operacyjnego i aplikacji usuwają znane luki bezpieczeństwa wykorzystywane przez cyberprzestępców.
+Oprogramowanie należy instalować wyłącznie z oficjalnych sklepów lub stron producenta, ponieważ programy z nieznanych źródeł często zawierają złośliwy kod.
+Urządzenie, które przestało otrzymywać aktualizacje bezpieczeństwa, powinno zostać zastąpione nowszym modelem lub odłączone od wrażliwych usług.
+Router domowy wymaga zmiany domyślnego hasła administratora i regularnych aktualizacji oprogramowania układowego.
+Obowiązki w zakresie reagowania na incydenty cyberbezpieczeństwa określa ustawa z dnia 5 lipca 2018 r. o krajowym systemie cyberbezpieczeństwa.
+Phishing to technika oszustwa polegająca na podszywaniu się pod zaufaną instytucję w celu wyłudzenia danych logowania lub informacji osobowych.
+Podejrzaną wiadomość charakteryzuje poczucie pilności, prośba o kliknięcie linku, nieprawidłowy adres nadawcy oraz błędy językowe lub nietypowe zwroty.
+Przed kliknięciem linku użytkownik powinien zweryfikować adres docelowy, najlepiej przechodząc na stronę instytucji ręcznie, a nie przez odnośnik w wiadomości.
+Smishing to phishing realizowany wiadomością SMS, najczęściej podszywający się pod firmy kurierskie, banki lub urzędy.
+Vishing polega na wyłudzaniu danych przez telefon, a oszuści często podszywają się pod pracowników banku, policjantów lub członków rodziny.
+Oszustwo „na wnuka" lub „na policjanta" polega na nagłym telefonicznym zgłoszeniu rzekomego problemu bliskiej osoby i żądaniu natychmiastowego przekazania pieniędzy.
+Osoba, która otrzymała telefoniczną prośbę o pożyczkę lub zwrot pieniędzy, powinna rozłączyć się i zweryfikować informację, oddzwaniając na oficjalny numer instytucji.
+Quishing to oszustwo wykorzystujące fałszywe kody QR prowadzące na strony wyłudzające dane, dlatego przed skanowaniem kodu należy sprawdzić, czy naklejka nie została podmieniona.
+Podejrzane wiadomości SMS i strony phishingowe można zgłosić do CERT Polska, przesyłając je na numer 799 448 084 lub przez formularz na stronie incydent.cert.pl.
+Wiadomość phishingową należy zgłosić i usunąć, a nie przesyłać dalej, ponieważ rozpowszechnianie takich treści naraża innych odbiorców.
+Deepfake to podrobiony materiał audio lub wideo generowany przez sztuczną inteligencję, który oszuści wykorzystują do podszywania się pod znajome osoby w nagraniach i rozmowach.
+Publiczne sieci Wi-Fi bez szyfrowania pozwalają przechwycić ruch użytkownika, dlatego w takich sieciach należy korzystać z VPN i unikać logowania do wrażliwych usług.
+Domowa sieć Wi-Fi powinna używać szyfrowania WPA2 lub WPA3 z silnym hasłem, a funkcja WPS powinna być wyłączona.
+Złośliwy punkt dostępu może podszywać się pod legalną sieć publiczną o zbliżonej nazwie, więc użytkownik powinien potwierdzić dokładną nazwę sieci u administratora obiektu.
+Ochronę danych osobowych reguluje rozporządzenie Parlamentu Europejskiego i Rady (UE) 2016/679, powszechnie znane jako RODO.
+Reguła kopii zapasowych 3-2-1 oznacza przechowywanie trzech kopii danych na dwóch różnych nośnikach, z jedną kopią w osobnej lokalizacji.
+Kopia zapasowa powinna być przechowywana odłączona od komputera, ponieważ ransomware szyfruje także podłączone dyski i udziały sieciowe.
+CERT Polska odradza płacenie okupu po ataku ransomware, ponieważ zapłata nie gwarantuje odzyskania danych i finansuje dalszą działalność przestępczą.
+Przed atakiem ransomware chronią aktualizacje, ostrożność przy załącznikach oraz regularne kopie zapasowe testowane pod kątem możliwości odtworzenia.
+Użytkownik powinien ograniczyć publiczne udostępnianie danych osobowych w mediach społecznościowych, bo oszuści wykorzystują je do personalizowania ataków i odgadywania pytań pomocniczych.
+Aplikacja mobilna powinna otrzymywać wyłącznie uprawnienia niezbędne do jej działania, a dostęp do kontaktów, lokalizacji i mikrofonu należy okresowo przeglądać.
+Ekran urządzenia należy blokować kodem, PIN-em lub biometrią, a komputer pozostawiony bez nadzoru powinien być zablokowany.
+Szyfrowanie dysku, na przykład BitLocker w Windows lub FileVault w macOS, chroni dane w razie utraty lub kradzieży urządzenia.
+Wyciek własnych danych można sprawdzić w publicznych bazach naruszeń, a skompromitowane hasła trzeba natychmiast zmienić w każdym serwisie, w którym były użyte.
+W przypadku podejrzenia przejęcia konta użytkownik powinien zmienić hasło, wylogować wszystkie sesje, sprawdzić reguły przekierowań poczty i włączyć MFA.
+Po przypadkowym podaniu danych karty na fałszywej stronie należy niezwłocznie zastrzec kartę w banku i zgłosić incydent.
+Incydent cyberbezpieczeństwa, na przykład oszustwo lub atak, można zgłosić do CERT Polska oraz na policję, a zgłoszenie pomaga w wykrywaniu kampanii i ochronie innych użytkowników.
+Regularne przeglądanie historii logowań i aktywności konta pozwala wcześnie wykryć nieautoryzowany dostęp.
+Użytkownik, który otworzył podejrzany załącznik, powinien odłączyć urządzenie od sieci i zgłosić zdarzenie administratorowi lub zespołowi CERT.
