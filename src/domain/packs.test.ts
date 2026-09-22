@@ -80,16 +80,16 @@ describe('approveDraft', () => {
 })
 
 describe('createPack', () => {
-  it('assigns max id + 1 and status Do weryfikacji', () => {
+  it('assigns a unique random id and status Do weryfikacji', () => {
     const pack = createPack(initialPacks, 'Nowa', 'Temat', 'dzisiaj, 12:00')
-    expect(pack.id).toBe(4)
+    expect(pack.id).toBeGreaterThanOrEqual(10000)
+    expect(initialPacks.map((p) => p.id)).not.toContain(pack.id)
     expect(pack.status).toBe('Do weryfikacji')
     expect(pack.flashcards).toEqual([])
   })
 
-  it('starts from id 1 and mint color for an empty list', () => {
+  it('assigns mint color for an empty list', () => {
     const pack = createPack([] as Pack[], 'Nowa', 'Temat', 'dzisiaj, 12:00')
-    expect(pack.id).toBe(1)
     expect(pack.color).toBe('mint')
   })
 })

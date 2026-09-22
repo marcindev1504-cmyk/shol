@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
-import { createPack, formatUpdatedLabel, initialPacks, normalizePack, packColorLabels, packColors, packColorSymbols, type Flashcard, type Pack } from './domain/packs'
+import { createPack, formatUpdatedLabel, initialPacks, nextPackId, normalizePack, packColorLabels, packColors, packColorSymbols, type Flashcard, type Pack } from './domain/packs'
 import type { Source } from './domain/sources'
 import { defaultSettings, firstName, greeting, initials, packShareUrl, type AppSettings } from './domain/settings'
 import { clearAllData, clearLearnerProgress, exportAllData, loadAllProgress, loadAppSettings, loadPacks, loadSources, migrateLegacyStorage, saveAppSettings, savePacks, saveSources } from './adapters/storage'
@@ -154,10 +154,11 @@ function App() {
       setNotice('Nie udało się wczytać paczki — plik nie jest wyeksportowaną paczką Kompas Wiedzy albo nie zawiera fiszek.')
       return
     }
-    const id = packs.length ? Math.max(...packs.map((pack) => pack.id)) + 1 : 1
+    const idTaken = packs.some((pack) => pack.id === imported.id)
+    const id = idTaken ? nextPackId(packs) : imported.id
     const pack: Pack = { ...imported, id, flashcards: imported.flashcards.map((card) => ({ ...card, packId: id })) }
     setPacks([...packs, pack])
-    setNotice(`Zaimportowano paczkę „${pack.title}” (${pack.flashcards.length} fiszek). Sprawdź fiszki i opublikuj, gdy będzie gotowa.`)
+    setNotice(`Zaimportowano paczkę „${pack.title}” (${pack.flashcards.length} fiszek). ${idTaken ? `Nadano nowe ID ${id}, bo ${imported.id} było zajęte. ` : ''}Sprawdź fiszki i opublikuj, gdy będzie gotowa.`)
   }
 
   function downloadPack(pack: Pack) {
@@ -168,11 +169,11 @@ function App() {
     anchor.download = `kompas-paczka-${pack.id}.json`
     anchor.click()
     URL.revokeObjectURL(url)
-    setNotice(`Wyeksportowano „${pack.title}”. Wrzuć plik do katalogu paczki/ na zasobie NAS.`)
+    setNotice(`Wyeksportowano „${pack.title}”. Wrzuć plik do public/paczki/ i uruchom deploy.ps1 albo dodaj go na GitHubie do katalogu paczki/ gałęzi main.`)
   }
 
   function duplicatePack(pack: Pack) {
-    const id = packs.length ? Math.max(...packs.map((p) => p.id)) + 1 : 1
+    const id = nextPackId(packs)
     const now = Date.now()
     const copy: Pack = { ...pack, id, title: `${pack.title} (kopia)`, status: 'Do weryfikacji', updated: formatUpdatedLabel(), flashcards: pack.flashcards.map((card, i) => ({ ...card, packId: id, id: `${now}-${i}` })) }
     setPacks((current) => [...current, copy])

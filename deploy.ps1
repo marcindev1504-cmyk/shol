@@ -1,9 +1,9 @@
 ﻿# deploy.ps1 - builds learner-only PWA and deploys to GitHub Pages (main branch)
 # Usage: .\deploy.ps1
 #
-# UWAGA: push jest wymuszony (-f) z czystego folderu dist/. Wszystko, co lezy na
-# GitHubie na galezi main, zostaje zastapione. Pliki paczek trzymaj WYLACZNIE
-# lokalnie w public/paczki/ - stamtad trafiaja do dist/ i na GitHub Pages.
+# Paczki: pliki z public/paczki/ trafiaja do dist/. Dodatkowo przed pushem skrypt
+# dolacza paczki juz istniejace na galezi main (wgrane np. przez innych instruktorow
+# przez web UI GitHuba), wiec deploy nie kasuje cudzych paczek.
 
 $ErrorActionPreference = "Continue"   # git pisze ostrzezenia na stderr - o bledzie decyduje kod wyjscia
 $projectDir = Split-Path -Parent $MyInvocation.MyCommand.Path
@@ -20,7 +20,22 @@ Write-Host "2/4 Preparing deploy package..." -ForegroundColor Cyan
 New-Item -ItemType Directory -Force -Path $tempDir | Out-Null
 Copy-Item -Recurse "$projectDir\dist\*" $tempDir
 New-Item -ItemType File -Force -Path "$tempDir\.nojekyll" | Out-Null
-$packs = @(Get-ChildItem "$tempDir\paczki\*.json" -ErrorAction SilentlyContinue)
+
+# Dolacz paczki istniejace juz na main (wgrane np. przez innych instruktorow)
+$packsDir = "$tempDir\paczki"
+New-Item -ItemType Directory -Force -Path $packsDir | Out-Null
+try {
+  $listing = Invoke-RestMethod "https://api.github.com/repos/marcindev1504-cmyk/shol/contents/paczki?ref=main" -Headers @{ "User-Agent" = "kompas-deploy" }
+  $missing = @($listing | Where-Object { $_.name -like "kompas-paczka-*.json" -and -not (Test-Path (Join-Path $packsDir $_.name)) })
+  foreach ($file in $missing) {
+    Invoke-WebRequest -UseBasicParsing $file.download_url -OutFile (Join-Path $packsDir $file.name)
+  }
+  if ($missing.Count -gt 0) { Write-Host "    dolaczono z GitHuba: $($missing.Count) ($(($missing | ForEach-Object { $_.name }) -join ', '))" }
+} catch {
+  Write-Host "    nie udalo sie pobrac listy paczek z GitHuba - deploy tylko z lokalnych" -ForegroundColor Yellow
+}
+
+$packs = @(Get-ChildItem "$packsDir\*.json" -ErrorAction SilentlyContinue)
 Write-Host "    paczki w deployu: $($packs.Count) ($(($packs | ForEach-Object { $_.BaseName -replace 'kompas-paczka-','' }) -join ', '))"
 
 Write-Host "3/4 Pushing to GitHub Pages..." -ForegroundColor Cyan

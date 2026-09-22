@@ -96,8 +96,17 @@ export const packColors: Pack['color'][] = ['mint', 'orange', 'blue', 'violet', 
 export const packColorLabels: Record<Pack['color'], string> = { mint: 'Miętowa', orange: 'Pomarańczowa', blue: 'Niebieska', violet: 'Fioletowa', rose: 'Różowa', amber: 'Bursztynowa' }
 export const packColorSymbols: Record<Pack['color'], string> = { mint: '◈', orange: '◉', blue: '△', violet: '⬡', rose: '✳', amber: '▽' }
 
+export function nextPackId(packs: Pick<Pack, 'id'>[]): number {
+  const used = new Set(packs.map((pack) => pack.id))
+  let id = 0
+  do {
+    id = 10000 + Math.floor(Math.random() * 990000)
+  } while (used.has(id))
+  return id
+}
+
 export function createPack(packs: Pack[], title: string, subject: string, updatedLabel: string): Pack {
-  return { id: packs.length ? Math.max(...packs.map((pack) => pack.id)) + 1 : 1, title, subject, updated: updatedLabel, status: 'Do weryfikacji', color: packColors[packs.length % packColors.length], flashcards: [] }
+  return { id: nextPackId(packs), title, subject, updated: updatedLabel, status: 'Do weryfikacji', color: packColors[packs.length % packColors.length], flashcards: [] }
 }
 
 export function formatUpdatedLabel(date = new Date()): string {
