@@ -151,3 +151,4 @@
 .editor-color-dot.mint { background: #c2edb2; } .editor-color-dot.orange { background: #f7a36d; } .editor-color-dot.blue { background: #9bc8e9; } .editor-color-dot.violet { background: #c5b3e6; } .editor-color-dot.rose { background: #f2a7bd; } .editor-color-dot.amber { background: #f3d98a; }
 @keyframes saveFlash { 0%, 70% { opacity: 1; } 100% { opacity: 0; } }
 .save-indicator { color: var(--mint); animation: saveFlash 2.2s ease forwards; }
+.share-dialog { position: relative; background: #1a2422; border: 1px solid var(--line); border-radius: 14px; padding: 26px; width: min(100%, 330px); text-align: center; } .share-dialog h2 { margin-top: 10px; font-size: var(--text-lg); } .share-qr { background: #fff; border-radius: 10px; padding: 14px; margin: 18px auto 12px; width: fit-content; } .share-url { color: var(--muted); font-size: var(--text-xs); word-break: break-all; margin-bottom: 14px; } .learner-shell .share-dialog .learner-primary { width: 100%; }

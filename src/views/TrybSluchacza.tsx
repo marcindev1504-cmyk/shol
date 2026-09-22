@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode, type TouchEvent } from 'react'
+import { QRCodeSVG } from 'qrcode.react'
 import { normalizePack, type Pack } from '../domain/packs'
 import { packFileUrl } from '../domain/settings'
 import { clearLearnerProgress, loadLearnerPacks, loadLearnerProgress, loadPack, removeLearnerPack, saveLearnerProgress, upsertLearnerPack } from '../adapters/storage'
@@ -24,6 +25,7 @@ function Icon({ name }: { name: string }) {
   const icons: Record<string, ReactNode> = {
     books: <><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" /></>,
     arrow: <><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></>,
+    share: <><circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" /><line x1="8.59" y1="13.51" x2="15.42" y2="17.49" /><line x1="15.41" y1="6.51" x2="8.59" y2="10.49" /></>,
   }
   return <svg className="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{icons[name]}</svg>
 }
@@ -65,6 +67,7 @@ export function TrybSluchacza({ pakietParam }: { pakietParam: string }) {
   const [library, setLibrary] = useState<Pack[]>([])
   const [progress, setProgress] = useState<Record<number, number>>({})
   const [installPrompt, setInstallPrompt] = useState<InstallPromptEvent | null>(null)
+  const [sharePack, setSharePack] = useState<Pack | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const [cardIndex, setCardIndex] = useState(0)
@@ -171,6 +174,20 @@ export function TrybSluchacza({ pakietParam }: { pakietParam: string }) {
     await openLibrary()
   }
 
+  function packUrl(id: number): string {
+    return `${window.location.origin}${window.location.pathname}?pakiet=${id}`
+  }
+
+  const canShare = typeof (navigator as Navigator & { share?: unknown }).share === 'function'
+
+  async function sharePackLink(item: Pack) {
+    const url = packUrl(item.id)
+    const nav = navigator as Navigator & { share?: (data: { title: string; text: string; url: string }) => Promise<void> }
+    try {
+      await nav.share?.({ title: `Kompas Wiedzy — ${item.title}`, text: `Paczka fiszek „${item.title}” (${item.flashcards.length} fiszek)`, url })
+    } catch { /* użytkownik anulował */ }
+  }
+
   const cards = pack?.flashcards ?? []
   const card = cards[cardIndex]
 
@@ -265,6 +282,7 @@ export function TrybSluchacza({ pakietParam }: { pakietParam: string }) {
                   <span className="pack-progress-bar"><i style={{ width: `${pct}%` }} /></span>
                   <span className="pack-progress-text">{done}/{total} fiszek{pct === 100 ? ' ✓' : ''}</span>
                 </button>
+                <button className="icon-button" aria-label="Udostępnij paczkę" onClick={() => setSharePack(item)}><Icon name="share" /></button>
                 <button className="icon-button" aria-label="Usuń paczkę" onClick={() => void deleteFromLibrary(item.id)}>×</button>
               </div>
             )
@@ -351,6 +369,18 @@ export function TrybSluchacza({ pakietParam }: { pakietParam: string }) {
         </div>
       </header>
       {body}
+      {sharePack && (
+        <div className="modal-backdrop" onClick={() => setSharePack(null)}>
+          <div className="share-dialog" role="dialog" aria-modal="true" aria-label={`Udostępnij paczkę ${sharePack.title}`} onClick={(event) => event.stopPropagation()}>
+            <button className="modal-close" onClick={() => setSharePack(null)}>×</button>
+            <p className="kicker">UDOSTĘPNIJ PACZKĘ</p>
+            <h2>{sharePack.title}</h2>
+            <div className="share-qr"><QRCodeSVG value={packUrl(sharePack.id)} size={200} bgColor="#ffffff" fgColor="#17201f" /></div>
+            <p className="share-url">{packUrl(sharePack.id)}</p>
+            {canShare && <button className="learner-primary full-width" onClick={() => void sharePackLink(sharePack)}>Udostępnij link…</button>}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
