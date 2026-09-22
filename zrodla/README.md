@@ -27,7 +27,7 @@ policjantów**.
 | `jm08-kryminogenne` | JM08 Przeciwdziałanie zjawiskom kryminogennym | przemoc-domowa-i-nieletni.txt |
 | `jm09-strzeleckie` | JM09 Szkolenie strzeleckie | zasady-bezpieczenstwa-na-strzelnicy.txt |
 | `jm10-tti` | JM10 Taktyka i techniki interwencji | srodki-przymusu-bezposredniego.txt, srodki-przymusu-przepisy.txt |
-| `cyberhigiena` | Materiał uzupełniający — cyberhigiena użytkownika | cyberhigiena-uzytkownika.txt |
+| `cyberhigiena` | Materiał uzupełniający — cyberhigiena użytkownika | cyberhigiena-uzytkownika.txt, paczka-cyberhigiena.json (gotowa paczka 30 fiszek — Paczki → „Importuj paczkę") |
 
 ## Status treści — WAŻNE
 

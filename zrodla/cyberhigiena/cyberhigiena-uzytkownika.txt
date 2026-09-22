@@ -1,45 +1,76 @@
-Ogólne wytyczne cyberhigieny dla przeciętnego użytkownika opracowuje i aktualizuje CERT Polska działający w strukturze NASK jako krajowy CSIRT.
-Bezpieczne hasło powinno mieć co najmniej 12 znaków i łączyć wielkie i małe litery, cyfry oraz znaki specjalne.
-Każde konto internetowe powinno być zabezpieczone unikalnym hasłem, ponieważ wyciek hasła z jednego serwisu umożliwia przejęcie pozostałych kont.
-Menedżer haseł pozwala generować i przechowywać silne hasła bez konieczności zapamiętywania ich przez użytkownika.
-CERT Polska rekomenduje stosowanie kluczy dostępu typu passkey w serwisach, które oferują tę formę logowania.
-Hasła nie wolno zapisywać w widocznym miejscu, przesyłać wiadomością e-mail ani udostępniać innym osobom.
-Użytkownik powinien zmienić hasło niezwłocznie, gdy istnieje podejrzenie, że dane logowania wyciekły lub zostały przejęte.
-Uwierzytelnianie wieloskładnikowe (MFA) wymaga potwierdzenia tożsamości dodatkowym składnikiem oprócz hasła i skutecznie blokuje przejęcie konta po wycieku hasła.
-Najbezpieczniejszym składnikiem MFA są klucze sprzętowe i aplikacje generujące kody, a najsłabszym kody przesyłane SMS-em.
+Ogólne wytyczne cyberhigieny dla użytkowników indywidualnych opracowuje i publikuje CERT Polska, zespół reagowania na incydenty działający w strukturze Naukowej i Akademickiej Sieci Komputerowej (NASK).
+Cyberhigiena oznacza zbiór codziennych nawyków użytkownika, które ograniczają ryzyko przejęcia kont, utraty danych i oszustwa internetowego.
+Zdecydowana większość skutecznych ataków na zwykłych użytkowników nie wykorzystuje luk technicznych, lecz manipulację człowiekiem, nazywaną socjotechniką.
+Socjotechnika polega na wywołaniu u ofiary emocji, najczęściej strachu, pośpiechu, ciekawości lub chęci zysku, aby skłonić ją do działania bez zastanowienia.
+Zasada „zatrzymaj się, pomyśl, zweryfikuj" oznacza, że każdą nieoczekiwaną prośbę o pieniądze, dane lub kliknięcie należy sprawdzić innym kanałem niż ten, którym przyszła.
+Bezpieczne hasło powinno mieć co najmniej 12 znaków, a jego siła zależy przede wszystkim od długości i losowości, a nie od liczby znaków specjalnych.
+Wygodną i silną formą hasła jest fraza złożona z kilku niepowiązanych słów, na przykład czterech lub pięciu wyrazów rozdzielonych znakami.
+Każde konto internetowe powinno być zabezpieczone unikalnym hasłem, ponieważ wyciek hasła z jednego serwisu umożliwia przestępcom automatyczne logowanie do pozostałych kont.
+Credential stuffing to atak polegający na masowym wypróbowywaniu par login i hasło pochodzących z wcześniejszych wycieków w innych serwisach.
+Menedżer haseł generuje i przechowuje unikalne silne hasła w zaszyfrowanym sejfie, dzięki czemu użytkownik musi zapamiętać tylko jedno hasło główne.
+Hasło główne do menedżera haseł powinno być najdłuższe i najsilniejsze ze wszystkich haseł użytkownika, a menedżer powinien być dodatkowo chroniony uwierzytelnianiem wieloskładnikowym.
+CERT Polska rekomenduje stosowanie kluczy dostępu typu passkey w serwisach, które oferują tę formę logowania, ponieważ passkey jest odporny na phishing i nie może wyciec w postaci hasła.
+Hasła nie wolno zapisywać w widocznym miejscu, przesyłać wiadomością e-mail ani SMS, ani udostępniać innym osobom, w tym osobom przedstawiającym się jako pracownicy pomocy technicznej.
+Użytkownik powinien zmienić hasło niezwłocznie, gdy istnieje podejrzenie, że dane logowania wyciekły, oraz w każdym innym serwisie, w którym to samo hasło było użyte.
+Regularna cykliczna zmiana haseł bez powodu nie jest już zalecana, ponieważ prowadzi do tworzenia słabszych, przewidywalnych wariantów tego samego hasła.
+Uwierzytelnianie wieloskładnikowe (MFA) wymaga potwierdzenia tożsamości dodatkowym składnikiem oprócz hasła i skutecznie blokuje przejęcie konta nawet po wycieku hasła.
+Najbezpieczniejszymi składnikami MFA są sprzętowe klucze bezpieczeństwa i aplikacje generujące kody, a najsłabszym składnikiem są kody jednorazowe przesyłane SMS-em.
+Kody SMS są podatne na przejęcie przez duplikat karty SIM (SIM swap) oraz na wyłudzenie przez oszusta w rozmowie telefonicznej.
 Użytkownik nie powinien nikomu podawać kodu jednorazowego ani zatwierdzać w aplikacji żądania logowania, którego sam nie zainicjował.
-MFA należy włączyć przede wszystkim na kontach pocztowych, bankowych i społecznościowych, bo ich przejęcie umożliwia resetowanie haseł innych usług.
-Automatyczne aktualizacje systemu operacyjnego i aplikacji usuwają znane luki bezpieczeństwa wykorzystywane przez cyberprzestępców.
-Oprogramowanie należy instalować wyłącznie z oficjalnych sklepów lub stron producenta, ponieważ programy z nieznanych źródeł często zawierają złośliwy kod.
-Urządzenie, które przestało otrzymywać aktualizacje bezpieczeństwa, powinno zostać zastąpione nowszym modelem lub odłączone od wrażliwych usług.
-Router domowy wymaga zmiany domyślnego hasła administratora i regularnych aktualizacji oprogramowania układowego.
-Obowiązki w zakresie reagowania na incydenty cyberbezpieczeństwa określa ustawa z dnia 5 lipca 2018 r. o krajowym systemie cyberbezpieczeństwa.
-Phishing to technika oszustwa polegająca na podszywaniu się pod zaufaną instytucję w celu wyłudzenia danych logowania lub informacji osobowych.
-Podejrzaną wiadomość charakteryzuje poczucie pilności, prośba o kliknięcie linku, nieprawidłowy adres nadawcy oraz błędy językowe lub nietypowe zwroty.
-Przed kliknięciem linku użytkownik powinien zweryfikować adres docelowy, najlepiej przechodząc na stronę instytucji ręcznie, a nie przez odnośnik w wiadomości.
-Smishing to phishing realizowany wiadomością SMS, najczęściej podszywający się pod firmy kurierskie, banki lub urzędy.
-Vishing polega na wyłudzaniu danych przez telefon, a oszuści często podszywają się pod pracowników banku, policjantów lub członków rodziny.
-Oszustwo „na wnuka" lub „na policjanta" polega na nagłym telefonicznym zgłoszeniu rzekomego problemu bliskiej osoby i żądaniu natychmiastowego przekazania pieniędzy.
-Osoba, która otrzymała telefoniczną prośbę o pożyczkę lub zwrot pieniędzy, powinna rozłączyć się i zweryfikować informację, oddzwaniając na oficjalny numer instytucji.
-Quishing to oszustwo wykorzystujące fałszywe kody QR prowadzące na strony wyłudzające dane, dlatego przed skanowaniem kodu należy sprawdzić, czy naklejka nie została podmieniona.
-Podejrzane wiadomości SMS i strony phishingowe można zgłosić do CERT Polska, przesyłając je na numer 799 448 084 lub przez formularz na stronie incydent.cert.pl.
-Wiadomość phishingową należy zgłosić i usunąć, a nie przesyłać dalej, ponieważ rozpowszechnianie takich treści naraża innych odbiorców.
-Deepfake to podrobiony materiał audio lub wideo generowany przez sztuczną inteligencję, który oszuści wykorzystują do podszywania się pod znajome osoby w nagraniach i rozmowach.
-Publiczne sieci Wi-Fi bez szyfrowania pozwalają przechwycić ruch użytkownika, dlatego w takich sieciach należy korzystać z VPN i unikać logowania do wrażliwych usług.
+Powtarzające się powiadomienia push z prośbą o zatwierdzenie logowania oznaczają, że ktoś zna hasło użytkownika i próbuje zmęczyć go do przypadkowej akceptacji.
+MFA należy włączyć przede wszystkim na koncie pocztowym, bankowym i w mediach społecznościowych, ponieważ przejęcie poczty umożliwia resetowanie haseł do wszystkich innych usług.
+Kody zapasowe do MFA należy wydrukować lub zapisać w menedżerze haseł, ponieważ utrata telefonu bez kodów zapasowych może odciąć użytkownika od własnych kont.
+Automatyczne aktualizacje systemu operacyjnego, przeglądarki i aplikacji usuwają znane luki bezpieczeństwa, które cyberprzestępcy wykorzystują masowo w ciągu dni od ich ujawnienia.
+Oprogramowanie należy instalować wyłącznie z oficjalnych sklepów lub stron producenta, ponieważ programy z nieznanych źródeł, cracki i „darmowe" wersje płatnych aplikacji często zawierają złośliwy kod.
+Rozszerzenia przeglądarki mają dostęp do treści odwiedzanych stron, dlatego należy instalować tylko niezbędne dodatki od zaufanych autorów i okresowo usuwać nieużywane.
+Urządzenie, które przestało otrzymywać aktualizacje bezpieczeństwa, powinno zostać zastąpione nowszym modelem lub odłączone od bankowości i innych wrażliwych usług.
+Router domowy wymaga zmiany domyślnego hasła administratora, wyłączenia zdalnego zarządzania z internetu i regularnych aktualizacji oprogramowania układowego.
 Domowa sieć Wi-Fi powinna używać szyfrowania WPA2 lub WPA3 z silnym hasłem, a funkcja WPS powinna być wyłączona.
-Złośliwy punkt dostępu może podszywać się pod legalną sieć publiczną o zbliżonej nazwie, więc użytkownik powinien potwierdzić dokładną nazwę sieci u administratora obiektu.
-Ochronę danych osobowych reguluje rozporządzenie Parlamentu Europejskiego i Rady (UE) 2016/679, powszechnie znane jako RODO.
+Urządzenia inteligentnego domu, kamery i telewizory warto podłączać do osobnej sieci dla gości, aby ich przejęcie nie dawało dostępu do komputerów i telefonów.
+Zasady krajowego systemu cyberbezpieczeństwa oraz zadania CSIRT określa ustawa z dnia 5 lipca 2018 r. o krajowym systemie cyberbezpieczeństwa.
+Phishing to technika oszustwa polegająca na podszywaniu się pod zaufaną instytucję w celu wyłudzenia danych logowania, danych karty lub informacji osobowych.
+Podejrzaną wiadomość charakteryzuje poczucie pilności, groźba konsekwencji, prośba o kliknięcie linku lub otwarcie załącznika, nieprawidłowy adres nadawcy oraz nietypowe zwroty językowe.
+Adres e-mail nadawcy można sfałszować, dlatego sama zgodność nazwy wyświetlanej z nazwą instytucji nie dowodzi autentyczności wiadomości.
+Przed kliknięciem linku użytkownik powinien sprawdzić rzeczywisty adres docelowy, a najbezpieczniej wejść na stronę instytucji ręcznie, wpisując adres lub korzystając z oficjalnej aplikacji.
+Fałszywe strony często używają domen różniących się od prawdziwych jedną literą, dodatkowym słowem lub inną końcówką, na przykład „.com" zamiast „.pl".
+Symbol zamkniętej kłódki przy adresie oznacza jedynie szyfrowane połączenie, a nie wiarygodność strony, ponieważ certyfikat może uzyskać także strona przestępców.
+Załączniki w formacie skompresowanym, pliki z rozszerzeniem wykonywalnym oraz dokumenty proszące o włączenie makr są typowymi nośnikami złośliwego oprogramowania.
+Smishing to phishing realizowany wiadomością SMS, najczęściej podszywający się pod firmy kurierskie, banki, operatorów energii lub urzędy.
+Vishing polega na wyłudzaniu danych lub pieniędzy przez telefon, a oszuści często podszywają się pod pracowników banku, policjantów, prokuratorów lub członków rodziny.
+Prawdziwy pracownik banku nigdy nie prosi o podanie pełnego hasła, kodu BLIK, kodu z SMS ani o zainstalowanie programu do zdalnego pulpitu.
+Spoofing numeru telefonu pozwala oszustowi wyświetlić na ekranie ofiary prawdziwy numer banku lub urzędu, dlatego wyświetlany numer nie jest dowodem tożsamości rozmówcy.
+Oszustwo „na wnuka" lub „na policjanta" polega na nagłym telefonicznym zgłoszeniu rzekomego wypadku lub akcji policyjnej i żądaniu natychmiastowego przekazania gotówki lub przelewu.
+Policja nigdy nie prosi telefonicznie o przekazanie pieniędzy, kosztowności ani o udział w tajnej akcji polegającej na wypłacie środków z banku.
+Osoba, która otrzymała telefoniczną prośbę o pieniądze lub dane, powinna rozłączyć się i zweryfikować informację, dzwoniąc samodzielnie na oficjalny numer instytucji lub do bliskiej osoby.
+Oszustwo „na BLIK" polega na wysłaniu z przejętego konta znajomego prośby o kod BLIK pod pretekstem nagłej potrzeby, dlatego każdą taką prośbę należy potwierdzić telefonicznie.
+Oszustwo inwestycyjne obiecuje gwarantowany wysoki zysk, wykorzystuje wizerunek znanych osób i namawia do szybkiej wpłaty oraz instalacji programu do zdalnego pulpitu.
+Oszustwo na portalach ogłoszeniowych polega na przesłaniu kupującemu lub sprzedającemu fałszywego linku do „odbioru płatności", który prowadzi na podrobioną stronę banku.
+Quishing to oszustwo wykorzystujące fałszywe kody QR prowadzące na strony wyłudzające dane, dlatego przed skanowaniem kodu w miejscu publicznym należy sprawdzić, czy naklejka nie została podmieniona.
+Deepfake to podrobiony materiał audio lub wideo generowany przez sztuczną inteligencję, który oszuści wykorzystują do podszywania się pod znajome osoby w nagraniach i rozmowach na żywo.
+Podejrzane wiadomości SMS można zgłosić do CERT Polska, przesyłając je bezpłatnie na numer 8080, a strony phishingowe i inne incydenty przez formularz na stronie incydent.cert.pl.
+Wiadomość phishingową należy zgłosić i usunąć, a nie przesyłać dalej, ponieważ rozpowszechnianie takich treści naraża innych odbiorców.
+Publiczne sieci Wi-Fi bez hasła pozwalają przechwytywać ruch użytkownika, dlatego w takich sieciach należy korzystać z VPN i unikać logowania do bankowości.
+Złośliwy punkt dostępu może podszywać się pod legalną sieć publiczną o zbliżonej nazwie, więc użytkownik powinien potwierdzić dokładną nazwę sieci u obsługi obiektu.
+Transmisja danych komórkowych jest bezpieczniejsza niż nieznana publiczna sieć Wi-Fi, dlatego do operacji bankowych w podróży warto używać własnego internetu mobilnego.
+Ochronę danych osobowych reguluje rozporządzenie Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r., powszechnie znane jako RODO.
+Użytkownik powinien ograniczyć publiczne udostępnianie danych osobowych w mediach społecznościowych, ponieważ oszuści wykorzystują je do personalizowania ataków i odgadywania odpowiedzi na pytania pomocnicze.
+Zdjęcia dokumentów, biletów, kart płatniczych i tablic rejestracyjnych nie powinny być publikowane w internecie, ponieważ zawierają dane umożliwiające kradzież tożsamości.
+Aplikacja mobilna powinna otrzymywać wyłącznie uprawnienia niezbędne do jej działania, a dostęp do kontaktów, lokalizacji, mikrofonu i SMS należy okresowo przeglądać.
+Aplikacja, która prosi o uprawnienia niezwiązane ze swoją funkcją, na przykład latarka żądająca dostępu do kontaktów, powinna zostać odinstalowana.
+Ekran urządzenia należy blokować kodem, PIN-em lub biometrią, a komputer pozostawiony bez nadzoru powinien być natychmiast zablokowany.
+Szyfrowanie dysku, na przykład BitLocker w Windows lub FileVault w macOS, chroni dane w razie utraty lub kradzieży urządzenia.
+Przed sprzedażą lub oddaniem urządzenia należy wylogować się ze wszystkich kont i przywrócić ustawienia fabryczne, aby nowy właściciel nie uzyskał dostępu do danych.
 Reguła kopii zapasowych 3-2-1 oznacza przechowywanie trzech kopii danych na dwóch różnych nośnikach, z jedną kopią w osobnej lokalizacji.
-Kopia zapasowa powinna być przechowywana odłączona od komputera, ponieważ ransomware szyfruje także podłączone dyski i udziały sieciowe.
+Kopia zapasowa powinna być przechowywana odłączona od komputera, ponieważ ransomware szyfruje także podłączone dyski zewnętrzne i udziały sieciowe.
+Ransomware to złośliwe oprogramowanie, które szyfruje pliki ofiary i żąda okupu za ich odszyfrowanie, często grożąc dodatkowo publikacją skradzionych danych.
 CERT Polska odradza płacenie okupu po ataku ransomware, ponieważ zapłata nie gwarantuje odzyskania danych i finansuje dalszą działalność przestępczą.
 Przed atakiem ransomware chronią aktualizacje, ostrożność przy załącznikach oraz regularne kopie zapasowe testowane pod kątem możliwości odtworzenia.
-Użytkownik powinien ograniczyć publiczne udostępnianie danych osobowych w mediach społecznościowych, bo oszuści wykorzystują je do personalizowania ataków i odgadywania pytań pomocniczych.
-Aplikacja mobilna powinna otrzymywać wyłącznie uprawnienia niezbędne do jej działania, a dostęp do kontaktów, lokalizacji i mikrofonu należy okresowo przeglądać.
-Ekran urządzenia należy blokować kodem, PIN-em lub biometrią, a komputer pozostawiony bez nadzoru powinien być zablokowany.
-Szyfrowanie dysku, na przykład BitLocker w Windows lub FileVault w macOS, chroni dane w razie utraty lub kradzieży urządzenia.
-Wyciek własnych danych można sprawdzić w publicznych bazach naruszeń, a skompromitowane hasła trzeba natychmiast zmienić w każdym serwisie, w którym były użyte.
-W przypadku podejrzenia przejęcia konta użytkownik powinien zmienić hasło, wylogować wszystkie sesje, sprawdzić reguły przekierowań poczty i włączyć MFA.
+Sextortion to szantaż, w którym oszust twierdzi, że posiada intymne nagrania ofiary, i żąda zapłaty w kryptowalucie, a w większości przypadków takie nagrania nie istnieją.
+Wyciek własnych danych można sprawdzić w publicznych bazach naruszeń, na przykład w serwisie bezpiecznedane.gov.pl, a skompromitowane hasła trzeba natychmiast zmienić.
+W przypadku podejrzenia przejęcia konta użytkownik powinien zmienić hasło, wylogować wszystkie aktywne sesje, sprawdzić reguły przekierowań poczty i włączyć MFA.
 Po przypadkowym podaniu danych karty na fałszywej stronie należy niezwłocznie zastrzec kartę w banku i zgłosić incydent.
+Utracony lub skradziony dowód osobisty należy zastrzec w banku, przez aplikację mObywatel lub w urzędzie gminy, aby uniemożliwić zaciągnięcie kredytu na cudze dane.
+Zastrzeżenie numeru PESEL w rejestrze zastrzeżeń blokuje możliwość zaciągnięcia zobowiązań finansowych na dane użytkownika bez jego wiedzy.
 Incydent cyberbezpieczeństwa, na przykład oszustwo lub atak, można zgłosić do CERT Polska oraz na policję, a zgłoszenie pomaga w wykrywaniu kampanii i ochronie innych użytkowników.
-Regularne przeglądanie historii logowań i aktywności konta pozwala wcześnie wykryć nieautoryzowany dostęp.
-Użytkownik, który otworzył podejrzany załącznik, powinien odłączyć urządzenie od sieci i zgłosić zdarzenie administratorowi lub zespołowi CERT.
+Regularne przeglądanie historii logowań i powiadomień o aktywności konta pozwala wcześnie wykryć nieautoryzowany dostęp.
+Użytkownik, który otworzył podejrzany załącznik lub podał dane na fałszywej stronie, powinien odłączyć urządzenie od sieci, zmienić hasła z innego urządzenia i zgłosić zdarzenie.
