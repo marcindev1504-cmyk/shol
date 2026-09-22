@@ -97,7 +97,7 @@ export function TrybSluchacza({ pakietParam }: { pakietParam: string }) {
       const id = Number(trimmed)
       if (Number.isFinite(id)) {
         const remote = await fetchPackFile(packFileUrl(id))
-        const local = (await loadLearnerPacks()).find((item) => item.id === id) ?? await loadPack(id)
+        const local = (await loadLearnerPacks()).find((item) => item.id === id) ?? (previewMode ? await loadPack(id) : undefined)
         if (remote) {
           resolved = remote
           if (local && packSignature(local) !== packSignature(remote)) setRemoteUpdated(true)
