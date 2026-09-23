@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { AI_MODELS, CARDS_PER_SOURCE_OPTIONS, type AppSettings } from '../domain/settings'
 import { listOllamaModels, type OllamaStatus } from '../adapters/ai'
+import { installPwa, onPwaInstallChange, pwaInstallable, pwaInstalled } from '../adapters/pwa'
 
 type Props = {
   settings: AppSettings
@@ -19,6 +20,10 @@ export function UstawieniaView({ settings, onSave, onExport, onReset }: Props) {
   const [cardsPerSource, setCardsPerSource] = useState(settings.cardsPerSource)
   const [ollama, setOllama] = useState<OllamaStatus | null>(null)
   const [serverRunning, setServerRunning] = useState<boolean | null>(null)
+  const [installable, setInstallable] = useState(pwaInstallable())
+  const [installed] = useState(pwaInstalled())
+
+  useEffect(() => onPwaInstallChange(() => setInstallable(pwaInstallable())), [])
 
   useEffect(() => {
     fetch('/api/control?action=status').then(r => r.json()).then(d => setServerRunning(d.running)).catch(() => setServerRunning(null))
@@ -87,6 +92,21 @@ export function UstawieniaView({ settings, onSave, onExport, onReset }: Props) {
         </div>
       </section>
       )}
+
+      <section className="settings-card">
+        <p className="kicker">INSTALACJA</p>
+        <h3>Aplikacja na komputerze</h3>
+        <p className="settings-copy">Zainstaluj Kompas Wiedzy jako aplikację — własne okno i ikona w menu Start, bez paska przeglądarki.</p>
+        <div className="settings-actions">
+          {installed ? (
+            <span className="model-status ok">● Aplikacja zainstalowana</span>
+          ) : installable ? (
+            <button className="primary-button" onClick={() => void installPwa()}>Zainstaluj aplikację</button>
+          ) : (
+            <span className="settings-copy">Instalacja niedostępna — otwórz aplikację w Edge lub Chrome i użyj ikony instalacji w pasku adresu.</span>
+          )}
+        </div>
+      </section>
 
       <section className="settings-card">
         <p className="kicker">INFORMACJE</p>
