@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { createFlashcard, type Flashcard, type Pack } from '../domain/packs'
 import { containsQuote, createSource, detectLegalBasis, draftsFromSource, makeLegalBasisLookup, type Source } from '../domain/sources'
 import { generateAiDraft } from '../adapters/ai'
@@ -18,6 +18,15 @@ type Props = {
 
 type Proposal = { id: string; checked: boolean; question: string; answer: string; source: string; legalBasis?: string; packId: number }
 
+function AutoGrowTextarea(props: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
+  const ref = useRef<HTMLTextAreaElement>(null)
+  useLayoutEffect(() => {
+    const el = ref.current
+    if (el) { el.style.height = 'auto'; el.style.height = `${el.scrollHeight}px` }
+  }, [props.value])
+  return <textarea {...props} ref={ref} rows={1} style={{ resize: 'none', overflow: 'hidden' }} />
+}
+
 function toProposal(card: Flashcard): Proposal {
   return { id: card.id, checked: true, question: card.question, answer: card.answer, source: card.source, legalBasis: card.legalBasis, packId: card.packId }
 }
@@ -31,6 +40,7 @@ export function GeneratorDialog({ pack, sources, generatorMode, aiModel, ollamaH
   const [error, setError] = useState('')
   const [rejectedCount, setRejectedCount] = useState(0)
   const [progress, setProgress] = useState<{ done: number; total: number } | null>(null)
+  const [full, setFull] = useState(false)
 
   const contentKey = (source: Source) => source.content.replace(/\s+/g, ' ').trim().toLowerCase()
   const uniqueSources = useMemo(() => {
@@ -112,8 +122,9 @@ export function GeneratorDialog({ pack, sources, generatorMode, aiModel, ollamaH
 
   return (
     <div className="modal-backdrop" onClick={onClose}>
-      <div className="modal generator-modal" onClick={(event) => event.stopPropagation()}>
+      <div className={full ? 'modal generator-modal fullscreen' : 'modal generator-modal'} onClick={(event) => event.stopPropagation()}>
         <button className="modal-close" onClick={onClose}>×</button>
+        <button className="modal-expand" onClick={() => setFull((f) => !f)} title={full ? 'Zmniejsz okno' : 'Pełny ekran'} aria-label={full ? 'Zmniejsz okno' : 'Pełny ekran'}>{full ? '⊡' : '⛶'}</button>
         <p className="kicker">GENERATOR · PACZKA „{pack.title.toUpperCase()}”</p>
         <h2>{step === 1 ? 'Generuj fiszki ze źródła' : 'Przejrzyj propozycje'}<span className={generatorMode === 'model' ? 'ai-badge' : 'ai-badge muted'}><svg className="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z" /><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z" /></svg>{generatorMode === 'model' ? `AI · ${aiModel}` : 'reguły · cytaty'}</span></h2>
 
@@ -134,8 +145,8 @@ export function GeneratorDialog({ pack, sources, generatorMode, aiModel, ollamaH
               <div className={item.checked ? 'proposal' : 'proposal unchecked'} key={item.id}>
                 <input type="checkbox" checked={item.checked} onChange={(event) => setProposals((current) => current.map((p) => p.id === item.id ? { ...p, checked: event.target.checked } : p))} aria-label={`Zaznacz propozycję ${index + 1}`} />
                 <div className="proposal-body">
-                  <textarea value={item.question} onChange={(event) => updateProposal(item.id, 'question', event.target.value)} rows={1} placeholder="Pytanie" />
-                  <textarea value={item.answer} onChange={(event) => updateProposal(item.id, 'answer', event.target.value)} rows={3} placeholder="Odpowiedź" />
+                  <AutoGrowTextarea value={item.question} onChange={(event) => updateProposal(item.id, 'question', event.target.value)} placeholder="Pytanie" />
+                  <AutoGrowTextarea value={item.answer} onChange={(event) => updateProposal(item.id, 'answer', event.target.value)} placeholder="Odpowiedź" />
                   <input value={item.source} onChange={(event) => updateProposal(item.id, 'source', event.target.value)} placeholder="Źródło" />
                   <input value={item.legalBasis ?? ''} onChange={(event) => updateProposal(item.id, 'legalBasis', event.target.value)} placeholder="Podstawa prawna (opcjonalnie — pokaże się słuchaczowi)" />
                 </div>
