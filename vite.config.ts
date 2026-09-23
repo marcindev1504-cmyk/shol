@@ -128,7 +128,19 @@ function localAi(): Plugin {
   }
 }
 
+function instructorManifest(): Plugin {
+  return {
+    name: 'instructor-manifest',
+    transformIndexHtml: {
+      order: 'post',
+      handler(html) {
+        return html.replace('manifest.webmanifest', 'manifest-instructor.webmanifest')
+      },
+    },
+  }
+}
+
 export default defineConfig(({ mode }) => ({
   base: mode === 'learner' ? '/shol/' : '/',
-  plugins: [react(), localAi()],
+  plugins: [react(), localAi(), ...(mode === 'learner' ? [] : [instructorManifest()])],
 }))
