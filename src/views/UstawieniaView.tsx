@@ -93,6 +93,9 @@ export function UstawieniaView({ settings, onSave, onExport, onReset }: Props) {
       </section>
       )}
 
+      <div className="settings-save-bar">
+        <button className="primary-button settings-save" onClick={() => onSave({ instructorName, workspaceName, shareBaseUrl, generatorMode, aiModel, ollamaHost: ollamaHost.trim().replace(/\/+$/, ''), cardsPerSource })}>Zapisz ustawienia</button>
+      </div>
       </div>
 
       <div className="settings-grid-side">
@@ -134,9 +137,6 @@ export function UstawieniaView({ settings, onSave, onExport, onReset }: Props) {
           )}
         </div>
       </section>
-      </div>
-      <div className="settings-save-bar">
-        <button className="primary-button settings-save" onClick={() => onSave({ instructorName, workspaceName, shareBaseUrl, generatorMode, aiModel, ollamaHost: ollamaHost.trim().replace(/\/+$/, ''), cardsPerSource })}>Zapisz ustawienia</button>
       </div>
     </div>
   )
