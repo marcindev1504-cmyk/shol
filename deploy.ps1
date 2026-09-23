@@ -32,6 +32,8 @@ New-Item -ItemType File -Force -Path "$tempDir\.nojekyll" | Out-Null
 $packsDir = "$tempDir\paczki"
 if (Test-Path $packsDir) { Remove-Item -Recurse -Force $packsDir }
 New-Item -ItemType Directory -Force -Path $packsDir | Out-Null
+# .gitkeep — folder paczki/ widoczny na GitHubie nawet gdy pusty (git nie sledzi pustych katalogow)
+New-Item -ItemType File -Force -Path "$packsDir\.gitkeep" | Out-Null
 
 try {
   $listing = @(Invoke-RestMethod "https://api.github.com/repos/marcindev1504-cmyk/shol/contents/paczki?ref=main" -Headers @{ "User-Agent" = "kompas-deploy" })
