@@ -18,15 +18,16 @@ function Invoke-Git { & git -c core.autocrlf=false -c core.safecrlf=false @args 
 
 Write-Host "1/4 Building app (learner mode)..." -ForegroundColor Cyan
 Set-Location $projectDir
-npx vite build --mode learner
+New-Item -ItemType Directory -Force -Path $tempDir | Out-Null
+# Build prosto do folderu deployu — dist/ zostaje nietkniete (to build instruktora
+# dla lokalnego serwera na :8080)
+npx vite build --mode learner --outDir "$tempDir" --emptyOutDir
 if ($LASTEXITCODE -ne 0) { Write-Host "Build failed." -ForegroundColor Red; exit 1 }
 
 Write-Host "2/4 Preparing deploy package..." -ForegroundColor Cyan
-New-Item -ItemType Directory -Force -Path $tempDir | Out-Null
-Copy-Item -Recurse "$projectDir\dist\*" $tempDir
 New-Item -ItemType File -Force -Path "$tempDir\.nojekyll" | Out-Null
 
-# Lokalne paczki z public/paczki trafia do dist/ przez vite build — wyrzucamy je.
+# Lokalne paczki z public/paczki trafia do builda — wyrzucamy je.
 # Na Pages mają trafić wyłącznie paczki żyjące już na main.
 $packsDir = "$tempDir\paczki"
 if (Test-Path $packsDir) { Remove-Item -Recurse -Force $packsDir }
