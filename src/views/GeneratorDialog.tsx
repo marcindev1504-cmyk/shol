@@ -18,7 +18,7 @@ type Props = {
 
 type Proposal = { id: string; checked: boolean; question: string; answer: string; source: string; legalBasis?: string; packId: number }
 
-function AutoGrowTextarea(props: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
+export function AutoGrowTextarea(props: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
   const ref = useRef<HTMLTextAreaElement>(null)
   useLayoutEffect(() => {
     const el = ref.current
@@ -153,8 +153,8 @@ export function GeneratorDialog({ pack, sources, generatorMode, aiModel, ollamaH
                 <div className="proposal-body">
                   <AutoGrowTextarea value={item.question} onChange={(event) => updateProposal(item.id, 'question', event.target.value)} placeholder="Pytanie" />
                   <AutoGrowTextarea value={item.answer} onChange={(event) => updateProposal(item.id, 'answer', event.target.value)} placeholder="Odpowiedź" />
-                  <input value={item.source} onChange={(event) => updateProposal(item.id, 'source', event.target.value)} placeholder="Źródło" />
-                  <input value={item.legalBasis ?? ''} onChange={(event) => updateProposal(item.id, 'legalBasis', event.target.value)} placeholder="Podstawa prawna (opcjonalnie — pokaże się słuchaczowi)" />
+                  <AutoGrowTextarea value={item.source} onChange={(event) => updateProposal(item.id, 'source', event.target.value)} placeholder="Źródło" />
+                  <AutoGrowTextarea value={item.legalBasis ?? ''} onChange={(event) => updateProposal(item.id, 'legalBasis', event.target.value)} placeholder="Podstawa prawna (opcjonalnie — pokaże się słuchaczowi)" />
                 </div>
                 <button className="icon-button" aria-label="Usuń propozycję" onClick={() => setProposals((current) => current.filter((p) => p.id !== item.id))}>×</button>
               </div>

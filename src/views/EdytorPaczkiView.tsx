@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { createFlashcard, formatUpdatedLabel, packColors, packColorLabels, packColorSymbols, type Flashcard, type Pack } from '../domain/packs'
+import { AutoGrowTextarea } from './GeneratorDialog'
 
 type Props = {
   pack: Pack
@@ -105,8 +106,8 @@ export function EdytorPaczkiView({ pack, onBack, onUpdate, onGenerate, onPoster,
             <span className="card-index">#nowa</span>
             <label>Pytanie<textarea value={draft.question} onChange={(event) => setDraft((current) => ({ ...current, question: event.target.value }))} rows={2} autoFocus /></label>
             <label>Odpowiedź<textarea value={draft.answer} onChange={(event) => setDraft((current) => ({ ...current, answer: event.target.value }))} rows={3} /></label>
-            <label>Źródło<input value={draft.source} onChange={(event) => setDraft((current) => ({ ...current, source: event.target.value }))} /></label>
-            <label>Podstawa prawna <em>(opcjonalnie — pokaże się słuchaczowi)</em><input value={draft.legalBasis} onChange={(event) => setDraft((current) => ({ ...current, legalBasis: event.target.value }))} placeholder="np. art. 15 ustawy o Policji" /></label>
+            <label>Źródło<AutoGrowTextarea value={draft.source} onChange={(event) => setDraft((current) => ({ ...current, source: event.target.value }))} /></label>
+            <label>Podstawa prawna <em>(opcjonalnie — pokaże się słuchaczowi)</em><AutoGrowTextarea value={draft.legalBasis} onChange={(event) => setDraft((current) => ({ ...current, legalBasis: event.target.value }))} placeholder="np. art. 15 ustawy o Policji" /></label>
             <div className="card-editor-actions">
               <button className="primary-button" disabled={!draft.question.trim() || !draft.answer.trim()} onClick={saveEdit}>Zapisz fiszkę</button>
               <button className="outline-button" onClick={cancelEdit}>Anuluj</button>
@@ -118,8 +119,8 @@ export function EdytorPaczkiView({ pack, onBack, onUpdate, onGenerate, onPoster,
             <span className="card-index">#{index + 1}</span>
             <label>Pytanie<textarea value={draft.question} onChange={(event) => setDraft((current) => ({ ...current, question: event.target.value }))} rows={2} autoFocus /></label>
             <label>Odpowiedź<textarea value={draft.answer} onChange={(event) => setDraft((current) => ({ ...current, answer: event.target.value }))} rows={3} /></label>
-            <label>Źródło<input value={draft.source} onChange={(event) => setDraft((current) => ({ ...current, source: event.target.value }))} /></label>
-            <label>Podstawa prawna <em>(opcjonalnie — pokaże się słuchaczowi)</em><input value={draft.legalBasis} onChange={(event) => setDraft((current) => ({ ...current, legalBasis: event.target.value }))} placeholder="np. art. 15 ustawy o Policji" /></label>
+            <label>Źródło<AutoGrowTextarea value={draft.source} onChange={(event) => setDraft((current) => ({ ...current, source: event.target.value }))} /></label>
+            <label>Podstawa prawna <em>(opcjonalnie — pokaże się słuchaczowi)</em><AutoGrowTextarea value={draft.legalBasis} onChange={(event) => setDraft((current) => ({ ...current, legalBasis: event.target.value }))} placeholder="np. art. 15 ustawy o Policji" /></label>
             <div className="card-editor-actions">
               <button className="primary-button" disabled={!draft.question.trim() || !draft.answer.trim()} onClick={saveEdit}>Zapisz fiszkę</button>
               <button className="outline-button" onClick={cancelEdit}>Anuluj</button>
