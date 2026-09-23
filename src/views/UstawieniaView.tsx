@@ -110,11 +110,11 @@ export function UstawieniaView({ settings, onSave, onExport, onReset }: Props) {
 
       <section className="settings-card">
         <p className="kicker">INFORMACJE</p>
-        <h3>O tej instalacji</h3>
+        <h3>O tej instalacji <span className="version-badge">v0.2.0</span></h3>
         <dl className="settings-facts">
-          <div><dt>Wersja</dt><dd>0.2.0</dd></div>
-          <div><dt>Tryb pracy</dt><dd>lokalny, bez chmury, offline (PWA)</dd></div>
+          <div><dt>Tryb pracy</dt><dd>Lokalny · offline (PWA)</dd></div>
           <div><dt>Magazyn danych</dt><dd>IndexedDB „kompas-wiedzy”</dd></div>
+          <div><dt>Synchronizacja</dt><dd>Brak — dane nie opuszczają urządzenia</dd></div>
         </dl>
         <button className="primary-button settings-save" onClick={() => onSave({ instructorName, workspaceName, shareBaseUrl, generatorMode, aiModel, ollamaHost: ollamaHost.trim().replace(/\/+$/, ''), cardsPerSource })}>Zapisz ustawienia</button>
       </section>
