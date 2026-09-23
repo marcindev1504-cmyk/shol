@@ -150,8 +150,15 @@ const server = createServer(async (req, res) => {
     const pathname = normalize(decodeURIComponent(url.pathname)).replace(/^([/\\])+/, '')
     const filePath = join(ROOT, pathname === '' ? 'index.html' : pathname)
     if (!filePath.startsWith(ROOT)) throw new Error('forbidden')
-    const content = await readFile(filePath).catch(() => readFile(join(ROOT, 'index.html')))
-    res.writeHead(200, { 'Content-Type': MIME[extname(filePath)] ?? 'application/octet-stream' })
+    let content = await readFile(filePath).catch(() => null)
+    if (content === null) {
+      if (extname(filePath)) { res.writeHead(404).end('Not found'); return }
+      content = await readFile(join(ROOT, 'index.html'))
+    }
+    const ext = extname(filePath)
+    const headers = { 'Content-Type': MIME[ext] ?? 'application/octet-stream' }
+    if (ext === '.html' || ext === '.webmanifest' || pathname === 'sw.js') headers['Cache-Control'] = 'no-cache'
+    res.writeHead(200, headers)
     res.end(content)
   } catch {
     res.writeHead(404).end('Not found')

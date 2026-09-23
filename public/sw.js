@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kompas-wiedzy-v6'
+const CACHE_NAME = 'kompas-wiedzy-v7'
 const BASE = self.registration.scope
 const APP_SHELL = [BASE, BASE + 'index.html', BASE + 'manifest.webmanifest']
 
