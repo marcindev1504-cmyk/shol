@@ -124,7 +124,13 @@ export function GeneratorDialog({ pack, sources, generatorMode, aiModel, ollamaH
     <div className="modal-backdrop" onClick={onClose}>
       <div className={full ? 'modal generator-modal fullscreen' : 'modal generator-modal'} onClick={(event) => event.stopPropagation()}>
         <button className="modal-close" onClick={onClose}>×</button>
-        <button className="modal-expand" onClick={() => setFull((f) => !f)} title={full ? 'Zmniejsz okno' : 'Pełny ekran'} aria-label={full ? 'Zmniejsz okno' : 'Pełny ekran'}>{full ? '⊡' : '⛶'}</button>
+        <button className="modal-expand" onClick={() => setFull((f) => !f)} title={full ? 'Zmniejsz okno' : 'Pełny ekran'} aria-label={full ? 'Zmniejsz okno' : 'Pełny ekran'}>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            {full
+              ? <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3" />
+              : <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />}
+          </svg>
+        </button>
         <p className="kicker">GENERATOR · PACZKA „{pack.title.toUpperCase()}”</p>
         <h2>{step === 1 ? 'Generuj fiszki ze źródła' : 'Przejrzyj propozycje'}<span className={generatorMode === 'model' ? 'ai-badge' : 'ai-badge muted'}><svg className="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z" /><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z" /></svg>{generatorMode === 'model' ? `AI · ${aiModel}` : 'reguły · cytaty'}</span></h2>
 
