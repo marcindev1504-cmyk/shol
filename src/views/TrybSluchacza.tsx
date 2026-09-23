@@ -368,7 +368,7 @@ export function TrybSluchacza({ pakietParam }: { pakietParam: string }) {
               <span className="flashcard-label">ODPOWIEDŹ</span>
               <h2>{card.answer}</h2>
               {card.legalBasis && <span className="legal-basis-chip">{card.legalBasis}</span>}
-              {card.source && <small className="flashcard-source" role="button" tabIndex={0} onClick={(event) => { event.stopPropagation(); setSourceDialog(card.source) }}><Icon name="books" /><span className="flashcard-source-text">{card.source}</span></small>}
+              {card.source && <small className="flashcard-source" role="button" tabIndex={0} onClick={(event) => { event.stopPropagation(); setSourceDialog(card.source) }} onTouchStart={(event) => event.stopPropagation()} onTouchMove={(event) => event.stopPropagation()} onTouchEnd={(event) => event.stopPropagation()}><Icon name="books" /><span className="flashcard-source-text">{card.source}</span></small>}
               <button className="flashcard-button" onClick={(event) => { event.stopPropagation(); setRevealed(false) }}>Ukryj odpowiedź</button>
             </div>
           </div>
@@ -410,7 +410,7 @@ export function TrybSluchacza({ pakietParam }: { pakietParam: string }) {
           <div className="share-dialog" role="dialog" aria-modal="true" aria-label="Źródło fiszki" onClick={(event) => event.stopPropagation()}>
             <button className="modal-close" onClick={() => setSourceDialog(null)}>×</button>
             <p className="kicker">ŹRÓDŁO FISZKI</p>
-            <div className="modal-source"><Icon name="books" /><span><strong>{sourceDialog}</strong></span></div>
+            <div className="modal-source source-dialog-content"><Icon name="books" /><span><strong>{sourceDialog}</strong></span></div>
           </div>
         </div>
       )}
