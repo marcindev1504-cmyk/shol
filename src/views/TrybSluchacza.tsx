@@ -238,7 +238,7 @@ export function TrybSluchacza({ pakietParam }: { pakietParam: string }) {
   if (screen === 'loading') {
     body = <main className="learner-main"><p className="kicker">WCZYTYWANIE</p><h1>Pobieranie paczki…</h1><p className="learner-footer">Paczka zostanie zapisana na tym urządzeniu.</p></main>
   } else if (screen === 'error') {
-    body = <main className="learner-main"><p className="kicker">BŁĄD</p><h1>Nie udało się pobrać paczki.</h1><p className="learner-footer">Sprawdź, czy masz dostęp do zasobu z paczkami i spróbuj ponownie.{library.length > 0 && <> <button className="learner-primary" style={{ marginTop: 20 }} onClick={() => void openLibrary()}>Moje paczki</button></>}</p></main>
+    body = <main className="learner-main"><p className="kicker">BŁĄD</p><h1>Nie udało się pobrać paczki.</h1><p className="learner-footer">Paczka mogła nie zostać jeszcze opublikowana — poproś instruktora o potwierdzenie. Możesz też spróbować ponownie za chwilę.{library.length > 0 && <> <button className="learner-primary" style={{ marginTop: 20 }} onClick={() => void openLibrary()}>Moje paczki</button></>}</p></main>
   } else if (screen === 'library') {
     const totalCards = library.reduce((sum, p) => sum + p.flashcards.length, 0)
     const totalDone = library.reduce((sum, p) => sum + (progress[p.id] !== undefined && p.flashcards.length > 0 ? Math.min(progress[p.id]! + 1, p.flashcards.length) : 0), 0)
