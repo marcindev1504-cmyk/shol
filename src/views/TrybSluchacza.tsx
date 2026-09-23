@@ -200,7 +200,8 @@ export function TrybSluchacza({ pakietParam }: { pakietParam: string }) {
     else setCardIndex((current) => current + 1)
     setRevealed(false)
     requestAnimationFrame(() => {
-      document.querySelector('.learner-progress')?.scrollIntoView({ block: 'start', behavior: 'instant' as ScrollBehavior })
+      const el = document.querySelector('.learner-progress')
+      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 12, behavior: 'instant' as ScrollBehavior })
     })
   }
 
