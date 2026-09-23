@@ -81,7 +81,7 @@ export function TrybSluchacza({ pakietParam }: { pakietParam: string }) {
   const [remoteUpdated, setRemoteUpdated] = useState(false)
   const [streak, setStreak] = useState(() => loadStreak().days)
   const [dragX, setDragX] = useState(0)
-  const [sourceDialog, setSourceDialog] = useState<string | null>(null)
+  const [sourceDialog, setSourceDialog] = useState<{ source: string; legalBasis?: string } | null>(null)
   const dragStartX = useRef<number | null>(null)
   const answering = useRef(false)
   const suppressClick = useRef(0)
@@ -367,8 +367,7 @@ export function TrybSluchacza({ pakietParam }: { pakietParam: string }) {
             <div className="flashcard-face back">
               <span className="flashcard-label">ODPOWIEDŹ</span>
               <h2>{card.answer}</h2>
-              {card.legalBasis && <span className="legal-basis-chip">{card.legalBasis}</span>}
-              {card.source && <small className="flashcard-source" role="button" tabIndex={0} onClick={(event) => { event.stopPropagation(); setSourceDialog(card.source) }} onTouchStart={(event) => event.stopPropagation()} onTouchMove={(event) => event.stopPropagation()} onTouchEnd={(event) => event.stopPropagation()}><Icon name="books" /><span className="flashcard-source-text">{card.source}</span></small>}
+              {(card.source || card.legalBasis) && <small className="flashcard-source" role="button" tabIndex={0} onClick={(event) => { event.stopPropagation(); setSourceDialog({ source: card.source ?? '', legalBasis: card.legalBasis }) }} onTouchStart={(event) => event.stopPropagation()} onTouchMove={(event) => event.stopPropagation()} onTouchEnd={(event) => event.stopPropagation()}><Icon name="books" /><span className="flashcard-source-text">{card.source || card.legalBasis}</span></small>}
               <button className="flashcard-button" onClick={(event) => { event.stopPropagation(); setRevealed(false) }}>Ukryj odpowiedź</button>
             </div>
           </div>
@@ -410,7 +409,13 @@ export function TrybSluchacza({ pakietParam }: { pakietParam: string }) {
           <div className="share-dialog" role="dialog" aria-modal="true" aria-label="Źródło fiszki" onClick={(event) => event.stopPropagation()}>
             <button className="modal-close" onClick={() => setSourceDialog(null)}>×</button>
             <p className="kicker">ŹRÓDŁO FISZKI</p>
-            <div className="modal-source source-dialog-content"><Icon name="books" /><span><strong>{sourceDialog}</strong></span></div>
+            <div className="modal-source source-dialog-content">
+              <Icon name="books" />
+              <span className="source-dialog-text">
+                {sourceDialog.source && <strong>{sourceDialog.source}</strong>}
+                {sourceDialog.legalBasis && <><em className="source-dialog-label">Podstawa prawna</em><span className="source-dialog-legal">{sourceDialog.legalBasis}</span></>}
+              </span>
+            </div>
           </div>
         </div>
       )}
