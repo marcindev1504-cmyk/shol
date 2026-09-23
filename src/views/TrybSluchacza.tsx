@@ -81,6 +81,7 @@ export function TrybSluchacza({ pakietParam }: { pakietParam: string }) {
   const [remoteUpdated, setRemoteUpdated] = useState(false)
   const [streak, setStreak] = useState(() => loadStreak().days)
   const [dragX, setDragX] = useState(0)
+  const [sourceDialog, setSourceDialog] = useState<string | null>(null)
   const dragStartX = useRef<number | null>(null)
   const answering = useRef(false)
   const suppressClick = useRef(0)
@@ -367,7 +368,7 @@ export function TrybSluchacza({ pakietParam }: { pakietParam: string }) {
               <span className="flashcard-label">ODPOWIEDŹ</span>
               <h2>{card.answer}</h2>
               {card.legalBasis && <span className="legal-basis-chip">{card.legalBasis}</span>}
-              <small><Icon name="books" />{card.source}</small>
+              {card.source && <small className="flashcard-source" role="button" tabIndex={0} onClick={(event) => { event.stopPropagation(); setSourceDialog(card.source) }}><Icon name="books" /><span className="flashcard-source-text">{card.source}</span></small>}
               <button className="flashcard-button" onClick={(event) => { event.stopPropagation(); setRevealed(false) }}>Ukryj odpowiedź</button>
             </div>
           </div>
@@ -401,6 +402,15 @@ export function TrybSluchacza({ pakietParam }: { pakietParam: string }) {
             <div className="share-qr"><QRCodeSVG value={packUrl(sharePack.id)} size={200} bgColor="#ffffff" fgColor="#17201f" /></div>
             <p className="share-url">{packUrl(sharePack.id)}</p>
             {canShare && <button className="learner-primary full-width" onClick={() => void sharePackLink(sharePack)}>Udostępnij link…</button>}
+          </div>
+        </div>
+      )}
+      {sourceDialog && (
+        <div className="modal-backdrop" onClick={() => setSourceDialog(null)}>
+          <div className="share-dialog" role="dialog" aria-modal="true" aria-label="Źródło fiszki" onClick={(event) => event.stopPropagation()}>
+            <button className="modal-close" onClick={() => setSourceDialog(null)}>×</button>
+            <p className="kicker">ŹRÓDŁO FISZKI</p>
+            <div className="modal-source"><Icon name="books" /><span><strong>{sourceDialog}</strong></span></div>
           </div>
         </div>
       )}
