@@ -367,7 +367,7 @@ export function TrybSluchacza({ pakietParam }: { pakietParam: string }) {
             <div className="flashcard-face back">
               <span className="flashcard-label">ODPOWIEDŹ</span>
               <h2>{card.answer}</h2>
-              {(card.source || card.legalBasis) && <small className="flashcard-source" role="button" tabIndex={0} onClick={(event) => { event.stopPropagation(); setSourceDialog({ source: card.source ?? '', legalBasis: card.legalBasis }) }} onTouchStart={(event) => event.stopPropagation()} onTouchMove={(event) => event.stopPropagation()} onTouchEnd={(event) => event.stopPropagation()}><Icon name="books" /><span className="flashcard-source-text">{card.source || card.legalBasis}</span></small>}
+              {(card.source || card.legalBasis) && <small className="flashcard-source" role="button" tabIndex={0} onClick={(event) => { event.stopPropagation(); setSourceDialog({ source: card.source ?? '', legalBasis: card.legalBasis }) }} onTouchStart={(event) => event.stopPropagation()} onTouchMove={(event) => event.stopPropagation()} onTouchEnd={(event) => event.stopPropagation()}><span className="flashcard-source-label">Źródło</span><span className="flashcard-source-text">{card.source || card.legalBasis}</span></small>}
               <button className="flashcard-button" onClick={(event) => { event.stopPropagation(); setRevealed(false) }}>Ukryj odpowiedź</button>
             </div>
           </div>
