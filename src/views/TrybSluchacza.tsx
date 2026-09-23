@@ -199,6 +199,7 @@ export function TrybSluchacza({ pakietParam }: { pakietParam: string }) {
     if (cardIndex + 1 >= cards.length) setFinished(true)
     else setCardIndex((current) => current + 1)
     setRevealed(false)
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
   }
 
   function answer(known: boolean) {
