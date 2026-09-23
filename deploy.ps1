@@ -1,9 +1,14 @@
-﻿# deploy.ps1 - builds learner-only PWA and deploys to GitHub Pages (main branch)
+﻿# deploy.ps1 - deployuje TYLKO kod aplikacji słuchacza na GitHub Pages (main)
 # Usage: .\deploy.ps1
 #
-# Paczki: pliki z public/paczki/ trafiaja do dist/. Dodatkowo przed pushem skrypt
-# dolacza paczki juz istniejace na galezi main (wgrane np. przez innych instruktorow
-# przez web UI GitHuba), wiec deploy nie kasuje cudzych paczek.
+# Model: paczki żyją WYŁĄCZNIE na gałęzi main w katalogu paczki/ — instruktorzy
+# wgrywają je ręcznie przez web UI GitHuba. public/paczki/ lokalnie służy tylko
+# do testów dev i NIGDY nie trafia na Pages. Przed force-pushem skrypt pobiera
+# paczki z main i dokłada je do deployu, żeby ich nie skasować.
+#
+# UWAGA: push jest wymuszony (-f) — zawartość main zostaje zastąpiona tym, co
+# skrypt przygotuje. Dlatego bez udanego pobrania listy paczek deploy jest
+# przerywany, żeby nie wyczyścić paczek na GitHubie.
 
 $ErrorActionPreference = "Continue"   # git pisze ostrzezenia na stderr - o bledzie decyduje kod wyjscia
 $projectDir = Split-Path -Parent $MyInvocation.MyCommand.Path
@@ -21,22 +26,30 @@ New-Item -ItemType Directory -Force -Path $tempDir | Out-Null
 Copy-Item -Recurse "$projectDir\dist\*" $tempDir
 New-Item -ItemType File -Force -Path "$tempDir\.nojekyll" | Out-Null
 
-# Dolacz paczki istniejace juz na main (wgrane np. przez innych instruktorow)
+# Lokalne paczki z public/paczki trafia do dist/ przez vite build — wyrzucamy je.
+# Na Pages mają trafić wyłącznie paczki żyjące już na main.
 $packsDir = "$tempDir\paczki"
+if (Test-Path $packsDir) { Remove-Item -Recurse -Force $packsDir }
 New-Item -ItemType Directory -Force -Path $packsDir | Out-Null
+
 try {
-  $listing = Invoke-RestMethod "https://api.github.com/repos/marcindev1504-cmyk/shol/contents/paczki?ref=main" -Headers @{ "User-Agent" = "kompas-deploy" }
-  $missing = @($listing | Where-Object { $_.name -like "kompas-paczka-*.json" -and -not (Test-Path (Join-Path $packsDir $_.name)) })
-  foreach ($file in $missing) {
+  $listing = @(Invoke-RestMethod "https://api.github.com/repos/marcindev1504-cmyk/shol/contents/paczki?ref=main" -Headers @{ "User-Agent" = "kompas-deploy" })
+  $remote = @($listing | Where-Object { $_.name -like "kompas-paczka-*.json" })
+  foreach ($file in $remote) {
     Invoke-WebRequest -UseBasicParsing $file.download_url -OutFile (Join-Path $packsDir $file.name)
   }
-  if ($missing.Count -gt 0) { Write-Host "    dolaczono z GitHuba: $($missing.Count) ($(($missing | ForEach-Object { $_.name }) -join ', '))" }
 } catch {
-  Write-Host "    nie udalo sie pobrac listy paczek z GitHuba - deploy tylko z lokalnych" -ForegroundColor Yellow
+  # 404 = katalog paczki/ nie istnieje jeszcze na main — deploy bez paczek jest OK
+  if ($_.Exception.Response.StatusCode.value__ -eq 404) {
+    $remote = @()
+  } else {
+    Write-Host "Nie udalo sie pobrac listy paczek z GitHuba - deploy przerwany, zeby nie skasowac paczek na main." -ForegroundColor Red
+    Set-Location $projectDir
+    Remove-Item -Recurse -Force $tempDir -ErrorAction SilentlyContinue
+    exit 1
+  }
 }
-
-$packs = @(Get-ChildItem "$packsDir\*.json" -ErrorAction SilentlyContinue)
-Write-Host "    paczki w deployu: $($packs.Count) ($(($packs | ForEach-Object { $_.BaseName -replace 'kompas-paczka-','' }) -join ', '))"
+Write-Host "    paczki zachowane z GitHuba: $($remote.Count) ($(($remote | ForEach-Object { $_.name }) -join ', '))"
 
 Write-Host "3/4 Pushing to GitHub Pages..." -ForegroundColor Cyan
 Set-Location $tempDir

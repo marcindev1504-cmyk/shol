@@ -169,7 +169,7 @@ function App() {
     anchor.download = `kompas-paczka-${pack.id}.json`
     anchor.click()
     URL.revokeObjectURL(url)
-    setNotice(`Wyeksportowano „${pack.title}”. Wrzuć plik do public/paczki/ i uruchom deploy.ps1 albo dodaj go na GitHubie do katalogu paczki/ gałęzi main.`)
+    setNotice(`Wyeksportowano „${pack.title}”. Wrzuć plik na GitHubie do katalogu paczki/ gałęzi main (Add file → Upload) — paczka będzie dostępna pod QR po ok. minucie.`)
   }
 
   function duplicatePack(pack: Pack) {
