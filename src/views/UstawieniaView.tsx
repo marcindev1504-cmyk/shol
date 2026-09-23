@@ -104,7 +104,6 @@ export function UstawieniaView({ settings, onSave, onExport, onReset }: Props) {
           <div><dt>Magazyn danych</dt><dd>IndexedDB „kompas-wiedzy”</dd></div>
           <div><dt>Synchronizacja</dt><dd>Brak — dane nie opuszczają urządzenia</dd></div>
         </dl>
-        <button className="primary-button settings-save" onClick={() => onSave({ instructorName, workspaceName, shareBaseUrl, generatorMode, aiModel, ollamaHost: ollamaHost.trim().replace(/\/+$/, ''), cardsPerSource })}>Zapisz ustawienia</button>
       </section>
 
       <section className="settings-card">
@@ -135,6 +134,9 @@ export function UstawieniaView({ settings, onSave, onExport, onReset }: Props) {
           )}
         </div>
       </section>
+      </div>
+      <div className="settings-save-bar">
+        <button className="primary-button settings-save" onClick={() => onSave({ instructorName, workspaceName, shareBaseUrl, generatorMode, aiModel, ollamaHost: ollamaHost.trim().replace(/\/+$/, ''), cardsPerSource })}>Zapisz ustawienia</button>
       </div>
     </div>
   )
