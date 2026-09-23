@@ -314,7 +314,7 @@ export function TrybSluchacza({ pakietParam }: { pakietParam: string }) {
         </div>
         <button className="learner-secondary" onClick={() => fileInputRef.current?.click()}>Wczytaj paczkę z pliku (JSON)</button>
         <input ref={fileInputRef} type="file" accept=".json,application/json" style={{ display: 'none' }} onChange={(event) => { const file = event.target.files?.[0]; if (file) void importPackFile(file); event.currentTarget.value = '' }} />
-        <p className="learner-footer">Paczki są zapisywane lokalnie — po instalacji aplikacja działa offline. Przytrzymaj paczkę, aby udostępnić lub usunąć. <a href="/">Panel instruktora</a></p>
+        <p className="learner-footer">Paczki są zapisywane lokalnie — po instalacji aplikacja działa offline. Przytrzymaj paczkę, aby udostępnić lub usunąć.</p>
       </main>
     )
   } else if (pack && cards.length === 0) {
