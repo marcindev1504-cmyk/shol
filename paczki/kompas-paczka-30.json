@@ -1,0 +1,260 @@
+{
+  "id": 30,
+  "title": "Cyberhigiena użytkownika — świadomość zagrożeń",
+  "subject": "Cyberbezpieczeństwo",
+  "status": "Zatwierdzone",
+  "updated": "23 wrz 2026",
+  "color": "blue",
+  "version": "2026-09-23",
+  "flashcards": [
+    {
+      "id": "cyber-01",
+      "question": "Dlaczego ataki na użytkowników indywidualnych tak często kończą się sukcesem mimo braku zaawansowanych narzędzi?",
+      "answer": "Bo sprawcy opierają się na socjotechnice: sterują emocjami (strach, pośpiech, ciekawość, chęć zysku), żeby skłonić ofiarę do działania bez weryfikacji. Luka w oprogramowaniu nie jest wtedy potrzebna — wystarczy, że użytkownik sam kliknie, przeleje środki albo poda dane.",
+      "source": "CERT Polska — baza wiedzy (socjotechnika, phishing); CBZC — komunikaty o vishingu",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-02",
+      "question": "Na czym polega zasada „zatrzymaj się, pomyśl, zweryfikuj”?",
+      "answer": "Nieoczekiwanej prośby o pieniądze, dane, kod, kliknięcie albo instalację oprogramowania nie realizuje się w kanale, którym nadeszła. Tożsamość rozmówcy i treść żądania sprawdza się niezależnie: oddzwaniając na numer z oficjalnej strony instytucji (wpisany ręcznie), w placówce albo inną znaną drogą kontaktu z konkretną osobą.",
+      "source": "CBZC, komunikat: „Nieoczekiwany telefon z banku lub policji?”",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-03",
+      "question": "Jaka jest aktualna minimalna długość hasła rekomendowana przez CERT Polska i co decyduje o jego sile?",
+      "answer": "Co najmniej 14 znaków (rekomendację podniesiono z 12 znaków w czerwcu 2025 r.). O sile decyduje przede wszystkim długość i losowość, a nie liczba znaków specjalnych. Dla hasła, które trzeba zapamiętać, CERT Polska zaleca hasło-zdanie z 4–5 niepowiązanych słów.",
+      "source": "CERT Polska, cert.pl/bezpieczne-hasla oraz wiedza.cert.pl/dobre-praktyki/hasla (aktualizacja 2026-09-02); rekomendacje techniczne — zmiana 12→14 znaków, czerwiec 2025",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-04",
+      "question": "Dlaczego każde konto powinno mieć unikalne hasło?",
+      "answer": "Wyciek z jednego serwisu umożliwia credential stuffing: automatyczne próby logowania tymi samymi danymi do innych usług. Hasło użyte w wielu miejscach oznacza, że jeden wyciek może otworzyć pocztę, media społecznościowe i inne konta.",
+      "source": "CERT Polska, wiedza.cert.pl/dobre-praktyki/hasla",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-05",
+      "question": "Jaką rolę pełni menedżer haseł i jak należy go zabezpieczyć?",
+      "answer": "Generuje i przechowuje unikalne, długie hasła w zaszyfrowanym sejfie; użytkownik pamięta tylko hasło główne. Hasło główne powinno być najsilniejsze (hasło-zdanie). CERT Polska uznaje też wbudowane menedżery przeglądarki lub telefonu za dopuszczalne. Konto menedżera warto chronić MFA, a kody zapasowe MFA przechowywać poza urządzeniem codziennego użytku.",
+      "source": "CERT Polska, wiedza.cert.pl/dobre-praktyki/hasla; cert.pl/bezpieczne-hasla",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-06",
+      "question": "Czym jest passkey (klucz dostępu) i dlaczego CERT Polska zaleca jego stosowanie?",
+      "answer": "To metoda logowania bez wpisywania hasła, oparta na kryptografii i powiązana z konkretną domeną serwisu. Fałszywa strona phishingowa nie otrzyma poświadczenia użytecznego na prawdziwej witrynie. CERT Polska rekomenduje utworzenie passkey wszędzie, gdzie usługa to oferuje. Passkey nie jest „niewykrywalny”: utrata urządzenia lub złośliwe oprogramowanie nadal stanowią ryzyko — stąd kopia zapasowa (drugi klucz, menedżer, konto producenta).",
+      "source": "CERT Polska, wiedza.cert.pl/dobre-praktyki/hasla oraz wiedza.cert.pl — MFA/passkeys",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-07",
+      "question": "Czy CERT Polska zaleca regularną, cykliczną zmianę haseł bez podejrzenia wycieku?",
+      "answer": "Nie. Wymuszona okresowa zmiana sprzyja słabym, przewidywalnym wariantom tego samego hasła. Hasło zmienia się niezwłocznie przy podejrzeniu kompromitacji lub wycieku — i we wszystkich usługach, w których było powtórzone. Uwaga: w systemach służbowych mogą obowiązywać odrębne procedury jednostki; rekomendacja CERT nie uchyla wewnętrznych regulaminów.",
+      "source": "CERT Polska, cert.pl/bezpieczne-hasla; rekomendacje techniczne dla systemów uwierzytelniania (brak wymuszania okresowej zmiany)",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-08",
+      "question": "Czym jest uwierzytelnianie wieloskładnikowe (MFA/2FA) i przed czym chroni?",
+      "answer": "Wymaga co najmniej dwóch niezależnych składników (np. hasło + urządzenie lub biometria). Chroni konto, gdy hasło wyciekło lub zostało wyłudzone, o ile sprawca nie kontroluje jednocześnie drugiego składnika. Przy konfiguracji należy zapisać kody zapasowe udostępniane przez serwis.",
+      "source": "CERT Polska, cert.pl/bezpieczne-hasla; wiedza.cert.pl — MFA",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-09",
+      "question": "Które metody drugiego składnika są najsilniejsze, a która jest najsłabsza?",
+      "answer": "Najsilniejsze: klucze sprzętowe i passkeys (odporność na klasyczny phishing). Silne i powszechnie dostępne: aplikacje generujące kody (TOTP). Najsłabsze powszechnie stosowane: kody SMS — podatne m.in. na przejęcie karty SIM (SIM swap) i wyłudzenie treści wiadomości. SMS jest mimo to lepszy niż brak MFA.",
+      "source": "CERT Polska, wiedza.cert.pl — MFA i klucze sprzętowe",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-10",
+      "question": "Co oznaczają powtarzające się powiadomienia push z prośbą o zatwierdzenie logowania, którego użytkownik nie inicjował?",
+      "answer": "To typowy sygnał, że ktoś zna hasło i próbuje wymusić przypadkową akceptację (tzw. zmęczenie MFA / MFA fatigue). Powiadomienia odrzuca się, nie zatwierdza „żeby przestały przychodzić”. Natychmiast: zmiana hasła (najlepiej z zaufanego urządzenia), przegląd aktywnych sesji i urządzeń, w razie potrzeby wyłączenie nieznanych metod MFA.",
+      "source": "Dobra praktyka CERT/branżowa (ataki push bombing / MFA fatigue)",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-11",
+      "question": "Na których kontach należy włączyć MFA w pierwszej kolejności i dlaczego?",
+      "answer": "Na poczcie e-mail, w bankowości i w mediach społecznościowych — oraz, jeśli to możliwe, w menedżerze haseł. Przejęcie skrzynki pocztowej pozwala resetować hasła do innych usług i przejąć tożsamość cyfrową.",
+      "source": "CERT Polska, wiedza.cert.pl/dobre-praktyki/hasla",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-12",
+      "question": "Dlaczego automatyczne aktualizacje są istotne dla bezpieczeństwa?",
+      "answer": "Usuwają publicznie znane luki, które sprawcy skanują i wykorzystują masowo, często wkrótce po ujawnieniu. Dotyczy to systemu operacyjnego, przeglądarki, aplikacji, wtyczek oraz oprogramowania sprzętowego routera. Opóźnianie aktualizacji wydłuża okno ataku.",
+      "source": "CERT Polska — dobre praktyki cyberhigieny (aktualizacje)",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-13",
+      "question": "Skąd wolno instalować oprogramowanie i czego unikać?",
+      "answer": "Z oficjalnych sklepów (np. sklep producenta systemu) albo ze strony producenta, po sprawdzeniu adresu. Należy unikać instalatorów z nieznanych źródeł, cracków, generatorów kluczy i „darmowych” kopii płatnego oprogramowania — często zawierają złośliwy kod, w tym oprogramowanie do zdalnego dostępu.",
+      "source": "CERT Polska — cyberhigiena; CBZC — ostrzeżenia przed instalacją oprogramowania na namowę rozmówcy",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-14",
+      "question": "Jakie podstawowe działania zabezpieczają domowy router?",
+      "answer": "Zmiana fabrycznego hasła administratora, wyłączenie zdalnego zarządzania z internetu (Remote Management/WAN), bieżące aktualizacje firmware. Sieć Wi-Fi: WPA3, a jeśli urządzenie nie obsługuje — WPA2; WPS należy wyłączyć. Hasło Wi-Fi ma być długie i inne niż hasło panelu administratora.",
+      "source": "Powszechne rekomendacje CERT/NASK dotyczące zabezpieczenia sieci domowej",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-15",
+      "question": "Czym jest phishing i po czym rozpoznać podejrzaną wiadomość?",
+      "answer": "To podszywanie się pod zaufany podmiot w celu wyłudzenia danych, środków lub instalacji oprogramowania. Sygnały ostrzegawcze: poczucie pilności, groźba konsekwencji, prośba o kliknięcie albo otwarcie załącznika, dziwna domena, błędy językowe, nietypowy kanał kontaktu. Brak tych cech nie gwarantuje autentyczności — weryfikacja zawsze poza wiadomością.",
+      "source": "CERT Polska — phishing; lista ostrzeżeń cert.pl",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-16",
+      "question": "Czy zgodność wyświetlanej nazwy nadawcy z nazwą instytucji dowodzi autentyczności e-maila?",
+      "answer": "Nie. Pole „Od” i nazwę wyświetlaną da się sfałszować (spoofing). Nie klika się linków z wiadomości; stronę instytucji otwiera się, wpisując znany adres ręcznie albo przez oficjalną aplikację zaufanego sklepu.",
+      "source": "CERT Polska — phishing/spoofing wiadomości",
+      "legalBasis": "Ustawa z dnia 28 lipca 2023 r. o zwalczaniu nadużyć w komunikacji elektronicznej (m.in. smishing, spoofing, lista ostrzeżeń CSIRT NASK)",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-17",
+      "question": "Czy kłódka (HTTPS) przy adresie strony oznacza, że witryna jest wiarygodna?",
+      "answer": "Nie. Kłódka oznacza jedynie szyfrowanie połączenia. Certyfikat TLS może uzyskać także witryna sprawców. Weryfikuje się dokładną pisownię domeny (literówki, inna końcówka, dodatkowy człon). HTTPS nie zastępuje sprawdzenia, z kim naprawdę się łączy użytkownik.",
+      "source": "CERT Polska — rozpoznawanie fałszywych stron",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-18",
+      "question": "Czym różnią się smishing i vishing od phishingu e-mailowego?",
+      "answer": "Phishing e-mailowy idzie pocztą elektroniczną. Smishing to wyłudzenie przez SMS/MMS (np. fałszywy kurier, bank, urząd). Vishing to wyłudzenie głosowe — sprawca udaje pracownika banku, funkcjonariusza, urzędnika albo członka rodziny. Cel jest ten sam: dane, kody, przelew lub zdalny dostęp do urządzenia.",
+      "source": "CERT Polska; CBZC — vishing; ustawa o zwalczaniu nadużyć w komunikacji elektronicznej (smishing)",
+      "legalBasis": "Ustawa z dnia 28 lipca 2023 r. o zwalczaniu nadużyć w komunikacji elektronicznej — m.in. art. 4 (smishing) oraz zadania CSIRT NASK związane z monitoringiem i wzorcem wiadomości",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-19",
+      "question": "O co prawdziwy pracownik banku nie poprosi w niezapowiedzianej rozmowie telefonicznej?",
+      "answer": "O pełne hasło, kod BLIK, kod SMS, dane karty, instalację programu do zdalnego pulpitu ani o natychmiastowy przelew „w celu ochrony środków”. Taka prośba jest sygnałem oszustwa: rozłączyć się i samodzielnie skontaktować z bankiem numerem z umowy, aplikacji lub oficjalnej strony — nie numerem z historii połączeń.",
+      "source": "CBZC: „żaden bank, policja, firma ani instytucja nie będą prosić o pieniądze ani o podanie […] haseł […] czy instalację dodatkowego oprogramowania”",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-20",
+      "question": "Czym jest spoofing numeru telefonu i co z tego wynika dla weryfikacji rozmówcy?",
+      "answer": "Sprawca może wyświetlić na telefonie ofiary numer zgodny z numerem banku lub jednostki Policji. Samo wyświetlenie numeru nie potwierdza tożsamości. Pewna weryfikacja to zakończenie połączenia i samodzielne wybranie numeru z oficjalnego źródła (nie z historii połączeń i nie z linku w SMS).",
+      "source": "Policja.pl — ostrzeżenia przed spoofingiem; CBZC",
+      "legalBasis": "Ustawa z dnia 28 lipca 2023 r. o zwalczaniu nadużyć w komunikacji elektronicznej (przeciwdziałanie spoofingowi numerów)",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-21",
+      "question": "Na czym polega oszustwo „na wnuczka” lub „na policjanta” i jak je rozpoznać?",
+      "answer": "Nagły telefon o rzekomym wypadku bliskiego albo „tajnej akcji” z żądaniem natychmiastowego przekazania gotówki, BLIK-a lub „zabezpieczenia” oszczędności. Policja nie prowadzi z osobami postronnymi telefonicznych „wspólnych akcji” i nie prosi o przekazanie pieniędzy nieznanej osobie. Reakcja: rozłączyć się, nie oddzwaniać z historii połączeń, powiadomić bliskich i zgłosić zdarzenie Policji (112).",
+      "source": "Komenda Stołeczna Policji; Policja.pl; CBZC",
+      "legalBasis": "Czyn może wyczerpywać znamiona oszustwa (art. 286 k.k.). Zawiadomienie o przestępstwie ściganym z urzędu: art. 304 § 1 k.p.k. (obowiązek społeczny).",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-22",
+      "question": "Jak postąpić, gdy wiadomość z komunikatora znajomego prosi o kod BLIK lub pilny przelew?",
+      "answer": "Nie wysyłać kodu ani środków na podstawie samego czatu. Potwierdzić sprawę głosowo, dzwoniąc na znany numer tej osoby. Konta komunikatorów są przejmowane; sprawca pisze z listy kontaktów pod pretekstem nagłej potrzeby.",
+      "source": "CERT Polska / Policja — oszustwa „na BLIK” i przejęte konta",
+      "legalBasis": "Czyn może wyczerpywać znamiona oszustwa (art. 286 k.k.).",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-23",
+      "question": "Jakie cechy ma typowa oferta oszustwa inwestycyjnego (w tym „na słupa” / fałszywą platformę)?",
+      "answer": "Obietnica gwarantowanego, szybkiego zysku, wykorzystanie wizerunku znanych osób (często bez zgody), presja na natychmiastową wpłatę, namowa do instalacji oprogramowania zdalnego pulpitu oraz utrudniony lub niemożliwy zwrot środków. Gwarantowany wysoki zysk bez ryzyka jest sprzeczny z logiką rynku — to sygnał oszustwa, nie „okazji”.",
+      "source": "KNF / Policja / CERT — ostrzeżenia przed oszustwami inwestycyjnymi",
+      "legalBasis": "Czyn może wyczerpywać znamiona oszustwa (art. 286 k.k.); wykorzystanie wizerunku może dodatkowo naruszać dobra osobiste.",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-24",
+      "question": "Czym jest quishing i jak się przed nim chronić?",
+      "answer": "To phishing z użyciem kodu QR prowadzącego na stronę wyłudzającą dane lub płatność. Przed skanowaniem kodu w przestrzeni publicznej (parkometr, plakat, ulotka na stole) należy sprawdzić, czy naklejki nie podmieniono. Po skanowaniu weryfikuje się domenę tak samo jak przy linku z e-maila.",
+      "source": "CERT Polska — quishing (phishing kodami QR)",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-25",
+      "question": "Czym jest deepfake i jaki ma skutek dla weryfikacji tożsamości?",
+      "answer": "To spreparowany materiał audio lub wideo (w tym głos w rozmowie). Podobieństwo głosu albo twarzy bliskiej osoby nie jest samodzielnym dowodem tożsamości. Przy prośbie o pieniądze lub dane stosuje się uzgodnione wcześniej hasło rodzinne albo kontakt drugim, niezależnym kanałem.",
+      "source": "CERT Polska / organy ścigania — ostrzeżenia przed deepfake w oszustwach",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-26",
+      "question": "Gdzie zgłosić podejrzany SMS, stronę phishingową albo incydent — i czego CERT Polska nie zrobi?",
+      "answer": "Podejrzany SMS przekazuje się w niezmienionej treści (funkcja „Przekaż”), bez komentarza i bez dopisywania numeru nadawcy, bezpłatnie na 8080; MMS i zrzuty ekranu nie są przyjmowane. Strony, e-maile i pozostałe incydenty: incydent.cert.pl (lub cert@cert.pl). Wiadomości nie rozsyła się znajomym. CERT Polska / CSIRT NASK nie ściga sprawców i nie odzyskuje pieniędzy — przestępstwo zgłasza się Policji.",
+      "source": "wiedza.cert.pl — zgłaszanie SMS 8080 i incydent.cert.pl; gov.pl — baza wiedzy NASK",
+      "legalBasis": "Ustawa z dnia 5 lipca 2018 r. o krajowym systemie cyberbezpieczeństwa (CSIRT NASK, art. 26 u.k.s.c.). Zgłoszenie przez osobę fizyczną jest dobrowolne i nie zastępuje zawiadomienia Policji (art. 304 k.p.k.). Obowiązek zgłoszenia do CSIRT w terminie ustawowym dotyczy wskazanych w ustawie podmiotów, nie każdego użytkownika prywatnego.",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-27",
+      "question": "Jakie zasady obowiązują przy korzystaniu z publicznego Wi-Fi?",
+      "answer": "Nie logować się do bankowości i poczty na niesprawdzonej sieci, jeśli można użyć internetu mobilnego. Potwierdzić dokładną nazwę sieci u obsługi (fałszywe punkty dostępu naśladują legalne SSID). VPN zmniejsza ryzyko podsłuchu w sieci lokalnej, ale nie chroni przed phishingiem na samym urządzeniu. Unikać automatycznego łączenia z otwartymi sieciami.",
+      "source": "CERT Polska — bezpieczeństwo sieci publicznych",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-28",
+      "question": "Co oznacza reguła kopii zapasowych 3-2-1 i dlaczego kopia powinna być odłączona?",
+      "answer": "Trzy kopie danych, na dwóch różnych rodzajach nośników, jedna poza bieżącą lokalizacją. Kopia online lub stale podłączony dysk może zostać zaszyfrowana razem z komputerem (ransomware). Praktycznie: regularny test odtworzenia kopii, bo kopia, której nie da się przywrócić, nie spełnia swojej roli.",
+      "source": "Powszechna dobra praktyka (model 3-2-1); CERT Polska — ransomware i kopie zapasowe",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-29",
+      "question": "Czym jest ransomware i dlaczego nie zaleca się płacenia okupu?",
+      "answer": "To złośliwe oprogramowanie, które szyfruje dane i żąda okupu, często grożąc publikacją plików. Zapłata nie gwarantuje odszyfrowania, może finansować kolejną działalność przestępczą i nie wyłącza ryzyka ponownego ataku. Postępowanie: odłączyć urządzenie od sieci bez „sprzątania” na ślepo, skorzystać z kopii, zgłosić incydent (CERT / Policja). To rekomendacja operacyjna, nie ocena indywidualnej sprawy karnej.",
+      "source": "CERT Polska — ransomware; No More Ransom (współpraca m.in. z organami ścigania)",
+      "legalBasis": "Żądanie okupu i związane z nim czyny mogą wypełniać znamiona przestępstw z k.k. (kwalifikacja zależy od stanu faktycznego). Zawiadomienie: art. 304 k.p.k.",
+      "status": "Zatwierdzone",
+      "packId": 30
+    },
+    {
+      "id": "cyber-30",
+      "question": "Jakie kroki podjąć przy podejrzeniu przejęcia konta albo po podaniu danych na fałszywej stronie?",
+      "answer": "Ze zaufanego urządzenia: zmienić hasło, wylogować obce sesje, sprawdzić przekierowania poczty i listę zaufanych urządzeń, włączyć MFA. Przy danych karty — natychmiast zastrzec kartę w banku (oficjalny numer). Incydent cyberbezpieczeństwa można zgłosić do CERT Polska; podejrzenie przestępstwa — Policji. CSIRT NASK nie zastępuje organów ścigania.",
+      "source": "CERT Polska — obsługa incydentu; CBZC / Policja — zgłaszanie oszustwa",
+      "legalBasis": "Art. 304 § 1 k.p.k. (zawiadomienie o przestępstwie ściganym z urzędu). CERT Polska działa jako CSIRT NASK na podstawie u.k.s.c.; zgłoszenie do CSIRT nie wszczyna postępowania karnego.",
+      "status": "Zatwierdzone",
+      "packId": 30
+    }
+  ]
+}
