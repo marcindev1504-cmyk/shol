@@ -1,0 +1,40 @@
+KOMPAS WIEDZY - WERSJA PORTABLE SLIM
+=====================================
+
+Zawartosc paczki:
+- aplikacja (dist/) + lokalny serwer (server.mjs)
+- node.exe (portable - nic nie trzeba instalowac)
+
+Ta wersja NIE zawiera Ollamy ani modeli AI - generowanie
+fiszek przez "Model lokalny" nie bedzie dzialac, chyba ze
+podepniesz wlasna Ollame (patrz nizej).
+
+URUCHOMIENIE
+1. Rozpakuj caly folder w dowolne miejsce (np. C:\kompas-wiedzy).
+2. Uruchom START.bat (dwuklik) — przy pierwszym razie utworzy
+   skrot "Kompas Wiedzy.lnk" z ikona w tym samym folderze.
+3. Aplikacja dziala w tle — bez widocznych okien terminala.
+   Po kilku sekundach otworzy sie http://localhost:8080.
+
+Przy pierwszym uruchomieniu Windows moze pokazac jedno ostrzezenie
+("Wiecej informacji" -> "Uruchom mimo to").
+
+PRACA
+- Aplikacja dziala w tle. Do zatrzymania: stop.bat lub
+  przycisk "Zatrzymaj" w Ustawieniach aplikacji.
+- Aplikacje mozna "zainstalowac" jak natywna: w przegladarce
+  ikona instalacji w pasku adresu (PWA).
+- Tworzenie, import, edycja, weryfikacja i eksport paczek
+  dziala w pelni — bez AI.
+- Eksportowane paczki JSON wrzuca sie na GitHub do katalogu
+  paczki/ galezi main (przez strone: Add file -> Upload).
+
+GENEROWANIE AI (opcjonalne)
+Jesli na komputerze jest zainstalowana Ollama
+(ollama.com/download), tryb "Model lokalny" zadziala
+automatycznie po uruchomieniu "ollama serve".
+Adres serwera mozna zmienic w ustawieniach generatora.
+
+WYMAGANIA
+- Zadnych instalacji ani uprawnien administratora.
+- ~150 MB wolnego miejsca.
