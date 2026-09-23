@@ -371,8 +371,8 @@ export function TrybSluchacza({ pakietParam }: { pakietParam: string }) {
               <button className="flashcard-button" onClick={(event) => { event.stopPropagation(); setRevealed(false) }}>Ukryj odpowiedź</button>
             </div>
           </div>
-          {dragX > 40 && <span className="swipe-hint right">PAMIĘTAM</span>}
-          {dragX < -40 && <span className="swipe-hint left">NIE PAMIĘTAM</span>}
+          {dragX > 15 && <span className="swipe-hint right" style={{ opacity: Math.min(1, (dragX - 15) / 70) }}>PAMIĘTAM</span>}
+          {dragX < -15 && <span className="swipe-hint left" style={{ opacity: Math.min(1, (-dragX - 15) / 70) }}>NIE PAMIĘTAM</span>}
         </article>
         <div className="learner-actions"><button className="learner-secondary" onClick={() => answer(false)}>Nie pamiętam</button><button className="learner-primary" onClick={() => answer(true)}>Pamiętam <Icon name="arrow" /></button></div>
         <p className="swipe-tip">dotknij kartę, aby odwrócić · ← przesuń, aby ocenić →</p>
