@@ -93,21 +93,9 @@ export function UstawieniaView({ settings, onSave, onExport, onReset }: Props) {
       </section>
       )}
 
-      <section className="settings-card">
-        <p className="kicker">INSTALACJA</p>
-        <h3>Aplikacja na komputerze</h3>
-        <p className="settings-copy">Zainstaluj Kompas Wiedzy jako aplikację — własne okno i ikona w menu Start, bez paska przeglądarki.</p>
-        <div className="settings-actions">
-          {installed ? (
-            <span className="model-status ok">● Aplikacja zainstalowana</span>
-          ) : installable ? (
-            <button className="primary-button" onClick={() => void installPwa()}>Zainstaluj aplikację</button>
-          ) : (
-            <span className="settings-copy">Instalacja niedostępna — otwórz aplikację w Edge lub Chrome i użyj ikony instalacji w pasku adresu.</span>
-          )}
-        </div>
-      </section>
+      </div>
 
+      <div className="settings-grid-side">
       <section className="settings-card">
         <p className="kicker">INFORMACJE</p>
         <h3>O tej instalacji <span className="version-badge">v0.2.0</span></h3>
@@ -118,7 +106,6 @@ export function UstawieniaView({ settings, onSave, onExport, onReset }: Props) {
         </dl>
         <button className="primary-button settings-save" onClick={() => onSave({ instructorName, workspaceName, shareBaseUrl, generatorMode, aiModel, ollamaHost: ollamaHost.trim().replace(/\/+$/, ''), cardsPerSource })}>Zapisz ustawienia</button>
       </section>
-      </div>
 
       <section className="settings-card">
         <p className="kicker">GENERATOR</p>
@@ -133,6 +120,22 @@ export function UstawieniaView({ settings, onSave, onExport, onReset }: Props) {
         </>}
         <label>Maks. fiszek ze źródła<select value={cardsPerSource} onChange={(event) => setCardsPerSource(Number(event.target.value))}>{CARDS_PER_SOURCE_OPTIONS.map((count) => <option value={count} key={count}>{count}</option>)}</select></label>
       </section>
+
+      <section className="settings-card">
+        <p className="kicker">INSTALACJA</p>
+        <h3>Aplikacja na komputerze</h3>
+        <p className="settings-copy">Zainstaluj Kompas Wiedzy jako aplikację — własne okno i ikona w menu Start, bez paska przeglądarki.</p>
+        <div className="settings-actions">
+          {installed ? (
+            <span className="model-status ok">● Aplikacja zainstalowana</span>
+          ) : installable ? (
+            <button className="primary-button" onClick={() => void installPwa()}>Zainstaluj aplikację</button>
+          ) : (
+            <span className="settings-copy">Instalacja niedostępna — otwórz aplikację w Edge lub Chrome i użyj ikony instalacji w pasku adresu.</span>
+          )}
+        </div>
+      </section>
+      </div>
     </div>
   )
 }
