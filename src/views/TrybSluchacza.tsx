@@ -410,7 +410,6 @@ export function TrybSluchacza({ pakietParam }: { pakietParam: string }) {
             <button className="modal-close" onClick={() => setSourceDialog(null)}>×</button>
             <p className="kicker">ŹRÓDŁO FISZKI</p>
             <div className="modal-source source-dialog-content">
-              <Icon name="books" />
               <span className="source-dialog-text">
                 {sourceDialog.source && <strong>{sourceDialog.source}</strong>}
                 {sourceDialog.legalBasis && <><em className="source-dialog-label">Podstawa prawna</em><span className="source-dialog-legal">{sourceDialog.legalBasis}</span></>}
