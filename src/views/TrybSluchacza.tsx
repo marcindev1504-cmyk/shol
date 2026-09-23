@@ -199,11 +199,13 @@ export function TrybSluchacza({ pakietParam }: { pakietParam: string }) {
     if (cardIndex + 1 >= cards.length) setFinished(true)
     else setCardIndex((current) => current + 1)
     setRevealed(false)
-    requestAnimationFrame(() => {
-      const el = document.querySelector('.learner-progress')
-      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 12, behavior: 'instant' as ScrollBehavior })
-    })
   }
+
+  useEffect(() => {
+    if (screen !== 'runner' || finished) return
+    const el = document.querySelector('.learner-progress')
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 12, behavior: 'instant' as ScrollBehavior })
+  }, [cardIndex, screen, finished])
 
   function answer(known: boolean) {
     if (answering.current || !card) return
