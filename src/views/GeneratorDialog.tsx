@@ -123,7 +123,7 @@ export function GeneratorDialog({ pack, sources, generatorMode, aiModel, ollamaH
   return (
     <div className="modal-backdrop" onClick={onClose}>
       <div className={full ? 'modal generator-modal fullscreen' : 'modal generator-modal'} onClick={(event) => event.stopPropagation()}>
-        <button className="modal-close" onClick={onClose}>×</button>
+        <button className="modal-close" onClick={onClose} aria-label="Zamknij"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" /></svg></button>
         <button className="modal-expand" onClick={() => setFull((f) => !f)} title={full ? 'Zmniejsz okno' : 'Pełny ekran'} aria-label={full ? 'Zmniejsz okno' : 'Pełny ekran'}>
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             {full
