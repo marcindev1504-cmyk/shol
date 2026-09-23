@@ -74,11 +74,15 @@ export function UstawieniaView({ settings, onSave, onExport, onReset }: Props) {
       <section className="settings-card">
         <p className="kicker">SERWER</p>
         <h3>Sterowanie aplikacją</h3>
-        <p className="settings-copy">Zatrzymanie wyłącza dostęp do aplikacji dla słuchaczy. Serwer pozostaje uruchomiony.</p>
+        <p className="settings-copy">Zatrzymanie wyłącza serwer i kończy działanie aplikacji. Ponowne uruchomienie przez skrót „Kompas Wiedzy” (START.bat).</p>
         <div className="settings-actions">
-          <button className={serverRunning ? "danger-button" : "primary-button"} onClick={async () => { await fetch(`/api/control?action=${serverRunning ? 'stop' : 'start'}`); setServerRunning(!serverRunning) }}>
-            {serverRunning ? "Zatrzymaj" : "Uruchom"}
-          </button>
+          {serverRunning ? (
+            <button className="danger-button" onClick={async () => { try { await fetch('/api/control?action=stop') } catch { /* serwer może już być wyłączony */ } setServerRunning(false) }}>
+              Zatrzymaj
+            </button>
+          ) : (
+            <span className="settings-copy">Serwer wyłączony. Uruchom aplikację ponownie przez skrót „Kompas Wiedzy”.</span>
+          )}
           <span className={`model-status ${serverRunning ? 'ok' : 'error'}`}>{serverRunning ? '● Aplikacja działa' : '● Aplikacja zatrzymana'}</span>
         </div>
       </section>

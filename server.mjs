@@ -110,7 +110,13 @@ const server = createServer(async (req, res) => {
   if (url.pathname === '/api/control') {
     const action = url.searchParams.get('action')
     if (action === 'status') return sendJson(res, 200, { running: appRunning })
-    if (action === 'stop') { appRunning = false; return sendJson(res, 200, { running: false }) }
+    if (action === 'stop') {
+      appRunning = false
+      sendJson(res, 200, { running: false })
+      setTimeout(() => server.close(() => process.exit(0)), 400)
+      setTimeout(() => process.exit(0), 5000).unref()
+      return
+    }
     if (action === 'start') { appRunning = true; return sendJson(res, 200, { running: true }) }
     return sendJson(res, 400, { error: 'Nieznana akcja.' })
   }
